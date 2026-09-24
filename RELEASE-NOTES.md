@@ -1,4 +1,8 @@
-# Lith 0.9.1
+# Lith 0.9.2
+
+## Color grading made easier
+
+Color → Color grading now has four always-visible color wheels for Shadows, Midtones, Highlights and Overall. Drag for hue and saturation, adjust strength independently, and reset each wheel. Keyboard control, per-node settings and undo/redo are supported. Existing grading values are preserved.
 
 ## Downloads
 

@@ -96,3 +96,10 @@ Verified with a generated image: editing a title and subtitle, dragging, hide/sh
 The font picker now has 18 families grouped into Serif, Sans serif, Display, Handwritten and Monospace. Choices include Georgia, Cambria, Palatino Linotype, Arial, Calibri, Candara, Segoe UI, Trebuchet MS, Verdana, Impact, Bahnschrift, Gabriola, Segoe Script, Segoe Print, Comic Sans MS, Times New Roman, Courier New and Consolas. These use system fonts; a machine without a selected family may substitute a font.
 
 Hover a graph node or its Develop target tab and press **R** to rename it. Enter saves; Escape cancels. This also works with a node keyboard-focused. The shortcut does not interrupt typing in text fields or open dialogs. Node renames support undo and are saved per photo.
+
+
+### Color-grading wheels
+
+Open **Color → Color grading** for four always-visible wheels: Shadows, Midtones, Highlights and Overall. Drag around the wheel for hue and outward for saturation. The center is neutral. Choosing color starts a zero-strength range at 25%; adjust its Strength slider for a subtler or stronger result. Each wheel has a reset button.
+
+Focus a wheel and use Left/Right for hue, Up/Down for saturation, or Home for neutral. Shift makes larger steps. A complete drag is one undo step. Values stay independent per node and survive restarts. Existing grading settings are preserved until changed.
