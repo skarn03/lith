@@ -1,5 +1,9 @@
 # Lith Photo Studio
 
+**[Download Lith for Windows and Mac](https://github.com/skarn03/lith/releases/latest)**
+
+Windows includes in-app updates. Mac downloads are unsigned experimental builds with manual updates. See [release instructions](RELEASE-NOTES.md) and [publishing guide](RELEASING.md).
+
 Close the existing Lith window and double-click **Launch Lith.lnk** in this folder. Existing photos and edits are preserved. If you move the entire folder, use **Launch Lith.cmd** or **Launch Lith.vbs**, which locates the app relative to itself.
 
 Lith is an offline Windows photo editor with nondestructive edits, brush/linear/radial/color-range masks, dark-gray and light themes, 60 film, vintage and dreamy looks, layered halation, diffusion/mist, gated bloom, anamorphic flares, dynamic matte shadows, grain, clarity, texture, HSL mixing, tonal color grading, curves, aligned before/after views, freehand/custom cropping, white borders, and a serial node graph starting with one full-edit node with per-photo labels, toggleable layered looks with individual blend amounts, double-click zoom, and a compact focus view.
