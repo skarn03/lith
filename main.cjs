@@ -1,0 +1,30 @@
+const {app,BrowserWindow,ipcMain,dialog}=require('electron');
+const fs=require('node:fs/promises');
+const path=require('node:path');
+const crypto=require('node:crypto');
+const {libraryRoot,importLibrary}=require('./library.cjs');
+const root=libraryRoot(app,process.env,__dirname);
+app.setPath('userData',app.isPackaged&&!process.env.LUMA_DATA_DIR?path.join(app.getPath('appData'),'Lith','settings'):path.join(root,'settings'));
+if(app.isPackaged)app.setAppUserModelId?.('io.github.skarn03.lith');
+app.setName?.('Lith');
+const ownsLibrary=app.requestSingleInstanceLock?.()??true;
+if(!ownsLibrary)app.quit();
+let win; let catalog={photos:[],selected:null}; let queue=Promise.resolve();
+app.on('second-instance',()=>{if(win){if(win.isMinimized())win.restore();win.focus();}});
+const persist=()=>{const snapshot=JSON.stringify(catalog); queue=queue.catch(()=>{}).then(async()=>{await fs.writeFile(path.join(root,'catalog.tmp'),snapshot);await fs.rename(path.join(root,'catalog.tmp'),path.join(root,'catalog.json'));});return queue;};
+async function ingest(paths){const added=[];const errors=[];for(const source of paths){try{const ext=path.extname(source).toLowerCase();if(!['.jpg','.jpeg','.png','.webp'].includes(ext))throw Error('Use JPEG, PNG, or WebP');const stat=await fs.stat(source);if(stat.size>150*1024*1024)throw Error('File exceeds 150 MB');const id=crypto.randomUUID();await fs.copyFile(source,path.join(root,'originals',id+ext));const p={id,name:path.basename(source),ext,size:stat.size,settings:{},favorite:false};catalog.photos.push(p);added.push(p);}catch(e){errors.push(path.basename(source)+': '+e.message);}}if(added.length)catalog.selected=added[added.length-1].id;await persist();return {catalog,errors};}
+app.whenReady().then(async()=>{if(!ownsLibrary)return;await fs.mkdir(path.join(root,'originals'),{recursive:true});try{catalog=JSON.parse(await fs.readFile(path.join(root,'catalog.json'),'utf8'));}catch(e){if(e.code!=='ENOENT'){await dialog.showMessageBox({type:'error',message:'The photo library could not be read.',detail:'Your files have been preserved. '+e.message});app.quit();return;}}
+ipcMain.handle('catalog',()=>catalog);
+ipcMain.handle('library-import',async()=>{if(catalog.photos.length||catalog.customLooks?.length)throw Error('Restore requires an empty library. Your existing photos and looks are unchanged.');const picked=await dialog.showOpenDialog(win,{title:'Choose your previous Luma Library folder',properties:['openDirectory']});if(picked.canceled)return false;await queue;catalog=await importLibrary(picked.filePaths[0],root);win.reload();return true;});
+ipcMain.handle('save-look',async(_,look)=>{if(typeof look.name!=='string'||!look.name.trim()||!Array.isArray(look.recipe)||JSON.stringify(look).length>2000000)throw Error('Invalid custom look');catalog.customLooks||=[];const item={name:look.name.trim().slice(0,60),recipe:look.recipe};catalog.customLooks.push(item);await persist();return catalog.customLooks;});
+ipcMain.handle('fullscreen',(_,value)=>{win.setFullScreen(typeof value==='boolean'?value:!win.isFullScreen());return win.isFullScreen();});
+ipcMain.handle('import',async()=>{const r=await dialog.showOpenDialog(win,{properties:['openFile','multiSelections'],filters:[{name:'Photos',extensions:['jpg','jpeg','png','webp']}]});return r.canceled?{catalog,errors:[]}:ingest(r.filePaths);});
+ipcMain.handle('drop',(_,paths)=>ingest(paths));
+ipcMain.handle('image',async(_,id)=>{const p=catalog.photos.find(p=>p.id===id);if(!p)throw Error('Photo not found');const data=await fs.readFile(path.join(root,'originals',p.id+p.ext));return 'data:image/'+(p.ext==='.jpg'||p.ext==='.jpeg'?'jpeg':p.ext.slice(1))+';base64,'+data.toString('base64');});
+ipcMain.handle('save',async(_,update)=>{const p=catalog.photos.find(p=>p.id===update.id);if(!p)return; if(update.settings)p.settings=update.settings;if(typeof update.favorite==='boolean')p.favorite=update.favorite;if(Number.isInteger(update.rating)&&update.rating>=0&&update.rating<=5)p.rating=update.rating;catalog.selected=p.id;await persist();});
+ipcMain.handle('export',async(_,data)=>{if(!['png','jpeg','webp'].includes(data.format)||typeof data.base64!=='string')throw Error('Invalid export');const result=await dialog.showSaveDialog(win,{defaultPath:data.name.replace(/\.[^.]+$/,'')+'-edited.'+(data.format==='jpeg'?'jpg':data.format),filters:[{name:'Edited image',extensions:[data.format==='jpeg'?'jpg':data.format]}]});if(result.canceled)return false;const target=path.resolve(result.filePath);if(target.toLowerCase().startsWith(path.resolve(root).toLowerCase()+path.sep))throw Error('Choose a location outside the internal photo library.');await fs.writeFile(target,Buffer.from(data.base64,'base64'));return true;});
+win=new BrowserWindow({width:1480,height:960,minWidth:1000,minHeight:720,backgroundColor:'#292929',title:'Lith — Photo Studio',autoHideMenuBar:true,webPreferences:{preload:path.join(__dirname,'preload.cjs'),contextIsolation:true,nodeIntegration:false,sandbox:true}});
+let closing=false;win.on('close',event=>{if(closing)return;event.preventDefault();win.webContents.executeJavaScript('typeof flush === "function" ? flush() : Promise.resolve()').then(()=>{closing=true;win.close();}).catch(error=>dialog.showMessageBox(win,{type:'error',message:'Edits could not be saved. Please try closing again.',detail:error.message}));});
+win.webContents.setWindowOpenHandler(()=>({action:'deny'}));win.webContents.on('will-navigate',e=>e.preventDefault());require('./updater.cjs').setupUpdates(win,async()=>{await win.webContents.executeJavaScript("typeof flush === 'function' ? flush() : Promise.resolve()");await queue;closing=true;});await win.loadFile(path.join(__dirname,'index.html'));
+});
+app.on('window-all-closed',()=>app.quit());

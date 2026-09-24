@@ -1,0 +1,28 @@
+const assert=require('node:assert/strict');
+const {defaults,pixels,geometry}=require('./processing');
+const samples=new Uint8ClampedArray([0,0,0,255,35,128,220,177,255,255,255,255]);assert.deepEqual(pixels(samples.slice(),defaults),samples,'neutral adjustments must preserve exact pixels');
+const brighter=pixels(new Uint8ClampedArray([50,50,50,255]),{...defaults,exposure:1});assert.equal(brighter[0],100);assert.equal(brighter[3],255);
+const mono=pixels(new Uint8ClampedArray([35,128,220,255]),{...defaults,saturation:-100});assert.equal(mono[0],mono[1]);assert.equal(mono[1],mono[2]);
+assert.deepEqual(geometry(4000,3000,{...defaults,rotation:90,crop:1,cropY:100},1000),{rw:3000,rh:4000,cw:3000,ch:3000,x:0,y:1000,width:1000,height:1000});
+assert.equal(geometry(3000,4000,defaults).height,4000);assert.equal(geometry(100,50,defaults,1000).width,100);
+console.log('Passed: neutral pixel identity, exposure, alpha, monochrome, rotated crop, portrait geometry, and no upscaling.');
+const FX=require('./effects');
+const {sourcePoint}=require('./processing');
+const rotated=sourcePoint(0,0,4000,3000,{...defaults,rotation:90});assert.ok(Math.abs(rotated.x)<1e-9);assert.ok(Math.abs(rotated.y-1)<1e-9);
+const flipped=sourcePoint(0,0,4000,3000,{...defaults,flip:true});assert.equal(flipped.x,1);assert.equal(flipped.y,0);
+assert.deepEqual(FX.borderGeometry(4000,3000,{border:10,borderBottom:100}),{inset:300,bottom:600,width:4600,height:3900});
+for(const v of [0,.1,.25,.45,.5,.8,1])assert.ok(Math.abs(FX.curveValue(v,defaults)-v)<1e-9);
+const colors=new Uint8ClampedArray([255,0,0,255,0,0,255,255,128,128,128,255]);FX.hsl(colors,{...defaults,hslRedSat:-100});assert.deepEqual([...colors.slice(0,4)],[128,128,128,255]);assert.deepEqual([...colors.slice(4,8)],[0,0,255,255]);assert.deepEqual([...colors.slice(8)],[128,128,128,255]);
+const graded=new Uint8ClampedArray([50,50,50,255,200,200,200,255]);FX.grade(graded,{...defaults,gradeHighlights:50,gradeHighlightsColor:'#ff0000'});assert.ok(graded[4]-200>graded[0]-50,'highlight tint should favor brighter pixels');
+const grainA=new Uint8ClampedArray(16*16*4).fill(128),grainB=grainA.slice();FX.film(grainA,16,16,{...defaults,grain:60},160,160);FX.film(grainB,16,16,{...defaults,grain:60},160,160);assert.deepEqual(grainA,grainB,'grain must not flicker between renders');assert.ok(grainA.some((v,i)=>i%4!==3&&v!==128));
+console.log('Passed: source-space mask mapping, print border dimensions, neutral curves, selective HSL, tonal grading, and deterministic grain.');
+const Optics=require('./optics');
+assert.equal(Optics.gateWeight(.5,60,0),0);assert.equal(Optics.gateWeight(.7,60,0),1);assert.equal(Optics.gateWeight(1,100,40),0);assert.ok(Optics.gateWeight(.7,60,30)>0&&Optics.gateWeight(.7,60,30)<1);
+const mattePixels=new Uint8ClampedArray([10,10,10,255,230,230,230,255]);Optics.matte(mattePixels,2,1,{...defaults,matte:70});assert.ok(mattePixels[0]>10);assert.equal(mattePixels[4],230);assert.equal(mattePixels[3],255);
+const {normalizeSettings}=require('./processing');const fresh=normalizeSettings();assert.equal(fresh.nodes.length,1);assert.equal(fresh._schema,6);assert.equal(fresh.nodes[0].operation,'develop');assert.equal(fresh.nodes[0].adjustments.exposure,0);
+const migrated=normalizeSettings({exposure:1,grain:30,crop:1,nodes:[{id:'film',enabled:true},{id:'light',enabled:false}]});assert.equal(migrated.exposure,0);assert.equal(migrated.crop,1);assert.equal(migrated.nodes[0].legacyStage.operation,'film');assert.equal(migrated.nodes[0].legacyStage.adjustments.grain,30);assert.equal(migrated.nodes[1].enabled,false);assert.equal(migrated.nodes[1].legacyStage.adjustments.exposure,1);
+const custom=normalizeSettings({_schema:4,nodes:[{uid:'u1',label:'My mist',operation:'bloom',enabled:true,adjustments:{diffusion:44}}]});assert.equal(custom.nodes[0].label,'My mist');assert.equal(custom.nodes[0].legacyStage.adjustments.diffusion,44);
+const safe=geometry(4000,3000,{...defaults,straighten:10,cropScale:65});assert.ok(safe.width<2600&&safe.height<1950);assert.ok(safe.x>0&&safe.y>0);const vflip=sourcePoint(0,0,4000,3000,{...defaults,flipV:true});assert.equal(vflip.y,1);
+console.log('Passed: bloom threshold / knee, shadow-only matte lift, single-node new photos, legacy-stack migration, custom labels, straighten bounds and vertical flip.');
+
+const {resolveFrame}=require('./processing');fresh.nodes[0].frame.crop=1;resolveFrame(fresh);assert.equal(fresh.crop,1);fresh.nodes[0].enabled=false;resolveFrame(fresh);assert.equal(fresh.crop,0);assert.equal(normalizeSettings(fresh).nodes.length,1);

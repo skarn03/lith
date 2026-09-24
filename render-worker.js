@@ -1,0 +1,3 @@
+importScripts('optics.js','effects.js','text-effects.js','processing.js');
+let source=null;
+self.onmessage=async({data:m})=>{try{if(m.type==='source'){source?.close();source=m.bitmap;return;}if(!source)return;const canvas=Imaging.render(source,m.settings,m.max,m.original);if(m.type==='export'){const blob=await canvas.convertToBlob({type:'image/'+m.format,quality:m.quality});const bytes=await blob.arrayBuffer();self.postMessage({id:m.id,type:'export',bytes,mime:blob.type},[bytes]);}else{const bitmap=canvas.transferToImageBitmap();self.postMessage({id:m.id,type:'preview',bitmap},[bitmap]);}}catch(e){self.postMessage({id:m.id,error:e.message});}};

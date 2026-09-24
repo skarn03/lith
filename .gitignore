@@ -1,0 +1,12 @@
+node_modules/
+dist/
+Luma Library/
+*.lnk
+*.zip
+*.exe
+*.dmg
+*.blockmap
+.env*
+*.p12
+*.pfx
+.DS_Store
