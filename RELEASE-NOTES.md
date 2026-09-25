@@ -1,19 +1,19 @@
-# Lith 0.10.0
+# Lith 0.11.0
 
 **[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**
 
 ## What’s new
 
-- Separate photo projects, project settings and remembered export folders.
-- Faster photo switching, cached previews, background rendering and responsive interactive previews that refine after adjustments.
-- Supported camera RAW import alongside JPEGs, with cached development and original files preserved.
-- Virtual copies, copy/paste edits and independent versions without duplicating originals.
-- Combined masks: add, subtract and intersect brush, linear, radial and color selections.
-- Screen and Print export sharpening, with independent strength controls.
-- Customizable keyboard shortcuts, fullscreen photo view, direct node selection and quick Develop navigation.
-- Ctrl/Command+S quick save at original resolution and 100% JPEG quality by default.
-- Inline look-strength sliders, Instagram crop ratios, and improved contact-sheet wheel scrolling.
-- Download-first project page, feature screenshots and a gallery of selected real exported edits.
+- Float32 image processing for new imports, direct 16-bit developed RAW input, and 16-bit PNG export. Existing photos retain their original rendering until you change Quality.
+- GPU curves, color mixing/grading, diffusion, glow, halation, sharpening, grain and mask adjustments, with worker fallbacks. Compatible effects remain on the GPU between passes; buffers and unchanged mask coverage are reused.
+- Viewport-aware previews, responsive editing proxies, automatic refinement, native detail at 100%, and an HQ button for full-resolution settled previews. Reduced RAW previews use area-averaged mip levels.
+- Grouped virtual copies with larger hover previews and quick version switching.
+- Ctrl/Command-click multiple Develop tabs, then right-click to copy/move them into an existing or new node. A Copy / move button opens finer section controls.
+- Ctrl/Command+C / V copies selected tabs or the clicked node across photos and nodes, with Undo and preservation of unrelated edits.
+- Clearer active-mask controls, compact Sub masks and New mask above the active selection. Inverted copy creates an independent mask with the opposite combined coverage.
+- Ctrl/Command+D enables/disables a node; Ctrl/Command+Backspace removes the selected node while retaining at least one. Both are customizable.
+
+The local warmed 1024px benchmark measured color edits at 91.9 ms CPU / 11.0 ms GPU, glow at 210.6 / 9.0 ms, and halation at 533.5 / 18.1 ms. These compare the new float implementations on one Windows PC, not all app activity. Tested CPU/GPU previews differed by at most one display channel level. A 65,536-level ramp survived float exposure recovery and 16-bit PNG export without losing levels. A real 26MP Sony RAW import, full-size export and edit reopening also passed.
 
 ## Installation and updates
 
@@ -23,7 +23,7 @@ Mac: choose Apple Silicon for M1 or later, or Intel for older Intel Macs, then i
 
 Both platforms are unsigned. Windows may show an unknown-publisher warning.
 
-RAW support depends on the camera and compression. The current editing/export pipeline is 8-bit; this release does not add a full high-bit-depth RAW workflow.
+RAW support depends on the camera and compression. High precision uses encoded-sRGB float processing, not a scene-linear color-managed workflow. JPEG/WebP/display, mask coverage, text rasterization and the legacy flare intermediate remain 8-bit. Large images and large blurs can use the CPU fallback. Full-resolution HQ previews may take longer; fast slider previews remain enabled. See ENGINE-ARCHITECTURE.md for limits and reproducible benchmarks.
 
 ## Existing portable users
 

@@ -1,0 +1,22 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const Imaging=require('./processing.js'),FX=require('./effects.js');
+const context=vm.createContext({Imaging,FX,Float32Array,Uint8Array,Uint16Array,Uint32Array,DataView,Blob,Response,CompressionStream,DecompressionStream});
+for(const file of ['float-kernels.js','precision-source.js','png16.js'])vm.runInContext(fs.readFileSync(require.resolve('./'+file),'utf8'),context);
+const {FloatKernels,PrecisionSource,PNG16}=vm.runInContext('({FloatKernels,PrecisionSource,PNG16})',context);
+(async()=>{
+ const values=new Float32Array(65536*4);for(let i=0;i<65536;i++)values.set([i/257,i/257,i/257,255],i*4);
+ FloatKernels.point(values,{...Imaging.defaults,exposure:1});assert.ok(values.at(-4)>255);
+ FloatKernels.point(values,{...Imaging.defaults,exposure:-1});
+ const encoded=await PNG16.encode(values,256,256),decoded=await PrecisionSource.decode(await encoded.arrayBuffer());
+ assert.equal(decoded.bitDepth,16);for(let i=0;i<65536;i++)assert.equal(decoded.pixels[i*4],i);
+ const prepared=PrecisionSource.prepare(null,decoded,Imaging.defaults,0);
+ assert.equal(prepared.width,256);assert.equal(prepared.height,256);
+ for(let i=0;i<values.length;i++)assert.ok(Math.abs(prepared.data[i]-values[i])<.0001);
+ const stripes={width:16,height:16,pixels:new Uint16Array(16*16*4)};
+ for(let y=0;y<16;y++)for(let x=0;x<16;x++)stripes.pixels.set([x%2*65535,x%2*65535,x%2*65535,65535],(y*16+x)*4);
+ const small=PrecisionSource.prepare(null,stripes,Imaging.defaults,4);
+ for(let i=0;i<small.data.length;i+=4)assert.ok(Math.abs(small.data[i]-127.5)<.01,'Area downsampling must retain average fine detail');
+ const curved=new Float32Array([100.1,100.2,100.3,255]);FloatKernels.point(curved,{...Imaging.defaults,curveMid:8});assert.ok(curved[0]<curved[1]&&curved[1]<curved[2]);
+ assert.equal(Imaging.normalizeSettings({precision:'float32'}).precision,'float32');
+ console.log('Passed: 65,536-level PNG round trip; unclipped float exposure recovery; source-detail identity; antialiased RAW reduction; continuous curves; precision migration.');
+})().catch(e=>{console.error(e);process.exitCode=1;});

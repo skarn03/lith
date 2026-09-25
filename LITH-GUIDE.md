@@ -180,8 +180,47 @@ Export and Project settings offer **Off**, **Screen**, or **Print**, with Low / 
 
 ### Combined masks
 
-In **Masks**, create or select a mask, then use **Combine this mask**. Choose **Add**, **Subtract**, or **Intersect** under New shape mode, then add a Brush, Gradient, Radial or Color range. Draw or sample directly on the photo. A mask supports its base shape plus up to 11 additional shapes.
+In **Masks**, create or select a mask, then open **Sub masks** inside Active mask. Choose **Add**, **Subtract**, or **Intersect** under New shape mode, then add a Brush, Gradient, Radial or Color range. Draw or sample directly on the photo. A mask supports its base shape plus up to 11 additional shapes.
 
 Add expands coverage; Subtract removes coverage; Intersect keeps only overlap. Shapes combine in listed order with feathered alpha preserved. Local exposure, contrast, temperature and saturation apply once to the final combined selection. The pink overlay shows that combined selection.
 
 Use Editing shape to revisit any component. Change its Blend, toggle Shape enabled, or Remove shape. Feather and color controls follow the selected shape. Invert shape affects only that shape, while Invert combined result reverses the entire combined selection. Existing inverted masks retain their original base selection when shapes are added. Enabled toggles the entire mask group. Adding, changing and deleting components supports Undo/Redo and persists per photo/node, including virtual copies and copied edits.
+
+### Grouped photo versions
+
+The contact sheet and library show one thumbnail per original photo. Hover over it, or click its version badge, to open larger edited previews of the original and its virtual copies. Select a preview to switch versions. New copy, Copy edits and Paste edits have larger icons and text labels in the same panel. Press Escape to close it. Each version retains independent edits; grouping does not delete or merge copies. Preview images are generated only for the hovered photo and kept in a bounded cache.
+### Selective section copying and node transfers
+
+Right-click Light, Color, Detail or Effects, or an individual section heading, to open adjustment actions. The **Copy / move sections…** button below the Develop tabs opens the same controls. Check multiple sections to copy them together; only those adjustment values are included. Crop, borders, text, masks, layered looks and node strength are excluded.
+
+Use **Copy selected sections**, open another photo or node, then open adjustment actions and choose **Paste copied sections**. The clipboard lasts for the current app session. Pasting replaces the copied sections in the chosen destination node while keeping other edits intact.
+
+Choose an existing full Develop node or **New node**, then **Copy to node** or **Move / group into node**. A move resets the chosen source sections to defaults and puts them together in the destination. This groups sections from the active node; it does not flatten multiple nodes. Node ordering and blend strength may affect the appearance. Each transfer supports one-step Undo.
+### Clearer mask workspace
+
+Below **New mask**, the Masks tab has an **Active mask** dropdown, the current node name, and priority **Overlay / Enabled / Invert** switches. Invert here reverses the entire combined mask; **Invert shape** remains available under Shape & selection for individual components. The active-mask card stays visible while scrolling. Shaded cards with a pink accent distinguish local adjustments from ordinary Develop tools. Selecting an existing mask collapses shape controls so local adjustments are easier to reach. Expand **Shape & selection** to edit its shape, **New mask** to add another mask, or **Sub masks** for add/subtract/intersect operations.
+### Whole-tab copy and move
+
+Ctrl-click (Command-click on Mac) Develop tabs to select several: Light, Color, Detail, Effects, Masks, Frame and Text. A checkmark and outline show the selection. Right-click one selected tab for a compact menu; no dialog opens. **Copy selected tabs** stores their values for the current session. Open another photo or node and right-click a tab to paste, or choose **Copy to node / Move to node** and an existing or new node. Explicitly selecting Masks, Frame or Text includes those tabs; otherwise they remain untouched. Frame includes crop, rotation and borders. Layered looks and node blend strength are not included. Transfers replace selected tab values rather than blending them; moves clear those values from the source and support one-step Undo. Node ordering and strength can change the resulting appearance.
+
+A normal click returns to regular single-tab navigation. The **Copy / move…** button still opens the detailed section picker for finer choices. Right-clicking an individual section heading also opens that detailed picker.
+### Keyboard copying and sub masks
+
+Click a Develop tab, or Ctrl-click several tabs, then press **Ctrl+C** (**Command+C** on Mac). Open another photo, select its destination node, and press **Ctrl+V** to replace only the copied tabs. Click a node in the graph or edit-target buttons before copying to copy the entire node instead, including its looks, masks, frame, text and blend settings. Pasting a whole node replaces the destination node’s settings while preserving its name and identity. Add a node first if you want to paste without replacing an existing node. Both forms support Undo. Copy/paste shortcuts are customizable under Keyboard settings and leave text-field editing alone. The edit clipboard lasts for the current app session.
+
+**New mask** now appears above **Active mask**. The active-mask dropdown lists regular masks only. Expand the compact **Sub masks** section inside the active-mask card to add, subtract or intersect component shapes; those components stay inside their parent mask and do not appear as separate regular masks. Choose the base or a sub mask using its internal selector. Shape editing remains in Shape & selection; local adjustments apply to the entire active mask.
+### Renderer and node toggle update
+
+Press **Ctrl+D** (Command+D on Mac) to enable or disable the selected node. The node button now reads **Disable selected / Enable selected**. This shortcut can be changed in Keyboard settings.
+
+Press **Ctrl+Backspace** (Command+Backspace on Mac) to remove the selected node. The last remaining node is protected. Removal supports Undo and the shortcut can be customized.
+
+Under **New mask**, choose **Inverted copy of active mask** to add a separate regular mask containing the opposite combined selection and the same local adjustments. The original is unchanged, including its sub masks. The new mask has independent shape identities and supports Undo.
+
+### Preview quality and precision
+
+The **Quality** selector beside the photo name selects High precision · 32-bit or Original rendering · 8-bit. New imports use High precision; existing photos retain their saved appearance until you switch. High precision retains developed 16-bit RAW input in float image buffers between adjustments; PNG exports use 16-bit channels. JPEG and WebP stay 8-bit. A JPEG cannot gain source detail that was never captured, but float processing avoids repeated rounding during edits.
+
+Previews use smaller images while sliders move, then automatically refine to match the viewport and zoom. Double-click to inspect native detail at 100% zoom. Toggle **HQ** beside the zoom controls to request a full-resolution settled preview even when zoomed out. This takes more time and memory on large images; slider feedback still uses a fast proxy. Preview resolution never changes export resolution or the original photo. Panning repositions the displayed photo without recomputing edits.
+
+Compatible effects use WebGPU, with CPU work in background workers and automatic fallbacks. There are still limits: processing is encoded sRGB, not scene-linear; mask coverage/text rasterization and the flare intermediate remain 8-bit. Large full-resolution renders can use the CPU. See [ENGINE-ARCHITECTURE.md](ENGINE-ARCHITECTURE.md) for precision limits, benchmarks and implementation details.

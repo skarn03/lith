@@ -1,0 +1,3 @@
+importScripts('optics.js','effects.js','text-effects.js','processing.js');
+let source=null;
+self.onmessage=({data:m})=>{try{if(m.type==='source'){source?.close();source=m.bitmap;return;}if(!source)return;const alpha=Imaging.maskForImage(source,m.mask,m.settings,m.max),out=new OffscreenCanvas(alpha.width,alpha.height),ctx=out.getContext('2d');ctx.drawImage(alpha,0,0);ctx.globalCompositeOperation='source-in';ctx.fillStyle='rgba(238,95,117,0.42)';ctx.fillRect(0,0,out.width,out.height);const bitmap=out.transferToImageBitmap();self.postMessage({id:m.id,bitmap},[bitmap]);}catch(e){self.postMessage({id:m.id,error:e.message});}};

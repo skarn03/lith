@@ -59,6 +59,14 @@ These are real exported edits, resized for this gallery with embedded metadata r
 | --- | --- | --- |
 | ![Dreamy haze](docs/images/sample-haze.jpg) | ![Flowers and foliage](docs/images/sample-flowers.jpg) | ![Golden street](docs/images/sample-golden-street.jpg) |
 
+## New in 0.11 · faster previews and more tonal detail
+
+New imports use **High precision · 32-bit** processing. Supported RAW files retain their developed 16-bit source detail; high-precision PNG exports are 16-bit. Existing photos keep **Original rendering · 8-bit** to preserve their appearance; change Quality beside the photo name to opt in.
+
+WebGPU accelerates compatible color, curves, grading, diffusion, glow, halation, detail, grain and mask adjustments. Fast previews appear during adjustments and refine automatically afterward. **HQ** requests a full-resolution settled preview; **100% zoom** shows native source detail. Mask shapes and fallback effects run in workers. Availability and speed depend on the GPU and edit stack.
+
+Virtual copies are grouped under one photo with larger hover previews. Ctrl/Command-click Develop tabs to select several, then copy or move only those sections. **Ctrl/Command+C / V** copies selected tabs or the clicked node. **New mask → Inverted copy of active mask** creates an independent opposite selection. **Ctrl/Command+D** enables/disables a node; **Ctrl/Command+Backspace** removes it (one node is always retained).
+
 ## A smoother editing workflow
 
 Keep separate projects with their own export settings and destination folders. Create virtual copies without duplicating originals, copy edits between photos, and export with separate Screen or Print sharpening. Preview caching and background rendering improve switching and interactive edits; final previews refine after you stop dragging.
@@ -80,7 +88,7 @@ Lith works offline. Update checks contact GitHub; your photo library is not uplo
 
 ## Current limits
 
-Camera RAW support uses LibRaw and depends on the camera model and compression. RAW files are developed into a cached image; the current editing/export pipeline is 8-bit, not a complete high-bit-depth RAW workflow. Film looks are artistic interpretations. Nodes currently form a serial chain. AI masking and healing are not included.
+Camera RAW support uses LibRaw and depends on the camera model and compression. RAW files are developed by LibRaw into a 16-bit sRGB cache. High-precision mode uses float32 image buffers and can export 16-bit PNG; JPEG/WebP and the normal display remain 8-bit. This is not a scene-linear or fully color-managed RAW workflow: there are no custom camera profiles, sensor-level white balance or highlight reconstruction controls. Mask coverage and text rasterization remain 8-bit, and the flare generator retains a legacy 8-bit intermediate. Large images and unsupported operations use float CPU fallback, which can take longer and use more RAM. Film looks are artistic interpretations. Nodes currently form a serial chain. AI masking and healing are not included.
 
 Read the [full user guide](LITH-GUIDE.md), [release notes](RELEASE-NOTES.md), and [RAW third-party notices](THIRD-PARTY-RAW.md).
 
