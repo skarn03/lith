@@ -10,7 +10,11 @@ Windows includes in-app updates. Mac builds are unsigned experimental test build
 
 # Lith Photo Studio
 
-An offline desktop photo editor for film-inspired, vintage and dreamy photography. Edit JPEGs and supported camera RAW files, organize separate projects, and keep your originals untouched.
+**Privacy matters. Your photos belong to you.**
+
+Lith is a free, offline desktop photo editor for film-inspired, vintage and dreamy photography. You shouldn’t have to pay big tech companies expensive subscriptions to make your photos look the way you want. No account required, no subscription, and no cloud upload needed to edit.
+
+Your library and edits stay on your computer. Work with JPEGs and supported camera RAW files, organize separate projects, and keep your originals untouched. Update checks connect to GitHub; your photos stay local.
 
 ![Lith editing workspace with a sample photograph](docs/images/workspace.jpg)
 
@@ -31,7 +35,7 @@ An offline desktop photo editor for film-inspired, vintage and dreamy photograph
 | --- | --- |
 | ![Mask combination controls](docs/images/mask-combinations.jpg) | ![Virtual copy controls](docs/images/virtual-copies.jpg) |
 
-## A few edits from the creator’s project
+## Made with Lith · 15 edits from the creator’s project
 
 These are real exported edits, resized for this gallery with embedded metadata removed. They illustrate finished looks, rather than before/after comparisons.
 
@@ -42,6 +46,18 @@ These are real exported edits, resized for this gallery with embedded metadata r
 | Town | Green | City lights |
 | --- | --- | --- |
 | ![Town scene](docs/images/sample-town.jpg) | ![Green architectural scene](docs/images/sample-green.jpg) | ![City lights](docs/images/sample-city-lights.jpg) |
+
+| Lamplight | Quiet alley | Monochrome street |
+| --- | --- | --- |
+| ![Lamplight](docs/images/sample-lamplight.jpg) | ![Quiet alley](docs/images/sample-alley.jpg) | ![Monochrome street](docs/images/sample-monochrome.jpg) |
+
+| Café window | Soft sunlight | Evening glow |
+| --- | --- | --- |
+| ![Café window](docs/images/sample-cafe.jpg) | ![Soft sunlight](docs/images/sample-sunlight.jpg) | ![Evening glow](docs/images/sample-evening.jpg) |
+
+| Dreamy haze | Flowers and foliage | Golden street |
+| --- | --- | --- |
+| ![Dreamy haze](docs/images/sample-haze.jpg) | ![Flowers and foliage](docs/images/sample-flowers.jpg) | ![Golden street](docs/images/sample-golden-street.jpg) |
 
 ## A smoother editing workflow
 
