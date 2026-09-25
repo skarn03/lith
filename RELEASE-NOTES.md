@@ -1,18 +1,29 @@
-# Lith 0.9.2
+# Lith 0.10.0
 
-## Color grading made easier
+**[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**
 
-Color → Color grading now has four always-visible color wheels for Shadows, Midtones, Highlights and Overall. Drag for hue and saturation, adjust strength independently, and reset each wheel. Keyboard control, per-node settings and undo/redo are supported. Existing grading values are preserved.
+## What’s new
 
-## Downloads
+- Separate photo projects, project settings and remembered export folders.
+- Faster photo switching, cached previews, background rendering and responsive interactive previews that refine after adjustments.
+- Supported camera RAW import alongside JPEGs, with cached development and original files preserved.
+- Virtual copies, copy/paste edits and independent versions without duplicating originals.
+- Combined masks: add, subtract and intersect brush, linear, radial and color selections.
+- Screen and Print export sharpening, with independent strength controls.
+- Customizable keyboard shortcuts, fullscreen photo view, direct node selection and quick Develop navigation.
+- Ctrl/Command+S quick save at original resolution and 100% JPEG quality by default.
+- Inline look-strength sliders, Instagram crop ratios, and improved contact-sheet wheel scrolling.
+- Download-first project page, feature screenshots and a gallery of selected real exported edits.
 
-- Windows: download the `win-x64.exe` installer. Install once; later releases download inside Lith. Open **Updates**, then **Save & restart to update** when ready.
-- Apple Silicon Mac (M1 and later): download the `mac-arm64-unsigned.dmg`.
-- Intel Mac: download the `mac-x64-unsigned.dmg`.
+## Installation and updates
 
-Windows and Mac builds are unsigned. Windows may show an unknown-publisher warning. macOS may block the unsigned test app. Mac auto-installation is deliberately disabled until an Apple Developer signing certificate and notarization are configured. The Mac app's **Updates → Open downloads** opens the current release.
+Windows: install the `.exe` above. Later releases download inside Lith; open **Updates → Save & restart to update** when ready.
 
-The Mac builds are experimental and have not been interactively tested on a Mac.
+Mac: choose Apple Silicon for M1 or later, or Intel for older Intel Macs, then install from the `.dmg`. These are unsigned experimental builds, not interactively tested on a Mac. macOS may block the app. Mac automatic installation is disabled until signing and notarization are configured; **Updates → Open downloads** opens the latest release for manual installation.
+
+Both platforms are unsigned. Windows may show an unknown-publisher warning.
+
+RAW support depends on the camera and compression. The current editing/export pipeline is 8-bit; this release does not add a full high-bit-depth RAW workflow.
 
 ## Existing portable users
 

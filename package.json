@@ -1,11 +1,11 @@
 {
   "name": "lith-photo-studio",
-  "version": "0.9.2",
+  "version": "0.10.0",
   "description": "An offline desktop photo studio",
   "main": "main.cjs",
   "scripts": {
     "start": "electron .",
-    "test": "node tests.cjs && node storage-tests.cjs && node release-tests.cjs",
+    "test": "node tests.cjs && node storage-tests.cjs && node release-tests.cjs && node raw-tests.cjs",
     "pack": "electron-builder --config electron-builder.config.cjs --dir",
     "dist:win": "electron-builder --config electron-builder.config.cjs --win --publish never",
     "dist:mac": "electron-builder --config electron-builder.config.cjs --mac --publish never"
@@ -20,7 +20,9 @@
     "@electron-internal/extract-zip": "1.0.5"
   },
   "dependencies": {
-    "electron-updater": "6.8.9"
+    "electron-updater": "6.8.9",
+    "libraw-wasm": "1.6.0",
+    "pngjs": "7.0.0"
   },
   "author": "skarn03",
   "repository": {

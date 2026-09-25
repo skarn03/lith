@@ -58,4 +58,8 @@ jobs:
           GH_REPO: ${{ github.repository }}
           RELEASE_TAG: ${{ github.ref_name }}
         run: |
+          version="${RELEASE_TAG#v}"
+          cp "release-files/Lith-${version}-win-x64.exe" release-files/Lith-Windows.exe
+          cp "release-files/Lith-${version}-mac-arm64-unsigned.dmg" release-files/Lith-Mac-AppleSilicon.dmg
+          cp "release-files/Lith-${version}-mac-x64-unsigned.dmg" release-files/Lith-Mac-Intel.dmg
           gh release create "$RELEASE_TAG" --title "Lith $RELEASE_TAG" --notes-file RELEASE-NOTES.md release-files/*

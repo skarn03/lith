@@ -9,6 +9,15 @@ $('mergeEffect').onclick=()=>{const n=node();if(!n)return;const type=$('addEffec
 // Compact workspace controls remain visible even with the side panels hidden.
 const focus=document.createElement('button');focus.id='focusView';focus.textContent='⛶ Focus';focus.title='Expand photo area';document.querySelector('.canvas-tools').firstElementChild.append(focus);focus.onclick=()=>{document.body.classList.toggle('focus-view');focus.classList.toggle('active',document.body.classList.contains('focus-view'));layout();};
 const contact=document.createElement('button');contact.id='toggleContact';contact.textContent='▦ Contact sheet';contact.setAttribute('aria-expanded','true');document.querySelector('.film-header').firstElementChild.prepend(contact);contact.onclick=()=>{const collapsed=document.body.classList.toggle('contact-collapsed');contact.setAttribute('aria-expanded',String(!collapsed));layout();};
+// A normal mouse wheel browses the horizontal contact sheet; trackpad swipes stay native.
+const filmstrip=$('filmstrip');
+filmstrip.addEventListener('wheel',e=>{
+ if(e.ctrlKey||e.metaKey||Math.abs(e.deltaX)>=Math.abs(e.deltaY)||filmstrip.scrollWidth<=filmstrip.clientWidth)return;
+ const unit=e.deltaMode===1?32:e.deltaMode===2?filmstrip.clientWidth:1;
+ e.preventDefault();
+ filmstrip.scrollLeft+=e.deltaY*unit;
+},{passive:false});
+filmstrip.title='Scroll to browse photos';
 $('toggleNodes').onclick=()=>{const collapsed=document.body.classList.toggle('nodes-collapsed');$('toggleNodes').setAttribute('aria-expanded',String(!collapsed));layout();};
 const frame=$('photoFrame'),stage=$('stage');frame.title='Double-click to zoom here. Drag to pan when zoomed.';
 frame.addEventListener('dblclick',e=>{if(!img||window.maskUI?.isEditing()||window.reviewUI?.isCropping()||(e.target!==$('photo')&&e.target!==frame))return;const r=$('photo').getBoundingClientRect(),nx=(e.clientX-r.left)/r.width,ny=(e.clientY-r.top)/r.height;zoom=zoom?0:1;layout();if(zoom){const now=$('photo').getBoundingClientRect();stage.scrollLeft+=now.left+nx*now.width-e.clientX;stage.scrollTop+=now.top+ny*now.height-e.clientY;}else stage.scrollTo(0,0);render();});

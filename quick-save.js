@@ -1,0 +1,13 @@
+(()=>{
+let saving=false;
+const activeProject=()=>catalog.projects.find(p=>p.id===catalog.activeProjectId);
+const panels=[];
+function exportError(error){const message=error.message||String(error);return /No handler registered|api\.(exportFolder|quickExport) is not a function/.test(message)?'Lith needs a full restart to enable quick save. Close every Lith window, then reopen Launch Lith.cmd. Reloading the window is not enough.':message;}
+
+for(const host of [$('projectExportSettings'),$('saveExport').parentElement]){const box=document.createElement('div');box.className='quick-save-folder';const title=document.createElement('strong');title.textContent='Quick-save destination';const text=document.createElement('p');text.className='small muted';const choose=document.createElement('button');choose.type='button';choose.textContent='Choose folder…';choose.onclick=async()=>{const project=activeProject();choose.disabled=true;try{const folder=await api.exportFolder(project.id);if(folder){project.exportFolder=folder;syncFolders();}}catch(e){text.textContent=exportError(e);}finally{choose.disabled=false;}};const note=document.createElement('p');note.className='small muted';note.textContent='Ctrl+S saves an edited copy at original resolution and 100% quality. Existing files are kept; repeat saves get a new numbered filename.';box.append(title,text,choose,note);host.append(box);panels.push({text,choose});}
+function syncFolders(){const p=activeProject();for(const panel of panels){panel.text.textContent=p?.exportFolder||'Choose once, then save directly with Ctrl+S.';panel.choose.textContent=p?.exportFolder?'Change folder…':'Choose folder…';}}
+$('projectSettings').addEventListener('click',syncFolders);$('export').addEventListener('click',syncFolders);
+async function quickSave(){if(!img||!current||saving)return;saving=true;const photo=img,photoId=current.id,project=activeProject(),projectId=project.id,format=project.settings.format||'jpeg',snapshot=cloneDocument();try{await flush();if(!project.exportFolder){const folder=await api.exportFolder(projectId);if(!folder)return;project.exportFolder=folder;syncFolders();}toast('Saving full-resolution photo…');const blob=await Renderer.export(photo,snapshot,0,format,1,project.settings.sharpening);if(blob.type!=='image/'+format)throw Error('This format could not be encoded. Choose PNG in project settings.');const result=await api.quickExport({photoId,projectId,format,bytes:new Uint8Array(await blob.arrayBuffer())});if(result)toast('Saved: '+result.file);}catch(e){toast(exportError(e));}finally{saving=false;}}
+Shortcuts.register('quickSave','Save photo to destination folder','Photos',['mod+s'],quickSave,()=>!!img&&!saving);
+window.quickSaveUI={save:quickSave,sync:syncFolders};
+})();
