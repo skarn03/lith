@@ -1,0 +1,47 @@
+/* Clear hierarchy without moving controls or changing their event handlers. */
+.right{--panel-body:#252525;--panel-heading:#383838;--panel-hover:#42443f;--panel-edge:#50514d;--panel-shadow:0 3px 9px #0003;--control-label:#c5c7c1;--panel-accent:#b9d28f;scroll-padding-top:12px}
+[data-theme=light] .right{--panel-body:#343434;--panel-heading:#484a45;--panel-hover:#53574d;--panel-edge:#63665d;--panel-shadow:0 3px 9px #0003;--control-label:#d0d3cb;--panel-accent:#c5dda3}
+.right details{padding:0 12px 12px;margin:10px 0;border:1px solid var(--panel-edge);border-radius:9px;background:var(--panel-body);box-shadow:var(--panel-shadow)}
+.right details:not([open]){padding-bottom:0}
+.right details[data-toolgroup]{padding:0 12px 12px}
+.right details[data-toolgroup]:not([open]){padding-bottom:0}
+.right details>summary{min-height:43px;margin:0 -12px;padding:12px;gap:9px;align-items:center;justify-content:flex-start;border-radius:8px;font-size:12px;font-weight:650;line-height:1.4;color:var(--text);background:var(--panel-heading);user-select:none;transition:background-color 120ms ease,box-shadow 120ms ease}
+.right details>summary::-webkit-details-marker{display:none}
+.right details>summary::after{content:'';display:block;flex:0 0 6px;width:6px;height:6px;margin-left:auto;margin-right:3px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(-45deg);transition:transform 120ms ease}
+.right details[open]>summary{margin-bottom:14px;border-bottom:1px solid var(--panel-edge);border-radius:8px 8px 0 0;box-shadow:inset 3px 0 var(--panel-accent)}
+.right details[data-toolgroup]>summary{margin:0 -12px}
+.right details[data-toolgroup][open]>summary{margin-bottom:14px}
+.right details[open]>summary::after{transform:rotate(45deg)}
+.right details>summary:hover{background:var(--panel-hover)}
+.right details>summary:active{box-shadow:inset 0 0 0 1px var(--panel-accent)}
+.right details>summary:focus-visible{outline:2px solid var(--panel-accent);outline-offset:2px}
+/* Nested disclosures are inset and quieter than the main tool headers. */
+.right details details{margin:10px 0;border-color:var(--line);box-shadow:none;border-left:2px solid var(--line)}
+.right details details>summary{font-size:11px;font-weight:600;min-height:37px;padding-top:9px;padding-bottom:9px;background:var(--surface-2)}
+.right details details[open]>summary{box-shadow:inset 2px 0 var(--panel-accent)}
+.right .slider-row{padding:3px 0 5px;margin-bottom:11px}
+.right .slider-label{align-items:center;min-height:20px;color:var(--control-label);font-size:11px;font-weight:400;margin-bottom:6px;gap:5px}
+.right .slider-label output{min-width:32px;text-align:right;border-radius:4px;padding:2px 5px;background:var(--surface-2);color:var(--text);font-size:10px}
+.right .select-row,.right .color-row{color:var(--control-label);font-weight:400;line-height:1.5}
+.right select{max-width:100%}
+.right input[type=range]{cursor:ew-resize}
+.right input[type=range]:disabled{cursor:default}
+.right .small{font-size:10px;line-height:1.6}
+.right details[open]>:not(summary){animation:none}
+.right .tool-tabs button{min-height:36px;transition:background-color 120ms ease,border-color 120ms ease,box-shadow 120ms ease}
+.right .tool-tabs button.active{box-shadow:inset 0 -2px var(--panel-accent);font-weight:650}
+/* Override older ID-specific spacing, preserving the existing mask controls. */
+.right #nodeSetup,.right #maskPanel,.right #blendPanel{padding:0 12px 12px;margin:10px 0;border:1px solid var(--panel-edge)}
+.right :is(#nodeSetup,#maskPanel,#blendPanel):not([open]){padding-bottom:0}
+.right :is(#nodeSetup,#maskPanel,#blendPanel)>summary{margin:0 -12px}
+.right :is(#nodeSetup,#maskPanel,#blendPanel)[open]>summary{margin-bottom:14px}
+.right .mask-card>summary{margin:0 -12px}
+.right .mask-card[open]>summary{margin-bottom:12px}
+.right .mask-card:not(details){background:var(--panel-body)}
+.right .mask-card-title,.right .mask-picker-label{font-size:11px;font-weight:600;color:var(--text)}
+.right .mask-active-card{position:relative;top:auto}
+.right .mask-active-card #maskCombineDetails{margin:10px 0 0;padding:0 10px 10px;border:1px solid var(--line);border-radius:7px;background:var(--panel-body);box-shadow:none}
+.right .mask-active-card #maskCombineDetails:not([open]){padding-bottom:0}
+.right .mask-active-card #maskCombineDetails>summary{margin:0 -10px;padding:9px 10px}
+.right .mask-active-card #maskCombineDetails[open]>summary{margin-bottom:10px}
+@media(prefers-reduced-motion:reduce){.right details>summary,.right details>summary::after,.right .tool-tabs button{transition:none}}
