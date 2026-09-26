@@ -339,4 +339,4 @@ Choose **User-made · Light Studies** in the Looks filter for 12 Lith Studio eff
 
 ## Favorite looks
 
-Click the **halo star** at the top-right of a look thumbnail to favorite it. A filled gold star means saved. This does not preview or apply the look. Click **Favorites** above the thumbnails to show your saved choices; category and search still apply. Favorites are stored on this device across projects and app restarts. The icon supports Tab navigation and Enter/Space. Click again to remove a favorite.
+Click the **heart** at the top-right of a look thumbnail to favorite it. A filled pink heart means saved. This does not preview or apply the look. Click **Favorites** above the thumbnails to show your saved choices; category and search still apply. Favorites are stored on this device across projects and app restarts. The icon supports Tab navigation and Enter/Space. Click again to remove a favorite.

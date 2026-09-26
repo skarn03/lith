@@ -1,3 +1,13 @@
+# Lith 0.19.1
+
+**[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**
+
+- Replaced the halo-star favorite icon with a smaller, simpler heart on look thumbnails and the Favorites filter.
+- Outlined hearts become filled pink when saved. Existing favorites and keyboard controls are preserved.
+- Updated the guide and screenshot to match.
+
+---
+
 # Lith 0.19.0
 
 **[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**

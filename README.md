@@ -91,9 +91,9 @@ Colorful tool icons stay readable across Dark gray, Soft gray and the warmer, lo
 
 ## Keep your favorite looks close
 
-Click the **halo star** on any look to save it as a favorite. The filled gold star marks saved looks; the **Favorites** button filters the list while respecting your category and search. Favorites stay on this device across projects and restarts. Starring never previews or applies a look.
+Click the **heart** on any look to save it as a favorite. The filled pink heart marks saved looks; the **Favorites** button filters the list while respecting your category and search. Favorites stay on this device across projects and restarts. Starring never previews or applies a look.
 
-![Halo-star favorites and the Favorites filter](docs/images/ui-look-favorites.jpg)
+![Heart favorites and the Favorites filter](docs/images/ui-look-favorites.jpg)
 
 ## Explore a look before committing
 

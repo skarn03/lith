@@ -2,7 +2,7 @@
 'use strict';
 const storageKey='lith.favoriteLooks.v1';let saved=new Set(),onlyFavorites=false;
 try{const value=JSON.parse(localStorage.getItem(storageKey)||'[]');if(Array.isArray(value))saved=new Set(value.filter(v=>typeof v==='string'));}catch{}
-const symbol='<svg viewBox="0 0 28 28" fill="none" aria-hidden="true"><path class="favorite-orbit" d="M23.5 10a10.5 10.5 0 1 0 .4 7"/><path class="favorite-star" d="m14 5 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L14 5Z"/><circle cx="24" cy="6" r="1.6" class="favorite-spark"/></svg>';
+const symbol='<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="favorite-heart" d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>';
 function key(id){const l=looks[id];return !l||!id?null:l[3]?.category==='custom'?'custom:'+(l[3].id||l[0]):l[3]?.category==='user-made'?'creator:'+l[3].author+':'+l[0]:'included:'+l[0];}
 const isFavorite=id=>saved.has(key(id));
 const filter=document.createElement('button');filter.id='favoriteLooksFilter';filter.type='button';filter.innerHTML=symbol+'<span>Favorites</span><b>0</b>';filter.setAttribute('aria-pressed','false');filter.title='Show favorite looks within the current category and search';document.querySelector('.looks-icon-bar').after(filter);
