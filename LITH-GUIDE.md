@@ -309,3 +309,17 @@ Choose **Develop → Effects → Creative**. Open only the card you need; raise 
 **Done placing** or Escape exits placement. Changing photo, node, tool or effect family exits placement too. The painter allows 160 discs per node; artificial lighting allows 16 lights per node. **Remove last disc/light** removes the latest placement; Reset clears that tool. Adding another node gives you another independently colored set of lights. Placements use normalized positions within the edited frame, so they scale with export size; changing the crop reframes the photo beneath them. These are artistic treatments, not lens-profile correction, depth-aware relighting or true optical depth of field.
 
 The preview-status pill beside HQ/zoom says whether a quick image is refining, a fit-quality image is ready, a full-resolution image is ready, or a 100% visible region has been refined. It describes source resolution, not display bit depth or export settings. New creative tools run in the rendering worker and preserve float intermediates in High precision mode; they currently use whole-image fallback, so demanding stacks may take longer at full size.
+
+### More cinematic fonts
+
+Under **Text**, add a caption style, then open **Browse cinematic fonts**. Search by family name or category; each card previews the actual typeface. Clicking a font changes the selected caption and keeps its wording and placement. The sample above the browser shows your own text. The regular Font selector still lists every choice.
+
+Sixteen included families work offline on Windows and Mac, using the same font files for preview and export:
+
+- **Cinematic serif:** Cinzel, Cormorant Garamond, Playfair Display, Bodoni Moda, EB Garamond, Libre Baskerville.
+- **Title cards:** Bebas Neue, Oswald, Anton.
+- **Clean captions:** Josefin Sans, Montserrat, Raleway.
+- **Typewriter:** Courier Prime, Space Mono.
+- **Handwritten:** Caveat, Sacramento.
+
+**More caption styles** adds Classic cinema, Soft poetry, Luxury editorial, Opening credits, Minimal caption, 35mm diary, Handwritten note and Road movie. Style buttons add a new text layer; font cards update the selected layer. Existing system fonts remain available in separate groups and may differ across computers. Included families load only when needed, without contacting a font service. Copyright notices and licenses are in [THIRD-PARTY-FONTS.md](THIRD-PARTY-FONTS.md).

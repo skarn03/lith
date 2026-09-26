@@ -1,0 +1,248 @@
+[
+  {
+    "name": "Cinzel",
+    "source": "https://github.com/google/fonts/tree/main/ofl/cinzel",
+    "faces": [
+      {
+        "file": "cinzel/Cinzel[wght].ttf",
+        "style": "normal",
+        "weight": "400 900"
+      }
+    ]
+  },
+  {
+    "name": "Cormorant Garamond",
+    "source": "https://github.com/google/fonts/tree/main/ofl/cormorantgaramond",
+    "faces": [
+      {
+        "file": "cormorantgaramond/CormorantGaramond[wght].ttf",
+        "style": "normal",
+        "weight": "300 700"
+      },
+      {
+        "file": "cormorantgaramond/CormorantGaramond-Italic[wght].ttf",
+        "style": "italic",
+        "weight": "300 700"
+      }
+    ]
+  },
+  {
+    "name": "Playfair Display",
+    "source": "https://github.com/google/fonts/tree/main/ofl/playfairdisplay",
+    "faces": [
+      {
+        "file": "playfairdisplay/PlayfairDisplay[wght].ttf",
+        "style": "normal",
+        "weight": "400 900"
+      },
+      {
+        "file": "playfairdisplay/PlayfairDisplay-Italic[wght].ttf",
+        "style": "italic",
+        "weight": "400 900"
+      }
+    ]
+  },
+  {
+    "name": "Bodoni Moda",
+    "source": "https://github.com/google/fonts/tree/main/ofl/bodonimoda",
+    "faces": [
+      {
+        "file": "bodonimoda/BodoniModa[opsz,wght].ttf",
+        "style": "normal",
+        "weight": "400 900"
+      },
+      {
+        "file": "bodonimoda/BodoniModa-Italic[opsz,wght].ttf",
+        "style": "italic",
+        "weight": "400 900"
+      }
+    ]
+  },
+  {
+    "name": "EB Garamond",
+    "source": "https://github.com/google/fonts/tree/main/ofl/ebgaramond",
+    "faces": [
+      {
+        "file": "ebgaramond/EBGaramond[wght].ttf",
+        "style": "normal",
+        "weight": "400 800"
+      },
+      {
+        "file": "ebgaramond/EBGaramond-Italic[wght].ttf",
+        "style": "italic",
+        "weight": "400 800"
+      }
+    ]
+  },
+  {
+    "name": "Libre Baskerville",
+    "source": "https://github.com/google/fonts/tree/main/ofl/librebaskerville",
+    "faces": [
+      {
+        "file": "librebaskerville/LibreBaskerville[wght].ttf",
+        "style": "normal",
+        "weight": "400 700"
+      },
+      {
+        "file": "librebaskerville/LibreBaskerville-Italic[wght].ttf",
+        "style": "italic",
+        "weight": "400 700"
+      }
+    ]
+  },
+  {
+    "name": "Bebas Neue",
+    "source": "https://github.com/google/fonts/tree/main/ofl/bebasneue",
+    "faces": [
+      {
+        "file": "bebasneue/BebasNeue-Regular.ttf",
+        "style": "normal",
+        "weight": "400"
+      }
+    ]
+  },
+  {
+    "name": "Oswald",
+    "source": "https://github.com/google/fonts/tree/main/ofl/oswald",
+    "faces": [
+      {
+        "file": "oswald/Oswald[wght].ttf",
+        "style": "normal",
+        "weight": "200 700"
+      }
+    ]
+  },
+  {
+    "name": "Anton",
+    "source": "https://github.com/google/fonts/tree/main/ofl/anton",
+    "faces": [
+      {
+        "file": "anton/Anton-Regular.ttf",
+        "style": "normal",
+        "weight": "400"
+      }
+    ]
+  },
+  {
+    "name": "Josefin Sans",
+    "source": "https://github.com/google/fonts/tree/main/ofl/josefinsans",
+    "faces": [
+      {
+        "file": "josefinsans/JosefinSans[wght].ttf",
+        "style": "normal",
+        "weight": "100 700"
+      },
+      {
+        "file": "josefinsans/JosefinSans-Italic[wght].ttf",
+        "style": "italic",
+        "weight": "100 700"
+      }
+    ]
+  },
+  {
+    "name": "Montserrat",
+    "source": "https://github.com/google/fonts/tree/main/ofl/montserrat",
+    "faces": [
+      {
+        "file": "montserrat/Montserrat[wght].ttf",
+        "style": "normal",
+        "weight": "100 900"
+      },
+      {
+        "file": "montserrat/Montserrat-Italic[wght].ttf",
+        "style": "italic",
+        "weight": "100 900"
+      }
+    ]
+  },
+  {
+    "name": "Raleway",
+    "source": "https://github.com/google/fonts/tree/main/ofl/raleway",
+    "faces": [
+      {
+        "file": "raleway/Raleway[wght].ttf",
+        "style": "normal",
+        "weight": "100 900"
+      },
+      {
+        "file": "raleway/Raleway-Italic[wght].ttf",
+        "style": "italic",
+        "weight": "100 900"
+      }
+    ]
+  },
+  {
+    "name": "Space Mono",
+    "source": "https://github.com/google/fonts/tree/main/ofl/spacemono",
+    "faces": [
+      {
+        "file": "spacemono/SpaceMono-Regular.ttf",
+        "style": "normal",
+        "weight": "400"
+      },
+      {
+        "file": "spacemono/SpaceMono-Italic.ttf",
+        "style": "italic",
+        "weight": "400"
+      },
+      {
+        "file": "spacemono/SpaceMono-Bold.ttf",
+        "style": "normal",
+        "weight": "700"
+      },
+      {
+        "file": "spacemono/SpaceMono-BoldItalic.ttf",
+        "style": "italic",
+        "weight": "700"
+      }
+    ]
+  },
+  {
+    "name": "Courier Prime",
+    "source": "https://github.com/google/fonts/tree/main/ofl/courierprime",
+    "faces": [
+      {
+        "file": "courierprime/CourierPrime-Regular.ttf",
+        "style": "normal",
+        "weight": "400"
+      },
+      {
+        "file": "courierprime/CourierPrime-Italic.ttf",
+        "style": "italic",
+        "weight": "400"
+      },
+      {
+        "file": "courierprime/CourierPrime-Bold.ttf",
+        "style": "normal",
+        "weight": "700"
+      },
+      {
+        "file": "courierprime/CourierPrime-BoldItalic.ttf",
+        "style": "italic",
+        "weight": "700"
+      }
+    ]
+  },
+  {
+    "name": "Sacramento",
+    "source": "https://github.com/google/fonts/tree/main/ofl/sacramento",
+    "faces": [
+      {
+        "file": "sacramento/Sacramento-Regular.ttf",
+        "style": "normal",
+        "weight": "400"
+      }
+    ]
+  },
+  {
+    "name": "Caveat",
+    "source": "https://github.com/google/fonts/tree/main/ofl/caveat",
+    "faces": [
+      {
+        "file": "caveat/Caveat[wght].ttf",
+        "style": "normal",
+        "weight": "400 700"
+      }
+    ]
+  }
+]

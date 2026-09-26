@@ -1,3 +1,18 @@
+# Lith 0.17.0
+
+**[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**
+
+- **16 bundled cinematic font families / 30 font faces:** serif, title cards, clean captions, typewriter and handwritten styles. They work offline on Windows and Mac.
+- **Text → Browse cinematic fonts:** searchable visual previews and a live sample of your caption.
+- **Eight additional caption styles:** Classic cinema, Soft poetry, Luxury editorial, Opening credits, Minimal caption, 35mm diary, Handwritten note and Road movie.
+- Included font files are shared by the editor, background renderer and export. Existing system font choices remain available.
+- Illustrated README covers the creative effects, preview status, new fonts, workspace customization and editing tools. Added an export gallery with 13 face-screened photographs and two historical screenshots; public copies contain no EXIF/GPS metadata.
+- All six creative effects from 0.16 remain included: shutter drag, bokeh painter, fisheye, color bleeding, darkroom light leaks and artificial light placement.
+
+Mac builds remain ad-hoc signed, not Apple-notarized. Windows builds remain unsigned. Font credits and redistribution licenses are included in the app and repository.
+
+---
+
 # Lith 0.16.0
 
 **[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**

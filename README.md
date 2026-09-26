@@ -43,6 +43,20 @@ These examples were exported by Lith from the same [original sample](docs/images
 
 The indicator beside the zoom controls distinguishes **Quick preview · refining**, **fit-quality preview**, **full-resolution preview** and **100% visible-area detail**. Preview size never reduces export resolution. These creative effects run in background workers and use whole-image rendering rather than the tiled path; complex stacks and large exports take longer.
 
+## Cinematic captions
+
+Choose from **16 included font families**, from Cinzel and Cormorant Garamond to Bebas Neue, Montserrat, Courier Prime and Caveat. **Text → Browse cinematic fonts** offers searchable typeface previews, alongside eight additional caption styles for film titles, diary notes and understated subtitles. Included fonts work offline and use the same files in preview and export; existing system fonts remain available. See [font credits and licenses](THIRD-PARTY-FONTS.md).
+
+![Searchable cinematic font previews and a caption applied to the photo](docs/images/ui-cinematic-fonts.jpg)
+
+## From the export folder
+
+[Browse the complete new gallery →](docs/gallery/README.md) — 13 photographs selected without identifiable facial detail, plus two historical app screenshots. Public copies are resized and stripped of location/camera metadata.
+
+| Lamplight | After the rain | City lights |
+| --- | --- | --- |
+| ![Warm lamplight](docs/gallery/export-007.jpg) | ![Rainy town square](docs/gallery/export-052.jpg) | ![Night traffic and light trails](docs/gallery/export-059.jpg) |
+
 ## Your workspace, your way
 
 Drag a panel by its icon, title or move handle in **Customize workspace**. Drop onto another title to group panels as tabs—the highlighted target shows where it will land. Arrange panels side by side or vertically, detach individual Develop sections, resize dividers, and save your layout automatically. Reset restores the default workspace.
@@ -72,7 +86,7 @@ See looks on your own photo in the sidebar. Click or use arrow keys to preview; 
 | **Light** | Exposure, contrast, highlights, shadows, tone curves and highlight compression. |
 | **Color** | White balance, individual color mixing, shadow/midtone/highlight/global grading wheels, CMY darkroom printing and paper toning. |
 | **Detail** | Clarity, texture, sharpening and grain controls. |
-| **Effects** | Diffusion/mist, bloom with threshold gate, layered halation, anamorphic flares, dynamic matte shadows, prism/glass reflections and double exposure. |
+| **Effects** | Diffusion/mist, bloom with threshold gate, layered halation, anamorphic flares, dynamic matte shadows, prism/glass reflections, double exposure, shutter drag, painted bokeh, fisheye, color bleeding, light leaks and placed lights. |
 | **Masks** | Brush, gradient, radial and color-range selections; add, subtract, intersect and make inverted copies. |
 | **Frame** | Crop, straighten, rotate, social ratios and white borders. |
 | **Text** | Cinematic captions with font, placement and styling controls. |
