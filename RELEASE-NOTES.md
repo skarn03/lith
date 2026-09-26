@@ -1,3 +1,17 @@
+# Lith 0.14.0
+
+**[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**
+
+- New Liᵗʰ app logo and refreshed documentation with current UI screenshots and more exported photographs.
+- Softer, warmer Soft white appearance.
+- Preview looks without saving them; explicit Apply, Cancel and strength controls beside the photo.
+- Scopes beside Nodes: RGB/luminance histograms, luma waveform and RGB parade.
+- Customizable workspace, panel resizing, horizontal/vertical arrangements and tab groups, with title/icon dragging and visible drop cues.
+
+Mac builds remain experimental and not Apple-notarized; Windows builds remain unsigned. See [installation help](INSTALLATION.md).
+
+---
+
 # Lith 0.12.1
 
 **[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**

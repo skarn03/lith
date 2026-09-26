@@ -8,37 +8,88 @@ These links always download the latest release. [All downloads & release notes](
 
 Windows includes in-app updates. Mac builds are experimental, ad-hoc signed and not Apple-notarized, with automatic release notifications and manual installation; macOS may block them. Windows has no publisher certificate and may show SmartScreen warnings. See [installation troubleshooting](INSTALLATION.md). Mac bundle/DMG integrity and native app launch are checked in CI; this does not guarantee Gatekeeper approval on downloaded copies.
 
-# Lith Photo Studio
+# Lith · Liᵗʰ
+
+<img src="docs/images/lith-logo.png" width="88" alt="Lith Li with superscript th logo">
 
 **Privacy matters. Your photos belong to you.**
 
-Lith is a free, offline desktop photo editor for film-inspired, vintage and dreamy photography. You shouldn’t have to pay big tech companies expensive subscriptions to make your photos look the way you want. No account required, no subscription, and no cloud upload needed to edit.
+A free, open-source, offline photo editor for Windows and Mac. Create film-inspired, vintage and dreamy photographs without paying expensive subscriptions to big tech companies. No account required and no photo upload needed. Originals and edits stay on your computer; update checks contact GitHub.
 
-Your library and edits stay on your computer. Work with JPEGs and supported camera RAW files, organize separate projects, and keep your originals untouched. Update checks connect to GitHub; your photos stay local.
+![Current Lith workspace: photo, gallery, Looks, Develop, Nodes and Scopes](docs/images/ui-dark.jpg)
 
-![Lith editing workspace with a sample photograph](docs/images/workspace.jpg)
+## Your workspace, your way
 
-## Create your look
+Drag a panel by its icon, title or move handle in **Customize workspace**. Drop onto another title to group panels as tabs—the highlighted target shows where it will land. Arrange panels side by side or vertically, detach individual Develop sections, resize dividers, and save your layout automatically. Reset restores the default workspace.
 
-- **Film and dreamy looks:** actual-photo thumbnails, arrow-key auditioning, layered looks with inline strength sliders, and saved custom presets.
-- **Light and color:** tone curves, individual color mixing, and always-visible shadow, midtone, highlight and overall grading wheels.
-- **Atmosphere:** halation, diffusion and mist, threshold-gated bloom, anamorphic flares, matte shadows, texture and grain.
-- **Creative darkroom:** prism and glass reflections, highlight compression, double exposures, CMY print filters and paper tones.
-- **Share your looks:** import/export recipes with descriptions and creator credits, without sharing private photos.
-- **Batch and dual displays:** sync selected sections, export multiple photos, and use a second monitor for full-resolution viewing.
-- **Flexible nodes:** begin with one node; add, rename and toggle more when needed. Every node holds its own edits.
-- **Combined masks:** add, subtract or intersect brush, linear, radial and color selections, then adjust the combined area.
-- **Finish the frame:** social crop ratios, white borders, cinematic text, before/after and double-click zoom.
-
-| Layer looks and adjust their strength | Grade shadows, midtones and highlights |
+| Drag with a visible drop target | Switch between grouped panels |
 | --- | --- |
-| ![Layered looks with inline strength](docs/images/layered-looks.jpg) | ![Color grading wheels](docs/images/color-grading.jpg) |
+| ![Dragging Looks onto Develop with Drop to group as tabs feedback](docs/images/ui-drag-drop.jpg) | ![Looks and Develop sharing a tabbed workspace](docs/images/ui-tabbed.jpg) |
 
-| Combine masks | Explore virtual copies |
+## Three appearances
+
+Colorful tool icons stay readable across Dark gray, Soft gray and the warmer, lower-brightness Soft white theme.
+
+| Soft gray | Soft white |
 | --- | --- |
-| ![Mask combination controls](docs/images/mask-combinations.jpg) | ![Virtual copy controls](docs/images/virtual-copies.jpg) |
+| ![Soft gray workspace](docs/images/ui-gray.jpg) | ![Warm soft white workspace](docs/images/ui-white.jpg) |
 
-## Made with Lith · 15 edits from the creator’s project
+## Explore a look before committing
+
+See looks on your own photo in the sidebar. Click or use arrow keys to preview; **Apply look** beside the photo commits the result. Cancel keeps your edits. Adjust preview strength, layer applied looks, save custom recipes, and import/export `.lithlook` files with descriptions and creator credits. Only applied looks are saved and exported.
+
+![Look preview with strength, Apply look and Cancel controls](docs/images/ui-look-preview.jpg)
+
+## Develop tools, clearly organized
+
+| Tools | What you can do |
+| --- | --- |
+| **Light** | Exposure, contrast, highlights, shadows, tone curves and highlight compression. |
+| **Color** | White balance, individual color mixing, shadow/midtone/highlight/global grading wheels, CMY darkroom printing and paper toning. |
+| **Detail** | Clarity, texture, sharpening and grain controls. |
+| **Effects** | Diffusion/mist, bloom with threshold gate, layered halation, anamorphic flares, dynamic matte shadows, prism/glass reflections and double exposure. |
+| **Masks** | Brush, gradient, radial and color-range selections; add, subtract, intersect and make inverted copies. |
+| **Frame** | Crop, straighten, rotate, social ratios and white borders. |
+| **Text** | Cinematic captions with font, placement and styling controls. |
+
+| Color grading | Dreamy optical effects |
+| --- | --- |
+| ![Color grading tools](docs/images/ui-grading.jpg) | ![Diffusion and optical effects with edited image](docs/images/ui-effects.jpg) |
+
+| Local masks | Crop and frame |
+| --- | --- |
+| ![Active radial mask controls](docs/images/ui-masks.jpg) | ![Framing tools](docs/images/ui-frame.jpg) |
+
+![Text tools in the current workspace](docs/images/ui-text.jpg)
+
+## See the difference
+
+The wipe below compares an imported sample with **additional warmth, fade, diffusion, bloom and halation applied in Lith**. The source is already an exported photograph; this is a demonstration of the additional edits, not a claim about its original camera RAW appearance.
+
+![Actual before/after wipe of additional optical edits](docs/images/ui-before-after.jpg)
+
+## Nodes and scopes
+
+Start with one node and keep all your edits there, or add nodes for separate stages. Label, enable/disable, remove and blend nodes; copy or move selected Develop sections without replacing unrelated crop, masks or text. **Ctrl/Command+2** selects node 2 or creates the next node.
+
+The compact Scopes panel beside Nodes switches between **RGB histogram, luminance histogram, luma waveform and RGB parade**. Scopes analyze the displayed preview after it settles; they are not RAW sensor measurements.
+
+![Two nodes and RGB parade scopes](docs/images/ui-nodes-scopes.jpg)
+
+## Library, output and performance
+
+- **Projects and favorites:** separate photo libraries and project export settings; ratings and configurable keyboard shortcuts.
+- **Virtual copies:** multiple edits of one original, grouped under the photo thumbnail.
+- **Batch sync and export:** select photos, copy chosen settings, and export with progress and cancellation.
+- **Second display:** full-resolution viewing on another monitor with Fit/100% modes.
+- **JPEG and supported RAW:** non-destructive parameters, preserved originals, developed 16-bit RAW detail and 16-bit PNG export in high-precision mode.
+- **Responsive previews:** compatible operations use WebGPU; workers handle background processing. Fast previews refine after interaction; HQ and 100% zoom expose more source detail. Hardware and edit stacks affect performance.
+- **Finishing:** before/after views, screen/print export sharpening and Ctrl/Command+S quick-save to the chosen folder.
+- **Updates:** automatic prompts; Windows can download in-app, while experimental Mac builds provide a download link.
+
+[Full user guide](LITH-GUIDE.md) · [Installation help](INSTALLATION.md) · [Release notes](RELEASE-NOTES.md)
+
+## Made with Lith · 22 edits from the creator’s projects
 
 These are real exported edits, resized for this gallery with embedded metadata removed. They illustrate finished looks, rather than before/after comparisons.
 
@@ -62,7 +113,19 @@ These are real exported edits, resized for this gallery with embedded metadata r
 | --- | --- | --- |
 | ![Dreamy haze](docs/images/sample-haze.jpg) | ![Flowers and foliage](docs/images/sample-flowers.jpg) | ![Golden street](docs/images/sample-golden-street.jpg) |
 
-## New in 0.11 · faster previews and more tonal detail
+### More recent exports
+
+| Street reflections | Motion study | Warm lamplight |
+| --- | --- | --- |
+| ![Layered street reflections](docs/images/export-street-reflections.jpg) | ![Motion study](docs/images/export-motion-study.jpg) | ![Warm lamplight](docs/images/export-warm-lamplight.jpg) |
+
+| Lamplight portrait | Sunlit architecture | Garden light |
+| --- | --- | --- |
+| ![Lamplight portrait](docs/images/export-lamplight-portrait.jpg) | ![Sunlit architecture](docs/images/export-sunlit-architecture.jpg) | ![Garden light](docs/images/export-garden-light.jpg) |
+
+![Rainy night export](docs/images/export-rainy-night.jpg)
+
+## Image quality and processing
 
 New imports use **High precision · 32-bit** processing. Supported RAW files retain their developed 16-bit source detail; high-precision PNG exports are 16-bit. Existing photos keep **Original rendering · 8-bit** to preserve their appearance; change Quality beside the photo name to opt in.
 

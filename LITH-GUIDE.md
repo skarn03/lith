@@ -275,3 +275,11 @@ Drag the dividers beside the gallery and Develop, or above/below the photo, to r
 In **Customize workspace**, use **Stacked** or **Side by side** in a panel heading to arrange the panels in that workspace area vertically or horizontally. Drag panels into the same area to group them, then drag their dividers to adjust their proportions. The arrangement is remembered and Reset layout restores vertical stacking. Gallery, Looks and other scrollable panels support the mouse wheel over their thumbnails and controls; Shift+wheel scrolls horizontally where available.
 
 Looks now starts in a slim column between Photo and Develop. Its search, family filter and import/share controls open from icon buttons. Hover icons for labels. In Customize workspace, drag a panel handle onto another panel’s title to combine them into a tabbed workspace. Click tab names to switch, or use the detach arrow to split a tab out again. Dragging a Develop section onto a panel title also creates a shared tab. Tab groups are saved with your layout.
+
+### Preview looks before applying
+
+Click a look or browse with arrow keys to preview it. The dashed outline and Preview only bar distinguish a preview from applied looks. Adjust its strength beside the photo, then choose Apply look to commit it to the current node, or Cancel to return to your edits. Browsing never accumulates new looks; applying another look layers it with previously applied looks. Export and saved edits include only applied looks. Switching photos or nodes discards the pending preview.
+
+### Scopes
+
+Scopes starts beside Nodes below the photo, approximately 230 pixels wide. Choose RGB histogram, luminance histogram, luma waveform or RGB parade from its selector. The scope type is remembered. Waveform shows horizontal photo position against brightness (100% at top, 0% at bottom); parade separates red, green and blue. Scopes analyze a reduced sample of the displayed preview after rendering settles, including temporary look previews. They represent displayed tones, not original RAW sensor values. The panel can be moved, grouped and resized like other panels. Reset layout restores the Nodes/Scopes arrangement.
