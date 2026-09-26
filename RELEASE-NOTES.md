@@ -1,4 +1,4 @@
-# Lith 0.12.0
+# Lith 0.12.1
 
 **[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**
 
@@ -13,7 +13,7 @@
 
 ## Installation and updates
 
-Windows: install the `.exe`. Existing installed versions can receive this release through **Updates → Save & restart**. The new automatic overlay is available after installing 0.12.0. Lith saves before restarting and does not install automatically when you quit.
+Windows: install the `.exe`. Existing installed versions can receive this release through **Updates → Save & restart**. The new automatic overlay is available after installing 0.12.1. Lith saves before restarting and does not install automatically when you quit.
 
 Mac: choose Apple Silicon for M1 or newer, or Intel for Intel Macs. Copy Lith into Applications. The app is ad-hoc signed, but is **not Apple Developer-ID signed or notarized**. If Apple says it cannot verify Lith is free of malware, close the warning, then use **System Settings → Privacy & Security → Open Anyway** for this app if you trust your download. This is the process confirmed working on the creator’s Mac; do not disable Gatekeeper globally. Other warnings need separate investigation. Mac updates still require replacing the application manually.
 
