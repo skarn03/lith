@@ -1,10 +1,11 @@
 (function(scope){
+const Creative=typeof module!=="undefined"?require("./creative-effects.js"):scope.Creative;
 const Optics=typeof module!=="undefined"?require("./optics.js"):scope.Optics;
 const extraDefaults={clarity:0,texture:0,sharpen:0,denoise:0,grainSize:35,grainRoughness:50,grainColor:0,halationThreshold:65,halationRadius:40,halationTight:70,halationMid:65,halationWide:40,halationTint:'#ff5631',glowRadius:40,vignette:0,vignetteFeather:65,border:0,borderColor:'#ffffff',borderBottom:0,gradeBalance:0,gradeBlend:50,gradeShadowsColor:'#4078c0',gradeShadows:0,gradeMidtonesColor:'#db9270',gradeMidtones:0,gradeHighlightsColor:'#ffcb87',gradeHighlights:0,gradeGlobalColor:'#e8ab71',gradeGlobal:0,curveBlack:0,curveShadow:0,curveMid:0,curveHighlight:0,curveWhite:0};
-Object.assign(extraDefaults,Optics.defaults);
+Object.assign(extraDefaults,Optics.defaults,Creative.defaults);
 const colorBands=[['Red',0],['Orange',30],['Yellow',60],['Green',120],['Aqua',180],['Blue',240],['Purple',275],['Magenta',315]];
 for(const [name]of colorBands)for(const control of ['Hue','Sat','Lum'])extraDefaults['hsl'+name+control]=0;
-const nodeTypes=[['light','Light & curve','light'],['color','Color mixer','color'],['grade','Color grading','color'],['detail','Detail','detail'],['masks','Local masks','mask'],['bloom','Optical effects','effects'],['film','Film finish','effects'],['vignette','Vignette','effects']];
+const nodeTypes=[['light','Light & curve','light'],['color','Color mixer','color'],['grade','Color grading','color'],['detail','Detail','detail'],['masks','Local masks','mask'],['bloom','Optical effects','effects'],['film','Film finish','effects'],['prism','Prism & glass','effects'],['double','Double exposure','effects'],['darkroom','Darkroom printing','color'],['vignette','Vignette','effects']];
 extraDefaults.nodes=[];extraDefaults._schema=4;
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
 const canvasFor=(w,h)=>{const c=typeof document==='undefined'?new OffscreenCanvas(w,h):document.createElement('canvas');c.width=w;c.height=h;return c;};

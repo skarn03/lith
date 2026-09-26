@@ -6,7 +6,7 @@
 
 These links always download the latest release. [All downloads & release notes](https://github.com/skarn03/lith/releases/latest).
 
-Windows includes in-app updates. Mac builds are experimental, ad-hoc signed and not Apple-notarized, with manual updates; macOS may block them. Windows has no publisher certificate and may show SmartScreen warnings. See [installation troubleshooting](INSTALLATION.md). Mac bundle/DMG integrity and native app launch are checked in CI; this does not guarantee Gatekeeper approval on downloaded copies.
+Windows includes in-app updates. Mac builds are experimental, ad-hoc signed and not Apple-notarized, with automatic release notifications and manual installation; macOS may block them. Windows has no publisher certificate and may show SmartScreen warnings. See [installation troubleshooting](INSTALLATION.md). Mac bundle/DMG integrity and native app launch are checked in CI; this does not guarantee Gatekeeper approval on downloaded copies.
 
 # Lith Photo Studio
 
@@ -23,6 +23,9 @@ Your library and edits stay on your computer. Work with JPEGs and supported came
 - **Film and dreamy looks:** actual-photo thumbnails, arrow-key auditioning, layered looks with inline strength sliders, and saved custom presets.
 - **Light and color:** tone curves, individual color mixing, and always-visible shadow, midtone, highlight and overall grading wheels.
 - **Atmosphere:** halation, diffusion and mist, threshold-gated bloom, anamorphic flares, matte shadows, texture and grain.
+- **Creative darkroom:** prism and glass reflections, highlight compression, double exposures, CMY print filters and paper tones.
+- **Share your looks:** import/export recipes with descriptions and creator credits, without sharing private photos.
+- **Batch and dual displays:** sync selected sections, export multiple photos, and use a second monitor for full-resolution viewing.
 - **Flexible nodes:** begin with one node; add, rename and toggle more when needed. Every node holds its own edits.
 - **Combined masks:** add, subtract or intersect brush, linear, radial and color selections, then adjust the combined area.
 - **Finish the frame:** social crop ratios, white borders, cinematic text, before/after and double-click zoom.

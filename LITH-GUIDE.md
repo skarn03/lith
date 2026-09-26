@@ -224,3 +224,37 @@ The **Quality** selector beside the photo name selects High precision · 32-bit 
 Previews use smaller images while sliders move, then automatically refine to match the viewport and zoom. Double-click to inspect native detail at 100% zoom. Toggle **HQ** beside the zoom controls to request a full-resolution settled preview even when zoomed out. This takes more time and memory on large images; slider feedback still uses a fast proxy. Preview resolution never changes export resolution or the original photo. Panning repositions the displayed photo without recomputing edits.
 
 Compatible effects use WebGPU, with CPU work in background workers and automatic fallbacks. There are still limits: processing is encoded sRGB, not scene-linear; mask coverage/text rasterization and the flare intermediate remain 8-bit. Large full-resolution renders can use the CPU. See [ENGINE-ARCHITECTURE.md](ENGINE-ARCHITECTURE.md) for precision limits, benchmarks and implementation details.
+
+### Second-monitor photo display
+
+Connect an extended desktop monitor, then choose **Second monitor** at the top of Develop. The option is hidden when no other screen is available. With more than two monitors, choose the photo screen first. The photo appears fullscreen there, with quick feedback during adjustment followed by a full-resolution render from the original. **Fit** shows the whole photo; **100%** maps one source pixel to one device pixel, including on high-DPI monitors. Double-click to toggle and drag to pan. Full resolution describes source detail, not HDR or a higher-bit-depth display.
+
+**Tools only** gives the editing screen to Develop controls, looks, nodes and the contact sheet, and avoids also rendering the main photo. Uncheck it to retain the image on both screens. Selecting Masks, Frame or Text brings the interactive image back for drawing and placement. Close the second display with its Close button, Escape, or the button in Develop. Unplugging the photo monitor restores the regular editor. Export settings and originals remain unchanged.
+
+### Batch sync and batch export
+
+Use **Select photos** above the contact sheet, then click photos or their check buttons. Ctrl/Command-click toggles a photo without switching the editing source; Shift-click selects a visible range. **Select visible** selects the displayed versions in the current project/filter, not hidden virtual copies. Selection resets when switching projects. **Done selecting** returns clicks to normal photo navigation.
+
+**Sync edits…** uses the photo and node currently open in Develop as the source and applies to the other selected photos. Choose Light, Color, Detail, Effects, Layered looks, Masks, Crop & frame, or Text. The default excludes Masks, Frame and Text. Choose each destination photo’s saved selected node (or its first node) or add a new node. Only checked sections are replaced; this does not flatten or replace whole node stacks. **Undo batch sync** reverses the last batch in this session, provided those destination settings have not subsequently changed. Conflicting changes block the whole operation instead of silently overwriting newer work.
+
+**Batch export…** offers JPEG/WebP at 100% quality or lossless PNG, original resolution or a smaller longest edge, and independent Screen/Print sharpening. High-precision photos export 16-bit PNG. Choose the folder once; it is remembered per project. The queue freezes the selected edit settings and destination when started, processes one photo at a time in a worker, and lets you continue editing or switch projects. Existing files are retained using numbered names. Individual failures are listed while the queue continues. **Cancel remaining** lets the current photo finish and skips the rest. Keep Lith open until completion; the queue is not persisted across restarts.
+
+### Share looks with your community
+Use **Share look** beside the Looks browser to export your current edits or a saved custom look as a `.lithlook` file. Add a name, description and optional creator credit. Send the file yourself through your community, messaging or a download link. Lith does not upload it or require an account.
+
+Recipients choose **Import look**, review its description and creator, then **Add to My looks**. Importing does not change the current photo. Apply its thumbnail and adjust its strength like any other look. Duplicate names get a numbered suffix. Creator credits are user-provided, not verified identities.
+
+Shared files contain color/effect parameters and layered looks, excluding photographs, file paths, masks, text, crop and borders. **Save custom look** also now stores a description and creator. Hover over a saved look for its description, or select it in Share look to read the full details.
+
+### Creative optics and darkroom tools
+- **Light → Highlight compression:** choose Gentle, Soft film or Strong roll-off, then adjust strength and the starting brightness. This softens highlights, preserving their color ratios; it cannot restore detail clipped in the source.
+- **Effects → Optics → Prism & glass:** choose a single prism, three reflections or mirrored glass. Quick recipes set a starting point. Placement & rainbow edges contains the clear-area center, size, feathering and color separation.
+- **Effects → Blend → Double exposure:** choose a JPEG, PNG, WebP or supported RAW as a second image. Lith stores an independent original in the private library. Choose Normal, Screen, Multiply or Lighten, then target the whole photo, shadows or highlights. Position, scale & transition contains placement, rotation and tonal feathering. Source edits are not applied to the second photo. Removing it from a node keeps its private copy for undo and other nodes.
+- **Color → Darkroom · print & paper:** choose a warm, cool or faded starting treatment, then adjust print strength, exposure, contrast and fading. CMY filters are under their own expandable header. Neutral white, warm fiber and cool pearl are tonal paper simulations, not scanned paper textures or calibrated stock profiles.
+
+All four tools use node settings, undo, copy/move and batch workflows. High precision processing keeps float values through the effects, with 16-bit PNG export. Prism, print toning and highlight compression use WebGPU when supported; full-resolution images exceeding the GPU working-memory limit and other unsupported cases use the worker CPU path. Double exposure uses a cached source and worker processing. Shared look files retain effect settings but never include the second photo or its private reference; recipients choose their own image. Library restore preserves second-exposure originals.
+
+### Automatic update prompt
+Installed builds check shortly after launch and every four hours. When a newer version is found, Lith opens an update overlay immediately. On Windows the existing automatic background download continues; the same overlay shows progress, then offers **Save & restart**. Nothing restarts without that action, and installation stops if saving fails. **Later** or Escape dismisses the prompt for that version until the next launch; use **Updates / Update ready** in the header to reopen it.
+
+Unsigned Mac builds now check GitHub releases automatically and show the overlay too, with **Download update**. They still require manually replacing the app. Development runs do not check automatically. Offline checks remain quiet; the status and retry option are available in Updates.

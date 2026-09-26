@@ -1,4 +1,5 @@
 (function(scope){
+const Creative=typeof module!=="undefined"?require("./creative-effects.js"):scope.Creative;
 const FX=typeof module!=="undefined"?require("./effects.js"):scope.FX;
 const TextFX=typeof module!=="undefined"?require("./text-effects.js"):scope.TextFX;
 const defaults={textLayers:[],developMix:100,exposure:0,contrast:0,highlights:0,shadows:0,temperature:0,tint:0,saturation:0,vibrance:0,fade:0,grain:0,glow:0,halation:0,rotation:0,flip:false,crop:0,cropX:50,cropY:50,masks:[],...FX.extraDefaults};
@@ -28,7 +29,10 @@ case 'glow':if(input.previewGate)ctx.drawImage(FX.Optics.gatePreview(canvas,p),0
 case 'flare':FX.Optics.flare(canvas,p);break;
 case 'halation':FX.bloom(canvas,{...p,diffusion:0,glow:0,flare:0});break;
 case 'grain':case 'fade':case 'matte':modify(d=>FX.film(d,g.width,g.height,{...p,grain:operation==='grain'?p.grain:0,fade:operation==='fade'?p.fade:0,matte:operation==='matte'?p.matte:0},g.cw,g.ch));break;
-case 'light':{const tonal=['exposure','contrast','highlights','shadows','temperature','tint','saturation','vibrance'].some(k=>p[k]);const curve=['curveBlack','curveShadow','curveMid','curveHighlight','curveWhite'].some(k=>p[k]);if(tonal||curve)modify(d=>{if(tonal)pixels(d,{...p,fade:0});if(curve)FX.curves(d,p);});break;}
+case 'light':{const tonal=['exposure','contrast','highlights','shadows','temperature','tint','saturation','vibrance'].some(k=>p[k]);const curve=['curveBlack','curveShadow','curveMid','curveHighlight','curveWhite'].some(k=>p[k]);if(tonal||curve||p.highlightCompression)modify(d=>{if(tonal)pixels(d,{...p,fade:0});if(curve)FX.curves(d,p);if(p.highlightCompression)Creative.compression(d,p);});break;}
+case 'prism':if(p.prism)modify(d=>Creative.prism(d,g.width,g.height,p));break;
+case 'double':if(p.doubleAmount&&p.doubleSource)modify(d=>Creative.double(d,g.width,g.height,p));break;
+case 'darkroom':if(p.darkroom)modify(d=>Creative.printing(d,p));break;
 case 'color':if(FX.colorBands.some(([n])=>p['hsl'+n+'Hue']||p['hsl'+n+'Sat']||p['hsl'+n+'Lum']))modify(d=>FX.hsl(d,p));break;
 case 'grade':if(p.gradeShadows||p.gradeMidtones||p.gradeHighlights||p.gradeGlobal)modify(d=>FX.grade(d,p));break;
 case 'detail':FX.detail(canvas,p);break;

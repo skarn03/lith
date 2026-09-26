@@ -1,23 +1,23 @@
-# Lith 0.11.1
+# Lith 0.12.0
 
 **[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**
 
 ## What’s new
 
-- All 0.11.0 image-engine and editing improvements, plus clearer Develop cards, expandable headers, nested controls and quicker UI feedback.
-- Light mode replaced with Soft gray: a lighter charcoal workspace rather than a bright theme.
-- Mac test builds now explicitly receive ad-hoc bundle signatures and disable hardened runtime for this non-notarized testing channel, instead of skipping signing entirely. This repairs bundle integrity without claiming a verified Apple publisher identity.
-- Release checks verify both Mac app signatures and DMG checksums, then launch the native packaged Mac app to test photo import, rendering, editing and saving. SHA256SUMS.txt is included with downloads.
+- **Creative effects:** Prism & Glass reflections, Highlight Compression, Double Exposure, and Darkroom Printing with CMY filters and paper tones. Organized cards include quick recipes, strength sliders and expandable advanced controls.
+- **Faster optics:** GPU prism and print processing, plus highlight compression in the existing GPU color pass. The tested 1024-pixel prism preview improved from about 194 ms on the initial CPU implementation to 9 ms on the development PC; results depend on hardware.
+- **Community looks:** import and export `.lithlook` files with descriptions and creator credits. Review before importing. Photos and private source references are excluded.
+- **Batch workflow:** select photos, sync chosen editing sections, undo a batch sync, and export sequentially with progress and cancellation. Unselected crop, text and masks remain unchanged.
+- **Second monitor:** show a full-resolution photo preview on another display, with Fit/100% viewing and a tools-focused editing window.
+- **Automatic update overlay:** installed apps check shortly after launch. Windows shows download progress and offers Save & restart when ready. Mac detects releases and offers a manual download. Later dismisses the prompt for that version during the current session.
 
 ## Installation and updates
 
-Windows: install the `.exe` above. Later releases download inside Lith; open **Updates → Save & restart to update** when ready.
+Windows: install the `.exe`. Existing installed versions can receive this release through **Updates → Save & restart**. The new automatic overlay is available after installing 0.12.0. Lith saves before restarting and does not install automatically when you quit.
 
-Mac: choose Apple Silicon for M1 or later, or Intel for older Intel Macs, then install from the `.dmg`. These are experimental ad-hoc-signed builds, without Apple Developer ID or notarization. macOS can still block the app even when bundle integrity passes. A CI launch test does not reproduce every Mac or Gatekeeper download state. Mac automatic installation is disabled until signing and notarization are configured; **Updates → Open downloads** opens the latest release for manual installation.
+Mac: choose Apple Silicon for M1 or newer, or Intel for Intel Macs. Copy Lith into Applications. The app is ad-hoc signed, but is **not Apple Developer-ID signed or notarized**. If Apple says it cannot verify Lith is free of malware, close the warning, then use **System Settings → Privacy & Security → Open Anyway** for this app if you trust your download. This is the process confirmed working on the creator’s Mac; do not disable Gatekeeper globally. Other warnings need separate investigation. Mac updates still require replacing the application manually.
 
-Windows does not yet have a publisher certificate, so SmartScreen may show More info / Run anyway. This release does not remove that warning. Signing and publisher reputation are needed for smoother distribution.
-
-If a previous Mac version reports damaged after installation, replace the app with this release without deleting your library. Download Apple Silicon for M1 or newer. For an unidentified-developer/not-notarized message, Apple documents **System Settings → Privacy & Security → Open Anyway** for an app you choose to trust. If macOS still reports damaged, report the exact message and macOS version; do not disable Gatekeeper globally. See [installation troubleshooting](INSTALLATION.md).
+Windows remains unsigned and may show SmartScreen warnings. Both Mac bundles and DMGs are verified during release, and the native packaged Mac app is smoke-tested. SHA256SUMS.txt is provided. See [installation troubleshooting](INSTALLATION.md).
 
 RAW support depends on the camera and compression. High precision uses encoded-sRGB float processing, not a scene-linear color-managed workflow. JPEG/WebP/display, mask coverage, text rasterization and the legacy flare intermediate remain 8-bit. Large images and large blurs can use the CPU fallback. Full-resolution HQ previews may take longer; fast slider previews remain enabled. See ENGINE-ARCHITECTURE.md for limits and reproducible benchmarks.
 

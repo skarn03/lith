@@ -1,15 +1,16 @@
 {
   "name": "lith-photo-studio",
-  "version": "0.11.1",
+  "version": "0.12.0",
   "description": "An offline desktop photo studio",
   "main": "main.cjs",
   "scripts": {
     "start": "electron .",
-    "test": "node tests.cjs && node storage-tests.cjs && node release-tests.cjs && node raw-tests.cjs && node engine-tests.cjs && node float-tests.cjs",
+    "test": "node tests.cjs && node storage-tests.cjs && node release-tests.cjs && node raw-tests.cjs && node engine-tests.cjs && node float-tests.cjs && node second-display-tests.cjs && node batch-tests.cjs && node look-sharing-tests.cjs && node creative-tests.cjs && node update-prompt-tests.cjs",
     "pack": "electron-builder --config electron-builder.config.cjs --dir",
     "dist:win": "electron-builder --config electron-builder.config.cjs --win --publish never",
     "dist:mac": "electron-builder --config electron-builder.config.cjs --mac --publish never",
     "benchmark:engine": "node engine-benchmark.cjs",
+    "test:creative": "node creative-ui-tests.cjs",
     "benchmark:float": "node float-benchmark.cjs"
   },
   "private": true,
