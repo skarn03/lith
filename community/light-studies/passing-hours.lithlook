@@ -1,0 +1,26 @@
+{
+  "format": "lith-look",
+  "version": 1,
+  "name": "Passing Hours",
+  "description": "Horizontal shutter trails with a softly protected central subject. For motion and street scenes; try 30–65%.",
+  "author": "Lith Studio",
+  "recipe": [
+    {
+      "label": "Passing Hours",
+      "operation": "develop",
+      "enabled": true,
+      "mix": 100,
+      "adjustments": {
+        "fade": 7,
+        "grain": 12,
+        "diffusion": 12,
+        "shutter": 28,
+        "shutterLength": 19,
+        "shutterAngle": 0,
+        "shutterProtect": 62
+      },
+      "frame": {},
+      "looks": []
+    }
+  ]
+}

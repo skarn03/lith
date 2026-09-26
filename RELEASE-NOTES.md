@@ -1,3 +1,17 @@
+# Lith 0.19.0
+
+**[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**
+
+- **12 new Light Studies recipes:** Pearl Mist, Amber Afterglow, Blue Velvet, Prism Whisper, Neon Echo, Passing Hours, Rain on Glass, Rose Paper, Silver Lantern, Lantern Bokeh, Windowlight and Wide Awake.
+- Separate **User-made · Light Studies** and **User-made · Dream Bloom** categories, with all 20 recipes available offline. Light Studies is credited to Lith Studio; skarn03’s original eight recipes remain separate.
+- **Favorite looks:** a distinctive halo-star button on each thumbnail, a gold saved state and a Favorites filter. Favorites persist locally across projects/restarts, combine with category/search, and support keyboard access.
+- Starring a look never applies or previews it. Personal-look favorites use saved identifiers rather than changing list positions.
+- Updated screenshots, recipe descriptions, sample exports and 12 additional downloadable `.lithlook` files.
+
+Mac builds remain ad-hoc signed, not Apple-notarized. Windows builds remain unsigned.
+
+---
+
 # Lith 0.18.0
 
 **[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**

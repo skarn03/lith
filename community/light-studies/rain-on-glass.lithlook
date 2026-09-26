@@ -1,0 +1,28 @@
+{
+  "format": "lith-look",
+  "version": 1,
+  "name": "Rain on Glass",
+  "description": "Fine downward motion, color bleeding and cool mist. A stylized impression, not simulated raindrops; try 40–70%.",
+  "author": "Lith Studio",
+  "recipe": [
+    {
+      "label": "Rain on Glass",
+      "operation": "develop",
+      "enabled": true,
+      "mix": 100,
+      "adjustments": {
+        "temperature": -7,
+        "glow": 12,
+        "diffusion": 18,
+        "shutter": 19,
+        "shutterLength": 9,
+        "shutterAngle": 86,
+        "shutterProtect": 48,
+        "colorBleed": 19,
+        "bleedRadius": 14
+      },
+      "frame": {},
+      "looks": []
+    }
+  ]
+}

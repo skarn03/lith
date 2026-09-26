@@ -1,0 +1,32 @@
+{
+  "format": "lith-look",
+  "version": 1,
+  "name": "Windowlight",
+  "description": "A broad warm light placed at the upper left with a soft highlight roll-off. Artistic lighting; try 30–70%.",
+  "author": "Lith Studio",
+  "recipe": [
+    {
+      "label": "Windowlight",
+      "operation": "develop",
+      "enabled": true,
+      "mix": 100,
+      "adjustments": {
+        "relightPoints": [
+          {
+            "x": 0.13,
+            "y": 0.2,
+            "size": 1.4,
+            "strength": 0.75
+          }
+        ],
+        "diffusion": 13,
+        "relight": 24,
+        "relightSize": 65,
+        "relightColor": "#ffdfa9",
+        "highlightCompression": 22
+      },
+      "frame": {},
+      "looks": []
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-/* User-made Dream Bloom collection by skarn03. Color/effect recipes only. */
+/* Bundled creator collections. Color/effect recipes only. */
 (function(s){const looks=[
   {
     "name": "Moss & Mist",
@@ -3059,5 +3059,379 @@
     "collection": "Dream Bloom",
     "category": "user-made",
     "slug": "daylight-veil"
+  },
+  {
+    "name": "Pearl Mist",
+    "description": "Soft white diffusion, gentle bloom and protected highlights. Start at 60–100% for portraits and overcast light.",
+    "author": "Lith Studio",
+    "recipe": [
+      {
+        "label": "Pearl Mist",
+        "operation": "develop",
+        "enabled": true,
+        "mix": 100,
+        "adjustments": {
+          "contrast": -5,
+          "saturation": -5,
+          "glow": 17,
+          "glowRadius": 28,
+          "diffusion": 28,
+          "diffusionRadius": 32,
+          "diffusionProtect": 88,
+          "bloomThreshold": 58,
+          "bloomKnee": 55,
+          "highlightCompression": 24
+        },
+        "frame": {},
+        "looks": []
+      }
+    ],
+    "collection": "Light Studies",
+    "category": "user-made",
+    "slug": "pearl-mist"
+  },
+  {
+    "name": "Amber Afterglow",
+    "description": "A warm edge leak over a gently faded darkroom print. Best with backlight; try 40–75%.",
+    "author": "Lith Studio",
+    "recipe": [
+      {
+        "label": "Amber Afterglow",
+        "operation": "develop",
+        "enabled": true,
+        "mix": 100,
+        "adjustments": {
+          "halation": 22,
+          "diffusion": 14,
+          "lightLeak": 24,
+          "leakX": 3,
+          "leakY": 28,
+          "leakSize": 65,
+          "leakAngle": 25,
+          "leakColor": "#ffb76c",
+          "darkroom": 28,
+          "printPaper": 1,
+          "printFade": 16
+        },
+        "frame": {},
+        "looks": []
+      }
+    ],
+    "collection": "Light Studies",
+    "category": "user-made",
+    "slug": "amber-afterglow"
+  },
+  {
+    "name": "Blue Velvet",
+    "description": "Cool shadow grading and black-mist diffusion with warm halation. Designed for evening light at 50–85%.",
+    "author": "Lith Studio",
+    "recipe": [
+      {
+        "label": "Blue Velvet",
+        "operation": "develop",
+        "enabled": true,
+        "mix": 100,
+        "adjustments": {
+          "temperature": -8,
+          "halation": 38,
+          "halationThreshold": 70,
+          "gradeShadowsColor": "#416c99",
+          "gradeShadows": 16,
+          "diffusion": 26,
+          "diffusionMode": 1,
+          "diffusionProtect": 82,
+          "matte": 9,
+          "matteColor": "#566c91",
+          "matteTint": 15
+        },
+        "frame": {},
+        "looks": []
+      }
+    ],
+    "collection": "Light Studies",
+    "category": "user-made",
+    "slug": "blue-velvet"
+  },
+  {
+    "name": "Prism Whisper",
+    "description": "A restrained glass reflection and spectral edge color, with a protected center. Try 30–65%.",
+    "author": "Lith Studio",
+    "recipe": [
+      {
+        "label": "Prism Whisper",
+        "operation": "develop",
+        "enabled": true,
+        "mix": 100,
+        "adjustments": {
+          "diffusion": 10,
+          "prism": 22,
+          "prismMode": 0,
+          "prismDistance": 14,
+          "prismAngle": 24,
+          "prismDispersion": 30,
+          "prismProtect": 65,
+          "prismFeather": 55
+        },
+        "frame": {},
+        "looks": []
+      }
+    ],
+    "collection": "Light Studies",
+    "category": "user-made",
+    "slug": "prism-whisper"
+  },
+  {
+    "name": "Neon Echo",
+    "description": "Prism reflections, narrow blue flare and halation for neon streets. Needs bright sources; start at 35–65%.",
+    "author": "Lith Studio",
+    "recipe": [
+      {
+        "label": "Neon Echo",
+        "operation": "develop",
+        "enabled": true,
+        "mix": 100,
+        "adjustments": {
+          "temperature": -5,
+          "halation": 46,
+          "halationThreshold": 62,
+          "flare": 16,
+          "flareThreshold": 82,
+          "flareWidth": 6,
+          "flareTint": "#79bfff",
+          "prism": 18,
+          "prismMode": 1,
+          "prismDistance": 18,
+          "prismAngle": -8,
+          "prismProtect": 58
+        },
+        "frame": {},
+        "looks": []
+      }
+    ],
+    "collection": "Light Studies",
+    "category": "user-made",
+    "slug": "neon-echo"
+  },
+  {
+    "name": "Passing Hours",
+    "description": "Horizontal shutter trails with a softly protected central subject. For motion and street scenes; try 30–65%.",
+    "author": "Lith Studio",
+    "recipe": [
+      {
+        "label": "Passing Hours",
+        "operation": "develop",
+        "enabled": true,
+        "mix": 100,
+        "adjustments": {
+          "fade": 7,
+          "grain": 12,
+          "diffusion": 12,
+          "shutter": 28,
+          "shutterLength": 19,
+          "shutterAngle": 0,
+          "shutterProtect": 62
+        },
+        "frame": {},
+        "looks": []
+      }
+    ],
+    "collection": "Light Studies",
+    "category": "user-made",
+    "slug": "passing-hours"
+  },
+  {
+    "name": "Rain on Glass",
+    "description": "Fine downward motion, color bleeding and cool mist. A stylized impression, not simulated raindrops; try 40–70%.",
+    "author": "Lith Studio",
+    "recipe": [
+      {
+        "label": "Rain on Glass",
+        "operation": "develop",
+        "enabled": true,
+        "mix": 100,
+        "adjustments": {
+          "temperature": -7,
+          "glow": 12,
+          "diffusion": 18,
+          "shutter": 19,
+          "shutterLength": 9,
+          "shutterAngle": 86,
+          "shutterProtect": 48,
+          "colorBleed": 19,
+          "bleedRadius": 14
+        },
+        "frame": {},
+        "looks": []
+      }
+    ],
+    "collection": "Light Studies",
+    "category": "user-made",
+    "slug": "rain-on-glass"
+  },
+  {
+    "name": "Rose Paper",
+    "description": "A warm paper print with rose midtones, gentle grain and lifted blacks. Try 60–100%.",
+    "author": "Lith Studio",
+    "recipe": [
+      {
+        "label": "Rose Paper",
+        "operation": "develop",
+        "enabled": true,
+        "mix": 100,
+        "adjustments": {
+          "grain": 15,
+          "gradeMidtonesColor": "#c3879d",
+          "gradeMidtones": 9,
+          "diffusion": 11,
+          "darkroom": 48,
+          "printMagenta": -9,
+          "printYellow": -4,
+          "printContrast": -5,
+          "printPaper": 1,
+          "printFade": 16
+        },
+        "frame": {},
+        "looks": []
+      }
+    ],
+    "collection": "Light Studies",
+    "category": "user-made",
+    "slug": "rose-paper"
+  },
+  {
+    "name": "Silver Lantern",
+    "description": "Monochrome with soft highlight glow and a cool paper base. Works with windows and lamps at 60–100%.",
+    "author": "Lith Studio",
+    "recipe": [
+      {
+        "label": "Silver Lantern",
+        "operation": "develop",
+        "enabled": true,
+        "mix": 100,
+        "adjustments": {
+          "contrast": 9,
+          "saturation": -100,
+          "fade": 8,
+          "grain": 18,
+          "glow": 23,
+          "diffusion": 23,
+          "diffusionProtect": 87,
+          "bloomThreshold": 63,
+          "darkroom": 20,
+          "printPaper": 2
+        },
+        "frame": {},
+        "looks": []
+      }
+    ],
+    "collection": "Light Studies",
+    "category": "user-made",
+    "slug": "silver-lantern"
+  },
+  {
+    "name": "Lantern Bokeh",
+    "description": "Warm light discs at the outer edges with subtle diffusion. Fixed placements avoid the center; try 25–55%.",
+    "author": "Lith Studio",
+    "recipe": [
+      {
+        "label": "Lantern Bokeh",
+        "operation": "develop",
+        "enabled": true,
+        "mix": 100,
+        "adjustments": {
+          "bokehPoints": [
+            {
+              "x": 0.08,
+              "y": 0.18,
+              "size": 0.8,
+              "strength": 0.65
+            },
+            {
+              "x": 0.88,
+              "y": 0.12,
+              "size": 1.1,
+              "strength": 0.6
+            },
+            {
+              "x": 0.94,
+              "y": 0.75,
+              "size": 0.6,
+              "strength": 0.5
+            }
+          ],
+          "glow": 10,
+          "diffusion": 12,
+          "bokeh": 22,
+          "bokehSize": 7,
+          "bokehSoftness": 70,
+          "bokehColor": "#ffd9a0"
+        },
+        "frame": {},
+        "looks": []
+      }
+    ],
+    "collection": "Light Studies",
+    "category": "user-made",
+    "slug": "lantern-bokeh"
+  },
+  {
+    "name": "Windowlight",
+    "description": "A broad warm light placed at the upper left with a soft highlight roll-off. Artistic lighting; try 30–70%.",
+    "author": "Lith Studio",
+    "recipe": [
+      {
+        "label": "Windowlight",
+        "operation": "develop",
+        "enabled": true,
+        "mix": 100,
+        "adjustments": {
+          "relightPoints": [
+            {
+              "x": 0.13,
+              "y": 0.2,
+              "size": 1.4,
+              "strength": 0.75
+            }
+          ],
+          "diffusion": 13,
+          "relight": 24,
+          "relightSize": 65,
+          "relightColor": "#ffdfa9",
+          "highlightCompression": 22
+        },
+        "frame": {},
+        "looks": []
+      }
+    ],
+    "collection": "Light Studies",
+    "category": "user-made",
+    "slug": "windowlight"
+  },
+  {
+    "name": "Wide Awake",
+    "description": "Gentle fisheye curvature with a warm analog fade and color bleed. Best for architecture and wide scenes at 30–60%.",
+    "author": "Lith Studio",
+    "recipe": [
+      {
+        "label": "Wide Awake",
+        "operation": "develop",
+        "enabled": true,
+        "mix": 100,
+        "adjustments": {
+          "contrast": 6,
+          "temperature": 7,
+          "fade": 9,
+          "grain": 14,
+          "fisheye": 16,
+          "colorBleed": 13,
+          "bleedRadius": 12
+        },
+        "frame": {},
+        "looks": []
+      }
+    ],
+    "collection": "Light Studies",
+    "category": "user-made",
+    "slug": "wide-awake"
   }
 ];if(typeof module!=="undefined")module.exports=looks;else s.LithCommunityLooks=looks;})(globalThis);

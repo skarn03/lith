@@ -1,0 +1,31 @@
+{
+  "format": "lith-look",
+  "version": 1,
+  "name": "Neon Echo",
+  "description": "Prism reflections, narrow blue flare and halation for neon streets. Needs bright sources; start at 35–65%.",
+  "author": "Lith Studio",
+  "recipe": [
+    {
+      "label": "Neon Echo",
+      "operation": "develop",
+      "enabled": true,
+      "mix": 100,
+      "adjustments": {
+        "temperature": -5,
+        "halation": 46,
+        "halationThreshold": 62,
+        "flare": 16,
+        "flareThreshold": 82,
+        "flareWidth": 6,
+        "flareTint": "#79bfff",
+        "prism": 18,
+        "prismMode": 1,
+        "prismDistance": 18,
+        "prismAngle": -8,
+        "prismProtect": 58
+      },
+      "frame": {},
+      "looks": []
+    }
+  ]
+}

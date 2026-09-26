@@ -1,0 +1,29 @@
+{
+  "format": "lith-look",
+  "version": 1,
+  "name": "Silver Lantern",
+  "description": "Monochrome with soft highlight glow and a cool paper base. Works with windows and lamps at 60–100%.",
+  "author": "Lith Studio",
+  "recipe": [
+    {
+      "label": "Silver Lantern",
+      "operation": "develop",
+      "enabled": true,
+      "mix": 100,
+      "adjustments": {
+        "contrast": 9,
+        "saturation": -100,
+        "fade": 8,
+        "grain": 18,
+        "glow": 23,
+        "diffusion": 23,
+        "diffusionProtect": 87,
+        "bloomThreshold": 63,
+        "darkroom": 20,
+        "printPaper": 2
+      },
+      "frame": {},
+      "looks": []
+    }
+  ]
+}

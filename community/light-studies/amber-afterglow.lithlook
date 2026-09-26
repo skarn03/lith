@@ -1,0 +1,30 @@
+{
+  "format": "lith-look",
+  "version": 1,
+  "name": "Amber Afterglow",
+  "description": "A warm edge leak over a gently faded darkroom print. Best with backlight; try 40–75%.",
+  "author": "Lith Studio",
+  "recipe": [
+    {
+      "label": "Amber Afterglow",
+      "operation": "develop",
+      "enabled": true,
+      "mix": 100,
+      "adjustments": {
+        "halation": 22,
+        "diffusion": 14,
+        "lightLeak": 24,
+        "leakX": 3,
+        "leakY": 28,
+        "leakSize": 65,
+        "leakAngle": 25,
+        "leakColor": "#ffb76c",
+        "darkroom": 28,
+        "printPaper": 1,
+        "printFade": 16
+      },
+      "frame": {},
+      "looks": []
+    }
+  ]
+}

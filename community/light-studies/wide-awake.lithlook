@@ -1,0 +1,26 @@
+{
+  "format": "lith-look",
+  "version": 1,
+  "name": "Wide Awake",
+  "description": "Gentle fisheye curvature with a warm analog fade and color bleed. Best for architecture and wide scenes at 30–60%.",
+  "author": "Lith Studio",
+  "recipe": [
+    {
+      "label": "Wide Awake",
+      "operation": "develop",
+      "enabled": true,
+      "mix": 100,
+      "adjustments": {
+        "contrast": 6,
+        "temperature": 7,
+        "fade": 9,
+        "grain": 14,
+        "fisheye": 16,
+        "colorBleed": 13,
+        "bleedRadius": 12
+      },
+      "frame": {},
+      "looks": []
+    }
+  ]
+}

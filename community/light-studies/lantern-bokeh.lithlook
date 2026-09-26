@@ -1,0 +1,45 @@
+{
+  "format": "lith-look",
+  "version": 1,
+  "name": "Lantern Bokeh",
+  "description": "Warm light discs at the outer edges with subtle diffusion. Fixed placements avoid the center; try 25–55%.",
+  "author": "Lith Studio",
+  "recipe": [
+    {
+      "label": "Lantern Bokeh",
+      "operation": "develop",
+      "enabled": true,
+      "mix": 100,
+      "adjustments": {
+        "bokehPoints": [
+          {
+            "x": 0.08,
+            "y": 0.18,
+            "size": 0.8,
+            "strength": 0.65
+          },
+          {
+            "x": 0.88,
+            "y": 0.12,
+            "size": 1.1,
+            "strength": 0.6
+          },
+          {
+            "x": 0.94,
+            "y": 0.75,
+            "size": 0.6,
+            "strength": 0.5
+          }
+        ],
+        "glow": 10,
+        "diffusion": 12,
+        "bokeh": 22,
+        "bokehSize": 7,
+        "bokehSoftness": 70,
+        "bokehColor": "#ffd9a0"
+      },
+      "frame": {},
+      "looks": []
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "format": "lith-look",
+  "version": 1,
+  "name": "Pearl Mist",
+  "description": "Soft white diffusion, gentle bloom and protected highlights. Start at 60–100% for portraits and overcast light.",
+  "author": "Lith Studio",
+  "recipe": [
+    {
+      "label": "Pearl Mist",
+      "operation": "develop",
+      "enabled": true,
+      "mix": 100,
+      "adjustments": {
+        "contrast": -5,
+        "saturation": -5,
+        "glow": 17,
+        "glowRadius": 28,
+        "diffusion": 28,
+        "diffusionRadius": 32,
+        "diffusionProtect": 88,
+        "bloomThreshold": 58,
+        "bloomKnee": 55,
+        "highlightCompression": 24
+      },
+      "frame": {},
+      "looks": []
+    }
+  ]
+}

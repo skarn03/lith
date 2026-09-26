@@ -1,0 +1,30 @@
+{
+  "format": "lith-look",
+  "version": 1,
+  "name": "Blue Velvet",
+  "description": "Cool shadow grading and black-mist diffusion with warm halation. Designed for evening light at 50–85%.",
+  "author": "Lith Studio",
+  "recipe": [
+    {
+      "label": "Blue Velvet",
+      "operation": "develop",
+      "enabled": true,
+      "mix": 100,
+      "adjustments": {
+        "temperature": -8,
+        "halation": 38,
+        "halationThreshold": 70,
+        "gradeShadowsColor": "#416c99",
+        "gradeShadows": 16,
+        "diffusion": 26,
+        "diffusionMode": 1,
+        "diffusionProtect": 82,
+        "matte": 9,
+        "matteColor": "#566c91",
+        "matteTint": 15
+      },
+      "frame": {},
+      "looks": []
+    }
+  ]
+}

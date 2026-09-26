@@ -330,3 +330,13 @@ Sixteen included families work offline on Windows and Mac, using the same font f
 Open the filter icon above Looks, then choose **User-made · Dream Bloom**. Eight recipes by skarn03 are included offline. Each thumbnail has a User-made creator tag. Click a look to preview; **Apply look** commits it, and Selected looks controls its strength. Your own saved/imported looks remain under **My looks**. Share look can export the included recipes too. Your original private presets are not renamed or replaced by this collection.
 
 Node controls use colored icons for enable/disable, add, move and remove. The selected node says **Editing**, disabled nodes say **Disabled**, and the Develop panel shows the current edit target. Focus, Reset and Shortcuts have visible button outlines.
+
+
+## Light Studies collection
+
+Choose **User-made · Light Studies** in the Looks filter for 12 Lith Studio effect recipes. Dream Bloom remains a separate collection. Suggested strengths and lighting tips appear in thumbnail tooltips. Use **Apply look**, then adjust Selected looks strength. Bokeh and Windowlight placements are fixed in the recipe; these do not automatically detect faces or scene lighting.
+
+
+## Favorite looks
+
+Click the **halo star** at the top-right of a look thumbnail to favorite it. A filled gold star means saved. This does not preview or apply the look. Click **Favorites** above the thumbnails to show your saved choices; category and search still apply. Favorites are stored on this device across projects and app restarts. The icon supports Tab navigation and Enter/Space. Click again to remove a favorite.

@@ -28,6 +28,12 @@ Eight dreamy, cinebloom-style recipes by **skarn03**: **Moss & Mist, Midnight Ha
 
 Node actions now have colored icons, clearer buttons and explicit Editing / Enabled / Disabled states. Reset, Focus, Undo/Redo and keyboard shortcut settings share the same visual treatment. Shortcut hints follow your custom key assignments.
 
+## Light Studies · More effect recipes
+
+Twelve additional recipes by **Lith Studio**, separate from skarn03’s Dream Bloom collection: Pearl Mist, Amber Afterglow, Blue Velvet, Prism Whisper, Neon Echo, Passing Hours, Rain on Glass, Rose Paper, Silver Lantern, Lantern Bokeh, Windowlight and Wide Awake.
+
+Open **Looks → filter icon → User-made · Light Studies**. Each uses existing effects, with preview-before-apply and adjustable strength. [Browse sample exports and download the recipes →](community/light-studies/README.md)
+
 ## Creative light, motion and lens effects
 
 Open **Effects → Creative**. Each tool has its own collapsible card, strength control and reset. Changes belong to the selected node and support undo, copies, batch sync and saved/shared looks.
@@ -82,6 +88,12 @@ Colorful tool icons stay readable across Dark gray, Soft gray and the warmer, lo
 | Soft gray | Soft white |
 | --- | --- |
 | ![Soft gray workspace](docs/images/ui-gray.jpg) | ![Warm soft white workspace](docs/images/ui-white.jpg) |
+
+## Keep your favorite looks close
+
+Click the **halo star** on any look to save it as a favorite. The filled gold star marks saved looks; the **Favorites** button filters the list while respecting your category and search. Favorites stay on this device across projects and restarts. Starring never previews or applies a look.
+
+![Halo-star favorites and the Favorites filter](docs/images/ui-look-favorites.jpg)
 
 ## Explore a look before committing
 

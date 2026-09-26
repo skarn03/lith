@@ -1,0 +1,29 @@
+{
+  "format": "lith-look",
+  "version": 1,
+  "name": "Rose Paper",
+  "description": "A warm paper print with rose midtones, gentle grain and lifted blacks. Try 60–100%.",
+  "author": "Lith Studio",
+  "recipe": [
+    {
+      "label": "Rose Paper",
+      "operation": "develop",
+      "enabled": true,
+      "mix": 100,
+      "adjustments": {
+        "grain": 15,
+        "gradeMidtonesColor": "#c3879d",
+        "gradeMidtones": 9,
+        "diffusion": 11,
+        "darkroom": 48,
+        "printMagenta": -9,
+        "printYellow": -4,
+        "printContrast": -5,
+        "printPaper": 1,
+        "printFade": 16
+      },
+      "frame": {},
+      "looks": []
+    }
+  ]
+}

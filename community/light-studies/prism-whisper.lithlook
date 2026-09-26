@@ -1,0 +1,27 @@
+{
+  "format": "lith-look",
+  "version": 1,
+  "name": "Prism Whisper",
+  "description": "A restrained glass reflection and spectral edge color, with a protected center. Try 30–65%.",
+  "author": "Lith Studio",
+  "recipe": [
+    {
+      "label": "Prism Whisper",
+      "operation": "develop",
+      "enabled": true,
+      "mix": 100,
+      "adjustments": {
+        "diffusion": 10,
+        "prism": 22,
+        "prismMode": 0,
+        "prismDistance": 14,
+        "prismAngle": 24,
+        "prismDispersion": 30,
+        "prismProtect": 65,
+        "prismFeather": 55
+      },
+      "frame": {},
+      "looks": []
+    }
+  ]
+}
