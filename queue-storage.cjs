@@ -1,0 +1,3 @@
+const fs=require('node:fs/promises'),path=require('node:path');
+function setup({ipcMain,root}){const file=path.join(root,'export-queue.json');let writes=Promise.resolve();ipcMain.handle('queue-load',async()=>{await writes.catch(()=>{});try{return JSON.parse(await fs.readFile(file,'utf8'));}catch(e){if(e.code==='ENOENT')return [];throw e;}});ipcMain.handle('queue-save',(_,jobs)=>{if(!Array.isArray(jobs)||jobs.length>1000)throw Error('Invalid export queue');const text=JSON.stringify(jobs);if(Buffer.byteLength(text)>64*1024*1024)throw Error('Export queue is too large to save');const next=writes.catch(()=>{}).then(async()=>{await fs.writeFile(file+'.tmp',text);await fs.rename(file+'.tmp',file);});writes=next;return next;});}
+module.exports={setup};

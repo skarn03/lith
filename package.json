@@ -20,7 +20,12 @@
     "test:playful": "node playful-tests.cjs && node playful-ui-tests.cjs",
     "test:fonts": "node font-ui-tests.cjs",
     "test:community": "node community-ui-tests.cjs",
-    "test:look-favorites": "node look-favorites-ui-tests.cjs"
+    "test:look-favorites": "node look-favorites-ui-tests.cjs",
+    "test:search-queue": "node search-queue-ui-tests.cjs",
+    "test:settings": "node settings-hub-ui-tests.cjs",
+    "test:removal": "node photo-removal-tests.cjs && node photo-removal-ui-tests.cjs",
+    "test:recovery": "node renderer-recovery-tests.cjs && node recovery-ui-tests.cjs",
+    "test:preview-quality": "node preview-policy-tests.cjs && node preview-quality-ui-tests.cjs"
   },
   "private": true,
   "devDependencies": {
@@ -29,10 +34,13 @@
     "electron-builder": "26.15.3"
   },
   "overrides": {
-    "@electron-internal/extract-zip": "1.0.5"
+    "@electron-internal/extract-zip": "1.0.5",
+    "sharp": "0.35.4"
   },
   "dependencies": {
+    "@huggingface/transformers": "3.8.1",
     "electron-updater": "6.8.9",
+    "exifr": "7.1.3",
     "libraw-wasm": "1.6.0",
     "pngjs": "7.0.0"
   },

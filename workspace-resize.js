@@ -8,7 +8,7 @@ const docks=Object.fromEntries([...root.querySelectorAll('.workspace-dock')].map
 const valid=n=>Number.isFinite(n)&&n>0;
 const save=()=>{try{localStorage.setItem(key,JSON.stringify(sizes));}catch{}};
 function apply(){
- const available=Math.max(0,root.clientWidth-280),left=valid(sizes.left)?sizes.left:(innerWidth<=1150?190:224),right=valid(sizes.right)?sizes.right:(innerWidth<=1150?292:320);
+ const available=Math.max(0,root.clientWidth-280),left=valid(sizes.left)?sizes.left:(innerWidth<=1150?224:280),right=valid(sizes.right)?sizes.right:(innerWidth<=1150?292:320);
  const scale=Math.min(1,available/(left+right));
  root.style.setProperty('--workspace-left',Math.round(left*scale)+'px');
  root.style.setProperty('--workspace-right',Math.round(right*scale)+'px');

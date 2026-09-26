@@ -19,6 +19,9 @@ async function ingest(paths){const project=Projects.project(catalog,catalog.acti
 app.whenReady().then(async()=>{if(!ownsLibrary)return;await fs.mkdir(path.join(root,'originals'),{recursive:true});try{catalog=JSON.parse(await fs.readFile(path.join(root,'catalog.json'),'utf8'));}catch(e){if(e.code!=='ENOENT'){await dialog.showMessageBox({type:'error',message:'The photo library could not be read.',detail:'Your files have been preserved. '+e.message});app.quit();return;}}
 Projects.normalize(catalog);await persist();
 require('./batch-service.cjs').setup({ipcMain,getCatalog:()=>catalog,persist,root,chooseExportFolder});
+require('./queue-storage.cjs').setup({ipcMain,root});
+require('./photo-removal-service.cjs').setup({ipcMain,getCatalog:()=>catalog,persist});
+require('./search-service.cjs').setup({ipcMain,getCatalog:()=>catalog,root,nativeImage,Raw,Formats,app});
 ipcMain.handle('catalog',()=>catalog);
 ipcMain.handle('project',async(_,action)=>{
  if(action.type==='create'){const name=String(action.name||'Untitled project').trim().slice(0,60)||'Untitled project';const p={id:crypto.randomUUID(),name,settings:Projects.defaults(),selected:null};catalog.projects.push(p);catalog.activeProjectId=p.id;catalog.selected=null;}
@@ -46,7 +49,7 @@ ipcMain.handle('quick-export',async(_,data)=>{const photo=catalog.photos.find(p=
 ipcMain.handle('export',async(_,data)=>{if(!['png','jpeg','webp'].includes(data.format)||typeof data.base64!=='string')throw Error('Invalid export');const result=await dialog.showSaveDialog(win,{defaultPath:data.name.replace(/\.[^.]+$/,'')+'-edited.'+(data.format==='jpeg'?'jpg':data.format),filters:[{name:'Edited image',extensions:[data.format==='jpeg'?'jpg':data.format]}]});if(result.canceled)return false;const target=path.resolve(result.filePath);if(target.toLowerCase().startsWith(path.resolve(root).toLowerCase()+path.sep))throw Error('Choose a location outside the internal photo library.');await fs.writeFile(target,Buffer.from(data.base64,'base64'));if(data.projectId){Projects.project(catalog,data.projectId).exportFolder=path.dirname(target);await persist();}return true;});
 win=new BrowserWindow({width:1480,height:960,minWidth:1000,minHeight:720,backgroundColor:'#292929',title:'Lith — Photo Studio',autoHideMenuBar:true,webPreferences:{preload:path.join(__dirname,'preload.cjs'),contextIsolation:true,nodeIntegration:false,sandbox:true}});
 require('./second-display.cjs').setupSecondDisplay(win);
-let closing=false;win.on('close',event=>{if(closing)return;event.preventDefault();win.webContents.executeJavaScript('typeof flush === "function" ? flush() : Promise.resolve()').then(()=>{closing=true;win.close();}).catch(error=>dialog.showMessageBox(win,{type:'error',message:'Edits could not be saved. Please try closing again.',detail:error.message}));});
-win.webContents.setWindowOpenHandler(()=>({action:'deny'}));win.webContents.on('will-navigate',e=>e.preventDefault());require('./updater.cjs').setupUpdates(win,async()=>{await win.webContents.executeJavaScript("typeof flush === 'function' ? flush() : Promise.resolve()");await queue;closing=true;});await win.loadFile(path.join(__dirname,'index.html'));
+const lifecycle=require('./app-lifecycle.cjs').setup({win,app,dialog,saveMain:()=>queue});
+win.webContents.setWindowOpenHandler(()=>({action:'deny'}));win.webContents.on('will-navigate',e=>e.preventDefault());require('./updater.cjs').setupUpdates(win,async()=>{await win.webContents.executeJavaScript("typeof flush === 'function' ? flush() : Promise.resolve()");await win.webContents.executeJavaScript('window.exportQueue?.persist ? exportQueue.persist() : Promise.resolve()');await queue;lifecycle.approve();});await win.loadFile(path.join(__dirname,'index.html'));
 });
 app.on('window-all-closed',()=>app.quit());

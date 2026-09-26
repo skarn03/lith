@@ -12,7 +12,7 @@ function setup({ipcMain,getCatalog,persist,root,chooseExportFolder}){
  ipcMain.handle('batch-export-begin',async(event,request)=>{
   const catalog=getCatalog(),project=catalog.projects.find(p=>p.id===request.projectId);
   if(!project||!['jpeg','png','webp'].includes(request.format)||!Array.isArray(request.ids)||!request.ids.length||request.ids.length>1000)throw Error('Invalid batch export.');
-  if(exports.size)throw Error('Another batch export is already running.');
+  if(exports.size>=1000)throw Error('Too many pending export groups.');
   const photos=request.ids.map(id=>{const p=catalog.photos.find(p=>p.id===id&&p.projectId===project.id);if(!p)throw Error('A selected photo moved to another project.');return {id:p.id,name:p.name};});
   const folder=project.exportFolder||await chooseExportFolder(project.id);if(!folder)return null;
   const real=await fs.realpath(folder),library=await fs.realpath(root);

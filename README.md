@@ -18,6 +18,22 @@ A free, open-source, offline photo editor for Windows and Mac. Create film-inspi
 
 ![Current Lith workspace: photo, gallery, Looks, Develop, Nodes and Scopes](docs/images/ui-dark.jpg)
 
+## A roomier Gallery · Settings together
+
+Gallery opens wider with larger thumbnails, colorful controls and a compact search toolbar. Project selection and creation sit beside the Lith logo. **Settings** brings Project, Export, Keyboard, Workspace, Local AI search, and Updates & library into one tabbed window. The sparkle beside Gallery search opens the same AI settings directly, including Index gallery now. Existing custom workspace sizes are preserved.
+
+![Compact Gallery with project controls beside the logo](docs/images/ui-gallery-settings.jpg)
+
+![Unified settings in Soft white](docs/images/ui-settings-hub.jpg)
+
+## Export while you edit · Search your gallery
+
+Use **Add to queue** beside Export to keep a snapshot of a photo's edits without exporting or opening a settings dialog. Open **Queue** to review or remove entries, then **Export queue…** to choose project-specific format, sharpening and destination. Original resolution and 100% quality are the defaults; PNG is lossless. Auto-export of new additions is **off by default** and can be enabled explicitly. Exports run in the background, and existing filenames receive numbers. Queued edits are saved locally and restored after restart, with automatic export off.
+
+**Gallery → Search photos** finds filenames or camera makes/models within the current project. Camera search uses available embedded metadata. Search starts automatically one second after typing stops, combining filename and camera matches with visual matches when AI is enabled. For scenes such as “rainy street” or “flowers”, explicitly download and enable the optional model (about 150 MB). There is no filter dropdown; direct text matches appear ahead of approximate visual matches. Indexing uses small original-image previews in a background worker, pauses between photos while you edit or export, and can be paused manually. Images and search text stay on your computer; the initial model download contacts Hugging Face. Search works offline after setup and returns approximate matches among indexed photos. [Model and dependency details](THIRD-PARTY-AI.md).
+
+![Gallery search and export queue while editing](docs/images/ui-search-queue.jpg)
+
 ## User-made · Dream Bloom
 
 Eight dreamy, cinebloom-style recipes by **skarn03**: **Moss & Mist, Midnight Halo, Sage Cinema, Velvet Bloom, Vivid Reverie, Luminous Drift, Dreamspill and Daylight Veil**. Find them under **Looks → filter icon → User-made · Dream Bloom**, with creator tags on their photo previews. Preview first, apply when ready, then blend their strength.

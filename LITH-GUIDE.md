@@ -246,7 +246,7 @@ Use **Select photos** above the contact sheet, then click photos or their check 
 
 **Sync edits…** uses the photo and node currently open in Develop as the source and applies to the other selected photos. Choose Light, Color, Detail, Effects, Layered looks, Masks, Crop & frame, or Text. The default excludes Masks, Frame and Text. Choose each destination photo’s saved selected node (or its first node) or add a new node. Only checked sections are replaced; this does not flatten or replace whole node stacks. **Undo batch sync** reverses the last batch in this session, provided those destination settings have not subsequently changed. Conflicting changes block the whole operation instead of silently overwriting newer work.
 
-**Batch export…** offers JPEG/WebP at 100% quality or lossless PNG, original resolution or a smaller longest edge, and independent Screen/Print sharpening. High-precision photos export 16-bit PNG. Choose the folder once; it is remembered per project. The queue freezes the selected edit settings and destination when started, processes one photo at a time in a worker, and lets you continue editing or switch projects. Existing files are retained using numbered names. Individual failures are listed while the queue continues. **Cancel remaining** lets the current photo finish and skips the rest. Keep Lith open until completion; the queue is not persisted across restarts.
+**Batch export…** offers JPEG/WebP at 100% quality or lossless PNG, original resolution or a smaller longest edge, and independent Screen/Print sharpening. High-precision photos export 16-bit PNG. Choose the folder once; it is remembered per project. The queue freezes the selected edit settings and destination when started, processes one photo at a time in a worker, and lets you continue editing or switch projects. Existing files are retained using numbered names. Individual failures are listed while the queue continues. **Cancel unfinished** cancels waiting jobs and stops an active render; a file already being written is allowed to finish. Keep Lith open for active exports to finish. Unfinished queue snapshots are saved locally and return as ready-to-export entries after restart.
 
 ### Share looks with your community
 Use **Share look** beside the Looks browser to export your current edits or a saved custom look as a `.lithlook` file. Add a name, description and optional creator credit. Send the file yourself through your community, messaging or a download link. Lith does not upload it or require an account.
@@ -340,3 +340,56 @@ Choose **User-made · Light Studies** in the Looks filter for 12 Lith Studio eff
 ## Favorite looks
 
 Click the **heart** at the top-right of a look thumbnail to favorite it. A filled pink heart means saved. This does not preview or apply the look. Click **Favorites** above the thumbnails to show your saved choices; category and search still apply. Favorites are stored on this device across projects and app restarts. The icon supports Tab navigation and Enter/Space. Click again to remove a favorite.
+
+
+## Export queue and Gallery search
+
+**Add to queue** beside Export immediately stores the current photo's edit snapshot. It opens no settings or folder dialog and does not start exporting. Open **Queue · N** to review entries; **Remove** drops an entry without touching its photo or saved edits. **Export queue…** opens the export settings only when you are ready. For queues spanning projects, choose which project's entries to export; other projects stay queued. The dialog starts with that project's format, sharpening and destination, original resolution, and 100% quality (PNG is lossless). You may resize explicitly and optionally save the choices as project export defaults.
+
+**Auto-export new additions** is unchecked each time Lith starts. When enabled, new entries export using their project's format, sharpening and saved destination at original resolution/100% quality. If no destination is saved, they remain queued until you choose one at export. Existing entries remain queued. **Stop exports** cancels pending/active renders; saving a file already in progress finishes. Clear finished removes completed entries. Queued snapshots are saved locally and restored after restarting. Interrupted jobs return to Ready, with automatic export off. A file that finished writing just before an interruption may be exported again under a numbered filename.
+
+**Gallery → Search photos** searches the current project's filenames and/or camera make/model. Camera metadata is read in the background and is unavailable when the file does not contain supported tags. Clearing the field restores the gallery; the existing Favorites filter still applies.
+
+For optional content search, expand **Optional AI search → Download & enable**. This downloads about 150 MB from Hugging Face once. Type a filename, camera or scene in the single search box. Search runs automatically one second after typing stops; Enter searches immediately. Filename and camera matches take priority, with AI-ranked visual matches included when enabled. There is no search-mode dropdown. The local CLIP model ranks up to 50 closest indexed photos. Results are approximate, based on original photos, and are not guaranteed object recognition. Initial indexing takes time; the count shows progress. Indexing pauses between images while you edit/export. Pause indexing lets the current image finish; Resume retries skipped images. Turn off AI stops future AI work, retaining the downloaded model/index for reuse. After setup the model and searches work locally without uploading photos or queries. AI adds memory/CPU usage while indexing or querying and releases its worker after inactivity. See THIRD-PARTY-AI.md for model and license information.
+
+
+### Index gallery now
+
+In **Gallery → Optional AI search**, enable the model once, then click **Index gallery now**. This indexes missing photos in the current project, including photos hidden by search or Favorites. A counter and progress bar show completed photos. It skips the normal idle wait so it can continue while you use the app, but still waits for queued exports. **Pause indexing** lets the current photo finish and pauses further AI indexing. Background indexing resumes with Resume indexing; Index gallery now starts immediate indexing again. Switching projects returns to normal background indexing.
+
+Indexing analyzes a small preview of each original and saves a numerical description locally. Searching compares your words to these descriptions. It does not modify originals or train a new model on your photos. Existing records are reused, so only missing photos need analysis. Results reflect originals rather than your latest edits.
+
+
+## Gallery and the Settings hub
+
+Find the project picker, New project (+), and project settings beside the Lith logo. The **Settings** button opens tabs for Project, Export, Keyboard, Workspace, Local AI search, and Updates & library. Project names/notes and export defaults use Save settings; shortcuts, appearance and export sharpening retain their automatic saving behavior. Export includes the quick-save folder. Workspace includes themes, workspace customization, Best display preview, and available second-monitor controls.
+
+Gallery is wider by default (280 px on larger windows) with bigger thumbnails and fewer controls above the photos. Existing user-resized layouts are respected; double-click the left workspace divider to restore the new default. Click the colored sparkle in the search box to manage AI downloads/indexing. Detailed AI explanations are in Settings rather than taking up photo browsing space. Search is still automatic after one second of inactivity.
+
+
+## Remove imported photos
+
+Photos without multiple versions have no Original/Copy badge. When versions exist, the badge identifies the displayed version and opens the copy picker. Hover or right-click any gallery photo to reach **Remove**. For multiple photos, use **Select photos**, select the thumbnails, then **Remove…**.
+
+The confirmation defaults to removing only selected versions; enable **Include all virtual copies** to remove their other versions in the same project too. Other projects and source files are untouched. A surviving virtual copy still opens normally even if its original version was removed. **Undo removal** restores the most recent removal and its saved edits during the current session. Lith retains imported files and removed edit records, so this action hides photos from the project rather than freeing disk space. Finish or cancel a photo's queued exports before removing it.
+
+
+### Cleaner selection
+
+Use **Select photos**, then click thumbnails or their empty selection circles. Selected photos show a checkmark, with no plus icons. **Select all** selects all photos currently shown by Gallery's search/favorites filters. **Clear** clears the selection. Batch sync, export and removal remain available in the compact selection toolbar.
+
+
+## Restarting and recovering a preview
+
+**Ctrl+R** (Command+R on Mac) saves current edits and the export queue, then restarts the whole application. Normal closing does the same saving without restarting. If the editing window does not respond within 10 seconds, Lith offers Keep open or Force close/restart. Forced recovery can lose changes that have not reached disk.
+
+Preview workers have a timeout. A stalled render is retried using a smaller CPU preview; its status reads Recovery quality. **Retry preview** starts a fresh normal render. This recovery affects only the on-screen preview, not export resolution. Queue thumbnail generation waits while the main image is refining or an export is running.
+
+
+## Best preview by default
+
+**Best** is the default preview mode. At Fit, Lith renders for the displayed photo size and the monitor's pixel density, with 1.5× sampling headroom (up to the original image size). It no longer renders the entire original merely because Best is enabled. **Balanced** uses display resolution without that extra headroom. Both leave export quality unchanged.
+
+Interactive previews start at a higher resolution and do not drop below 1280 pixels on the longest edge unless the original is smaller. Best mode also protects the displayed pixel count up to its 2560-pixel interactive budget. Refinement begins after 160 ms of inactivity; another edit cancels obsolete refinement. At 100% zoom, supported stacks use source-resolution visible-area detail; stacks requiring whole-image processing still render the original and can take longer.
+
+On a local 3840×2560 test image in a 642×492 preview area, the previous HQ path took median 356 ms for basic tone and 7594 ms with diffusion/glow. The new Best Fit path took 23 ms and 529 ms respectively, rendering a 1280-pixel preview rather than the whole source. This is a specific local benchmark, not a guarantee for other photos, displays or effects. Source-detail checks at 100% preserved the neutral test image's pixels exactly.
