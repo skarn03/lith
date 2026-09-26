@@ -18,6 +18,31 @@ A free, open-source, offline photo editor for Windows and Mac. Create film-inspi
 
 ![Current Lith workspace: photo, gallery, Looks, Develop, Nodes and Scopes](docs/images/ui-dark.jpg)
 
+## Creative light, motion and lens effects
+
+Open **Effects → Creative**. Each tool has its own collapsible card, strength control and reset. Changes belong to the selected node and support undo, copies, batch sync and saved/shared looks.
+
+- **Shutter drag:** directional motion trails with a movable, softly protected sharp area.
+- **Bokeh painter:** paint round or hexagonal light discs directly onto the photograph; adjust color, size and soft edges.
+- **Fisheye lens:** bend the scene around a movable lens center.
+- **Color bleeding:** spread color into neighboring edges while retaining brightness detail.
+- **Darkroom light leaks:** place a colored, elongated wash of light with angle and spread controls.
+- **Artificial light placement:** click to add soft pools of colored light. This is an artistic overlay, without depth estimation or physical shadows.
+
+![Creative tools in Lith, with bokeh placed on the photograph and preview status beside the zoom controls](docs/images/ui-creative.jpg)
+
+These examples were exported by Lith from the same [original sample](docs/images/sample-town.jpg), with each effect applied separately:
+
+| Shutter drag | Fisheye lens |
+| --- | --- |
+| ![Directional shutter trails with a protected sharp area](docs/images/creative-shutter.jpg) | ![Fisheye lens distortion](docs/images/creative-fisheye.jpg) |
+| **Color bleeding** | **Darkroom light leak** |
+| ![Soft color bleeding around edges](docs/images/creative-bleeding.jpg) | ![Warm light fog entering the left edge](docs/images/creative-leaks.jpg) |
+| **Painted bokeh** | **Artificial light placement** |
+| ![Manually placed bokeh discs](docs/images/creative-bokeh.jpg) | ![A soft warm light placed on the left](docs/images/creative-lighting.jpg) |
+
+The indicator beside the zoom controls distinguishes **Quick preview · refining**, **fit-quality preview**, **full-resolution preview** and **100% visible-area detail**. Preview size never reduces export resolution. These creative effects run in background workers and use whole-image rendering rather than the tiled path; complex stacks and large exports take longer.
+
 ## Your workspace, your way
 
 Drag a panel by its icon, title or move handle in **Customize workspace**. Drop onto another title to group panels as tabs—the highlighted target shows where it will land. Arrange panels side by side or vertically, detach individual Develop sections, resize dividers, and save your layout automatically. Reset restores the default workspace.

@@ -1,7 +1,7 @@
 const TiledEngine=(()=>{
 const tileSize=768;
 function plan(s,w,h){let halo=0,reason=(s.rotation||s.straighten||s.flip||s.flipV||s.crop||(s.cropScale??100)!==100)?'Transformed geometry uses the whole-image sampler to preserve exact interpolation.':'';const radius=r=>halo+=3*Math.max(1,Math.round(r));
- function operation(p){if(p.prism||p.doubleAmount||p.flare||p.vignette||p.grain||p.matte||(p.masks||[]).some(m=>m.enabled!==false)||(p.textLayers||[]).length){reason='This stack contains an operation that needs whole-image context.';return;}
+ function operation(p){if(Creative.Playful.active(p)||p.prism||p.doubleAmount||p.flare||p.vignette||p.grain||p.matte||(p.masks||[]).some(m=>m.enabled!==false)||(p.textLayers||[]).length){reason='This stack contains an operation that needs whole-image context.';return;}
  if(p.denoise)radius(Math.max(.5,Math.min(w,h)*.0015));for(const [amount,r]of [[p.clarity,.014],[p.texture,.0023],[p.sharpen,.0008]])if(amount)radius(Math.max(.5,Math.min(w,h)*r));
  if(p.diffusion){radius(Math.max(w,h)*(.0004+p.diffusionRadius*.00006));if(p.diffusionScatter)radius(Math.max(w,h)*(.004+p.diffusionRadius*.00035));}
  if(p.glow)radius(Math.max(w,h)*(.001+p.glowRadius*.0004));if(p.halation){const r=Math.max(w,h)*(.001+p.halationRadius*.00035);for(const [mult,amount]of [[.22,p.halationTight],[1,p.halationMid],[3.1,p.halationWide]])if(amount)radius(Math.max(.7,r*mult));}}

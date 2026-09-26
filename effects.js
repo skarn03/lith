@@ -5,7 +5,7 @@ const extraDefaults={clarity:0,texture:0,sharpen:0,denoise:0,grainSize:35,grainR
 Object.assign(extraDefaults,Optics.defaults,Creative.defaults);
 const colorBands=[['Red',0],['Orange',30],['Yellow',60],['Green',120],['Aqua',180],['Blue',240],['Purple',275],['Magenta',315]];
 for(const [name]of colorBands)for(const control of ['Hue','Sat','Lum'])extraDefaults['hsl'+name+control]=0;
-const nodeTypes=[['light','Light & curve','light'],['color','Color mixer','color'],['grade','Color grading','color'],['detail','Detail','detail'],['masks','Local masks','mask'],['bloom','Optical effects','effects'],['film','Film finish','effects'],['prism','Prism & glass','effects'],['double','Double exposure','effects'],['darkroom','Darkroom printing','color'],['vignette','Vignette','effects']];
+const nodeTypes=[...Creative.Playful.types.map(k=>[k,({shutter:'Shutter drag',fisheye:'Fisheye',colorBleed:'Color bleeding',lightLeak:'Light leaks',bokeh:'Bokeh painter',relight:'Artificial lights'})[k],'effects']),['light','Light & curve','light'],['color','Color mixer','color'],['grade','Color grading','color'],['detail','Detail','detail'],['masks','Local masks','mask'],['bloom','Optical effects','effects'],['film','Film finish','effects'],['prism','Prism & glass','effects'],['double','Double exposure','effects'],['darkroom','Darkroom printing','color'],['vignette','Vignette','effects']];
 extraDefaults.nodes=[];extraDefaults._schema=4;
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
 const canvasFor=(w,h)=>{const c=typeof document==='undefined'?new OffscreenCanvas(w,h):document.createElement('canvas');c.width=w;c.height=h;return c;};

@@ -24,6 +24,7 @@ function resolveFrame(s){if(s._schema!==6)return s;for(const k of compositionKey
 function render(img,input,max=0,original=false){const s=original?structuredClone(defaults):{...defaults,...input};const w=img.naturalWidth||img.width,h=img.naturalHeight||img.height,{g,data}=base(img,s,max),canvas=canvasFor(g.width,g.height),ctx=canvas.getContext('2d',{willReadFrequently:true,colorSpace:'srgb'});ctx.putImageData(data,0,0);if(original)return canvas;
 let pending=null;const flushPixels=()=>{if(pending){ctx.putImageData(pending,0,0);pending=null;}};const modify=fn=>{pending||=ctx.getImageData(0,0,g.width,g.height);fn(pending.data);};
 function run(operation,p){if(['diffusion','glow','flare','halation','detail','bloom'].includes(operation)){const needed=operation==='detail'?(p.clarity||p.texture||p.sharpen||p.denoise):operation==='bloom'?(p.diffusion||p.glow||p.flare||p.halation||input.previewGate):operation==='glow'?(p.glow||input.previewGate):p[operation];if(!needed)return;flushPixels();}switch(operation){
+case 'shutter':case 'fisheye':case 'colorBleed':case 'lightLeak':case 'bokeh':case 'relight':if(p[operation])modify(d=>Creative.Playful.apply(d,g.width,g.height,p,operation));break;
 case 'diffusion':FX.Optics.diffusion(canvas,p);break;
 case 'glow':if(input.previewGate)ctx.drawImage(FX.Optics.gatePreview(canvas,p),0,0);else FX.Optics.bloom(canvas,p);break;
 case 'flare':FX.Optics.flare(canvas,p);break;

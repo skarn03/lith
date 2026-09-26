@@ -16,6 +16,8 @@ const {_electron}=require('playwright'),fs=require('node:fs/promises'),path=requ
   await page.evaluate(()=>flush());
   const saved=JSON.parse(await fs.readFile(path.join(data,'catalog.json'),'utf8'));
   assert.equal(saved.photos[0].settings.nodes[0].adjustments.exposure,.25);
+  await page.evaluate(()=>mutate(()=>Object.assign(settings,{shutter:35,bokeh:60,bokehPoints:[{x:.4,y:.4,size:1,strength:1}]})));
+  await page.waitForFunction(()=>document.getElementById('photo').dataset.settled==='true',null,{timeout:60000});
   const rawFile=path.join(data,'fixture.dng');
   await fs.writeFile(rawFile,require('./raw-test-fixture.cjs')());
   await app.evaluate(({dialog},file)=>dialog.showOpenDialog=async()=>({canceled:false,filePaths:[file]}),rawFile);

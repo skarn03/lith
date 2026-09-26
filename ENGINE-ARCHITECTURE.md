@@ -1,4 +1,4 @@
-# Image engine · 0.15
+# Image engine · 0.16
 
 Electron and the existing editor remain intact. Edits are nondestructive parameter documents; originals are never overwritten. `render-client.js` handles worker messaging, while `image-engine.js` is the Electron-independent rendering boundary. Native/Rust backends can later implement this same parameter contract without replacing the controls.
 
@@ -64,3 +64,11 @@ A 3000×2000 CPU PNG benchmark measured whole-image 682 ms versus streaming 1041
 Before/after warmed GPU measurements at 1024px: color 10.2 → 8.9 ms, glow 12.5 → 14.6 ms, diffusion 16.2 → 22.5 ms, halation 25.9 → 21.1 ms, masks 13.0 → 9.2 ms, grain 10.1 → 8.3 ms, detail 19.6 → 19.0 ms. There is no uniform speedup; these runs include timing variability and retain the existing GPU kernels for legacy inputs. Linear-light RAW optical processing is a quality change with its own cost.
 
 `npm run test:raw-pipeline` tests synthetic DNG development/cache variants, undo/redo/reopen, visible 1:1 detail while panning, export dimensions/color tags and whole-image/tile parity. Point, detail, optical and modern RAW optical CPU tile output matched exactly; modern RAW optical GPU/CPU differed by less than 0.0001 in 0–255 float units in the fixture. Geometry/resizing fallback is tested explicitly. No real camera RAW files were available for this controls update; synthetic coverage does not establish support for every model or compression. `npm run benchmark:tiles` reproduces the PNG memory-allocation/time comparison using an isolated temporary library.
+
+## Creative effects (0.16)
+
+`playful-effects.js` is shared by legacy and float processing. Directional shutter blur uses sliding sums along integer rays (linear pixel work rather than sampling a long trail independently per pixel). Fisheye uses monotonic radial inverse sampling; color bleeding uses separable box filtering of chroma with preserved luminance. Bokeh and artificial lights rasterize bounded regions around persisted normalized points. Light leaks use an elliptical falloff. Effects are neutral at zero strength and deterministic; bokeh size variation is stored with the points.
+
+These operations execute through the float engine’s worker CPU boundary, retaining float channels; the legacy renderer uses its existing 8-bit path. Tiled planning rejects active creative effects to avoid incorrect global placement or seams. No depth estimation, camera lens calibration or physical light transport is implied. Effect array lengths and shared colors/numbers are validated on look import. The UI limits each node to 160 bokeh discs and 16 artificial lights.
+
+A local 1024px single-effect check measured CPU worker render times of 54 ms shutter, 52 ms fisheye, 41 ms bleeding, 18 ms leaks, 5 ms bokeh (one disc) and 22 ms artificial light (one light). These are single local measurements, not a hardware guarantee or before/after speed claim. Auto/GPU paths include CPU readback and measured 15–69 ms; display output differed by at most one 8-bit channel value. Full-resolution PNG export retained 16-bit output. `npm run test:playful` covers actual pointer placement, stroke undo/redo, persistence, transfer keys, float fallback parity and export. `npm test` adds neutral identity, deterministic output, finite values, constant-alpha preservation, flat-field motion invariance, chroma/luminance behavior and share-file validation.

@@ -1,3 +1,22 @@
+# Lith 0.16.0
+
+**[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**
+
+- New **Effects → Creative** section with distinct icons, collapsible controls and per-effect reset.
+- **Shutter drag:** directional trails and a movable sharp subject area.
+- **Bokeh painter:** paint round or hexagonal discs with color, size and softness controls; undo a whole stroke.
+- **Fisheye:** adjustable lens distortion with a click-to-place center.
+- **Color bleeding:** spread colors while retaining brightness detail.
+- **Darkroom light leaks:** colored washes with placement, angle and spread.
+- **Artificial light placement:** click to add soft colored lights, independently grouped by node.
+- Preview status beside the zoom controls: quick/refining, fit quality, full resolution or 100% visible detail.
+- Painted placements persist through save/reopen, undo/redo, node/tab copying, batch sync and community look sharing.
+- README now includes current controls and six real exported examples.
+
+These are creative simulations, not lens correction or depth-aware relighting. New effects run in background workers with float processing and safe whole-image fallback. High-resolution stacks may take longer; no blanket speedup is claimed. Mac builds remain not Apple-notarized and Windows builds remain unsigned.
+
+---
+
 # Lith 0.15.0
 
 **[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**

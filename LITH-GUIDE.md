@@ -292,3 +292,20 @@ Click a look or browse with arrow keys to preview it. The dashed outline and Pre
 ### Scopes
 
 Scopes starts beside Nodes below the photo, approximately 230 pixels wide. Choose RGB histogram, luminance histogram, luma waveform or RGB parade from its selector. The scope type is remembered. Waveform shows horizontal photo position against brightness (100% at top, 0% at bottom); parade separates red, green and blue. Scopes analyze a reduced sample of the displayed preview after rendering settles, including temporary look previews. They represent displayed tones, not original RAW sensor values. The panel can be moved, grouped and resized like other panels. Reset layout restores the Nodes/Scopes arrangement.
+
+### Creative motion, lens effects and painted lights (0.16)
+
+Choose **Develop → Effects → Creative**. Open only the card you need; raise its Strength to apply it. Each effect has a Reset button. All settings belong to the selected node, so bypassing that node, copying Effects, virtual copies and batch sync include these tools. Custom/shared looks include painted light placements.
+
+| Tool | How to use it |
+| --- | --- |
+| Shutter drag | Set Strength, Trail length and Direction. Use **Place sharp area** and click your subject; Keep subject sharp controls the protected area, with a soft transition into motion. |
+| Fisheye lens | Increase Lens strength, then use **Place lens center** to choose the center of distortion. |
+| Color bleeding | Raise Strength and Color spread. The effect spreads chroma while preserving luminance before output gamut clipping. |
+| Darkroom light leaks | Choose a color, Strength, Spread and Direction. **Place light leak** positions it anywhere; an edge placement resembles light-fogged film. |
+| Bokeh painter | Choose color, Disc size, Soft edges and Round/Hexagonal aperture. Click **Paint bokeh**, then click or drag on the photo. One stroke is one Undo step. |
+| Artificial light placement | Choose color and spread, click **Place lights**, then click the photo to add lights. Strength and spread affect the placed lights together. |
+
+**Done placing** or Escape exits placement. Changing photo, node, tool or effect family exits placement too. The painter allows 160 discs per node; artificial lighting allows 16 lights per node. **Remove last disc/light** removes the latest placement; Reset clears that tool. Adding another node gives you another independently colored set of lights. Placements use normalized positions within the edited frame, so they scale with export size; changing the crop reframes the photo beneath them. These are artistic treatments, not lens-profile correction, depth-aware relighting or true optical depth of field.
+
+The preview-status pill beside HQ/zoom says whether a quick image is refining, a fit-quality image is ready, a full-resolution image is ready, or a 100% visible region has been refined. It describes source resolution, not display bit depth or export settings. New creative tools run in the rendering worker and preserve float intermediates in High precision mode; they currently use whole-image fallback, so demanding stacks may take longer at full size.
