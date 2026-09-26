@@ -1,0 +1,235 @@
+{
+  "version": "0.15.0",
+  "environment": "Development Windows PC; native Electron 44; local warmed runs, not a cross-device guarantee",
+  "before_1024px": [
+    {
+      "type": "color",
+      "backend": "cpu-float32",
+      "medianMs": 92.3
+    },
+    {
+      "type": "color",
+      "backend": "webgpu-float32",
+      "medianMs": 10.2
+    },
+    {
+      "type": "color",
+      "maxError": 1,
+      "meanError": 7.81818595342067e-06
+    },
+    {
+      "type": "glow",
+      "backend": "cpu-float32",
+      "medianMs": 170.6
+    },
+    {
+      "type": "glow",
+      "backend": "webgpu-float32",
+      "medianMs": 12.5
+    },
+    {
+      "type": "glow",
+      "maxError": 1,
+      "meanError": 5.330581331877729e-06
+    },
+    {
+      "type": "diffusion",
+      "backend": "cpu-float32",
+      "medianMs": 303.9
+    },
+    {
+      "type": "diffusion",
+      "backend": "webgpu-float32",
+      "medianMs": 16.2
+    },
+    {
+      "type": "diffusion",
+      "maxError": 1,
+      "meanError": 4.975209243085881e-06
+    },
+    {
+      "type": "halation",
+      "backend": "cpu-float32",
+      "medianMs": 464.4
+    },
+    {
+      "type": "halation",
+      "backend": "webgpu-float32",
+      "medianMs": 25.9
+    },
+    {
+      "type": "halation",
+      "maxError": 1,
+      "meanError": 3.909092976710335e-06
+    },
+    {
+      "type": "masks",
+      "backend": "cpu-float32",
+      "medianMs": 62.9
+    },
+    {
+      "type": "masks",
+      "backend": "webgpu-float32",
+      "medianMs": 13
+    },
+    {
+      "type": "masks",
+      "maxError": 1,
+      "meanError": 2.4876046215429403e-06
+    },
+    {
+      "type": "grain",
+      "backend": "cpu-float32",
+      "medianMs": 21.7
+    },
+    {
+      "type": "grain",
+      "backend": "webgpu-float32",
+      "medianMs": 10.1
+    },
+    {
+      "type": "grain",
+      "maxError": 1,
+      "meanError": 5.152895287481805e-05
+    },
+    {
+      "type": "detail",
+      "backend": "cpu-float32",
+      "medianMs": 451.7
+    },
+    {
+      "type": "detail",
+      "backend": "webgpu-float32",
+      "medianMs": 19.6
+    },
+    {
+      "type": "detail",
+      "maxError": 1,
+      "meanError": 1.0661162663755458e-05
+    }
+  ],
+  "after_1024px": [
+    {
+      "type": "color",
+      "backend": "cpu-float32",
+      "medianMs": 95.2
+    },
+    {
+      "type": "color",
+      "backend": "webgpu-float32",
+      "medianMs": 8.9
+    },
+    {
+      "type": "color",
+      "maxError": 1,
+      "meanError": 7.81818595342067e-06
+    },
+    {
+      "type": "glow",
+      "backend": "cpu-float32",
+      "medianMs": 181.5
+    },
+    {
+      "type": "glow",
+      "backend": "webgpu-float32",
+      "medianMs": 14.6
+    },
+    {
+      "type": "glow",
+      "maxError": 1,
+      "meanError": 5.330581331877729e-06
+    },
+    {
+      "type": "diffusion",
+      "backend": "cpu-float32",
+      "medianMs": 317.6
+    },
+    {
+      "type": "diffusion",
+      "backend": "webgpu-float32",
+      "medianMs": 22.5
+    },
+    {
+      "type": "diffusion",
+      "maxError": 1,
+      "meanError": 4.975209243085881e-06
+    },
+    {
+      "type": "halation",
+      "backend": "cpu-float32",
+      "medianMs": 488.3
+    },
+    {
+      "type": "halation",
+      "backend": "webgpu-float32",
+      "medianMs": 21.1
+    },
+    {
+      "type": "halation",
+      "maxError": 1,
+      "meanError": 3.909092976710335e-06
+    },
+    {
+      "type": "masks",
+      "backend": "cpu-float32",
+      "medianMs": 64.8
+    },
+    {
+      "type": "masks",
+      "backend": "webgpu-float32",
+      "medianMs": 9.2
+    },
+    {
+      "type": "masks",
+      "maxError": 1,
+      "meanError": 2.4876046215429403e-06
+    },
+    {
+      "type": "grain",
+      "backend": "cpu-float32",
+      "medianMs": 24.4
+    },
+    {
+      "type": "grain",
+      "backend": "webgpu-float32",
+      "medianMs": 8.3
+    },
+    {
+      "type": "grain",
+      "maxError": 1,
+      "meanError": 5.152895287481805e-05
+    },
+    {
+      "type": "detail",
+      "backend": "cpu-float32",
+      "medianMs": 430.6
+    },
+    {
+      "type": "detail",
+      "backend": "webgpu-float32",
+      "medianMs": 19
+    },
+    {
+      "type": "detail",
+      "maxError": 1,
+      "meanError": 1.0661162663755458e-05
+    }
+  ],
+  "png_3000x2000": {
+    "rows": [
+      {
+        "method": "whole-image CPU PNG16",
+        "ms": 682,
+        "largestFloatAllocationBytes": 96000000,
+        "outputBytes": 3223621
+      },
+      {
+        "method": "streaming tiled CPU PNG16",
+        "ms": 1041,
+        "largestFloatAllocationBytes": 12288000,
+        "outputBytes": 3226033
+      }
+    ]
+  },
+  "allocation_note": "Largest individual Float32Array allocation, not total or peak process memory. Streaming trades time for smaller intermediate buffers."
+}

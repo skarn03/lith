@@ -154,7 +154,11 @@ Lith works offline. Update checks contact GitHub; your photo library is not uplo
 
 ## Current limits
 
-Camera RAW support uses LibRaw and depends on the camera model and compression. RAW files are developed by LibRaw into a 16-bit sRGB cache. High-precision mode uses float32 image buffers and can export 16-bit PNG; JPEG/WebP and the normal display remain 8-bit. This is not a scene-linear or fully color-managed RAW workflow: there are no custom camera profiles, sensor-level white balance or highlight reconstruction controls. Mask coverage and text rasterization remain 8-bit, and the flare generator retains a legacy 8-bit intermediate. Large images and unsupported operations use float CPU fallback, which can take longer and use more RAM. Film looks are artistic interpretations. Nodes currently form a serial chain. AI masking and healing are not included.
+Camera RAW support uses LibRaw and depends on the camera model and compression (currently up to 150 MB / 60 megapixels). **Light → RAW Develop** adds As Shot, Auto, custom warmth/tint, a neutral-point picker, RAW exposure and highlight reconstruction. Choose Wide-gamut RAW development, then Develop RAW; previous development stays available for compatibility. Originals remain untouched.
+
+Wide-gamut RAW uses a 16-bit linear Rec.2020 cache, converted to extended sRGB float32 for the existing creative effects; optical blurs on this path operate in linear light. This is **not an entirely scene-linear workflow**. Custom camera profiles, lens profiles and print soft-proofing are not included. PNG exports in high-precision mode are 16-bit with an sRGB tag; JPEG/WebP exports carry an sRGB ICC profile and remain 8-bit, as does the normal display. Mask coverage, text rasterization and the flare intermediate remain 8-bit.
+
+Compatible large renders use tiles, and compatible PNG exports stream strips to reduce working-buffer allocations. Complex spatial effects, transformed/resized browser sources and large-radius stacks fall back to the whole-image renderer to preserve appearance. RAW decoding itself still loads the complete source; this is not a universal low-memory guarantee. RAW development controls were validated with a synthetic DNG; camera-specific behavior still needs broader real-camera testing. Film looks are artistic interpretations. Nodes form a serial chain. AI masking and healing are not included.
 
 Read the [full user guide](LITH-GUIDE.md), [release notes](RELEASE-NOTES.md), and [RAW third-party notices](THIRD-PARTY-RAW.md).
 

@@ -41,7 +41,7 @@ Use the preview menu for a wipe, side-by-side comparison or original view. Crop 
 
 ## Saving and export
 
-Edits save locally per photo. Undo/redo includes look selection, strength, node edits and framing. JPEG, PNG and WebP originals remain untouched; Export creates a rendered copy. RAW development, lens profiles and color-managed printing are not implemented.
+Edits save locally per photo. Undo/redo includes look selection, strength, node edits and framing. JPEG, PNG and WebP originals remain untouched; Export creates a rendered copy. RAW development controls are available under Light for supported RAW files. Lens profiles and color-managed printing are not implemented.
 
 ## Validation
 
@@ -160,9 +160,18 @@ Interactive previews and high-quality refinements now use separate workers. Chan
 
 Import or drop camera RAWs alongside JPEG, PNG and WebP files. The chooser includes ARW, CR2/CR3, NEF/NRW, RAF, DNG, ORF, RW2, PEF and other common RAW extensions. Actual decoding depends on the camera and compression supported by the bundled LibRaw build; a matching extension alone does not guarantee support. Current limits are 150 MB per file and 60 megapixels for RAW development.
 
-RAW originals remain unchanged. On first opening, a background worker demosaics the sensor data with camera white balance into a full-resolution sRGB, 16-bit lossless PNG cache. Later visits and restarts reuse that cache. Contact sheets use embedded JPEG previews where available. RAWs use the same nodes, masks, looks, projects and export controls as JPEGs. Quick save exports the full developed dimensions with the photo's edits. Library restoration also supports RAW originals; caches regenerate locally.
+RAW originals remain unchanged. The first opening uses the original camera-white-balance development for compatibility and caches a full-resolution 16-bit sRGB PNG. Contact sheets may use the camera’s embedded JPEG. RAWs use the same nodes, masks, looks, projects and export controls as JPEGs.
 
-This is RAW import support, not yet a high-precision RAW editing engine: existing effects and exported edited images still pass through Lith's 8-bit canvas pipeline. Dedicated RAW white-balance/highlight-recovery controls and an end-to-end high-precision pipeline are not included. First decode can take longer, especially for large files. RAW caches live under the active library's raw-cache folder. Decoding runs offline, one job at a time, and unsuccessful files show an error without changing their originals.
+Open **Light → RAW Develop** and choose **Wide-gamut RAW development** to unlock the new source controls:
+
+1. Choose **As Shot** for the camera white balance, **Auto**, or **Custom**. Temperature shift and Tint are relative adjustments, not Kelvin values. **Pick neutral area** lets you click a gray or white part of the photograph; Escape cancels picking.
+2. Adjust **RAW exposure** and **Highlight recovery**. Blend gives a restrained starting point; Reconstruct and Strong reconstruction can recover color relationships where the sensor retains useful information. They cannot restore detail clipped in every channel.
+3. Click **Develop RAW**. Development runs in the background, then updates the source while preserving your nodes, crop, text and masks. Slider changes in this card are drafts until applied. **Reset to As Shot** resets the draft; click Develop RAW to apply it.
+4. Undo/Redo switches development along with your edits. **Original development** restores the older source interpretation. Wide-gamut development requires high-precision processing.
+
+Each source-development variant is cached locally and reused; virtual copies can have independent development settings. RAW caches live in the library’s raw-cache folder and can grow as you try variants. Decoding runs offline, one job at a time. A failed decode leaves the original and current settings intact. First development can take longer for large files. JPEGs use the regular Light and Color tools and do not show RAW Develop.
+
+The modern source cache is 16-bit linear Rec.2020. Existing creative effects use extended sRGB float buffers; optical blurs use linear light for this source. PNG16 export is tagged sRGB; JPEG/WebP exports embed an sRGB ICC profile. This does not add custom camera profiles, print soft-proofing or a fully scene-linear edit stack.
 
 Verified with a real Sony FX30 ARW (6240 × 4168) and a generated DNG, including mixed JPEG import, original preservation, full-size export, restart cache reuse, and malformed-file recovery. The Windows packaged build was also tested; the decoder is platform-independent WebAssembly, but a Mac runtime test has not been performed here.
 
@@ -221,9 +230,9 @@ Under **New mask**, choose **Inverted copy of active mask** to add a separate re
 
 The **Quality** selector beside the photo name selects High precision · 32-bit or Original rendering · 8-bit. New imports use High precision; existing photos retain their saved appearance until you switch. High precision retains developed 16-bit RAW input in float image buffers between adjustments; PNG exports use 16-bit channels. JPEG and WebP stay 8-bit. A JPEG cannot gain source detail that was never captured, but float processing avoids repeated rounding during edits.
 
-Previews use smaller images while sliders move, then automatically refine to match the viewport and zoom. Double-click to inspect native detail at 100% zoom. Toggle **HQ** beside the zoom controls to request a full-resolution settled preview even when zoomed out. This takes more time and memory on large images; slider feedback still uses a fast proxy. Preview resolution never changes export resolution or the original photo. Panning repositions the displayed photo without recomputing edits.
+Previews use smaller images while sliders move, then automatically refine to match the viewport and zoom. Double-click to inspect native detail at 100% zoom. Toggle **HQ** beside the zoom controls to request a full-resolution settled preview even when zoomed out. This takes more time and memory on large images; slider feedback still uses a fast proxy. Preview resolution never changes export resolution or the original photo. For compatible high-precision stacks at 100% zoom, Lith refines just the visible source region and caches recent regions. Panning moves immediately, then refines the newly visible area. Other stacks retain the full-image path.
 
-Compatible effects use WebGPU, with CPU work in background workers and automatic fallbacks. There are still limits: processing is encoded sRGB, not scene-linear; mask coverage/text rasterization and the flare intermediate remain 8-bit. Large full-resolution renders can use the CPU. See [ENGINE-ARCHITECTURE.md](ENGINE-ARCHITECTURE.md) for precision limits, benchmarks and implementation details.
+Compatible effects use WebGPU, with CPU work in background workers and automatic fallbacks. Compatible large renders use tiles, and eligible full-size PNG exports stream strips. Unsupported stacks retain whole-image rendering. There are still limits: creative processing is extended encoded sRGB rather than entirely scene-linear; mask coverage/text rasterization and the flare intermediate remain 8-bit. Large renders can use CPU workers. See [ENGINE-ARCHITECTURE.md](ENGINE-ARCHITECTURE.md) for precision limits, benchmarks and implementation details.
 
 ### Second-monitor photo display
 

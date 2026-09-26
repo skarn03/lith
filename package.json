@@ -1,11 +1,11 @@
 {
   "name": "lith-photo-studio",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "description": "An offline desktop photo studio",
   "main": "main.cjs",
   "scripts": {
     "start": "electron .",
-    "test": "node tests.cjs && node storage-tests.cjs && node release-tests.cjs && node raw-tests.cjs && node engine-tests.cjs && node float-tests.cjs && node second-display-tests.cjs && node batch-tests.cjs && node look-sharing-tests.cjs && node creative-tests.cjs && node update-prompt-tests.cjs",
+    "test": "node tests.cjs && node storage-tests.cjs && node release-tests.cjs && node raw-tests.cjs && node raw-controls-tests.cjs && node engine-tests.cjs && node float-tests.cjs && node second-display-tests.cjs && node batch-tests.cjs && node look-sharing-tests.cjs && node creative-tests.cjs && node update-prompt-tests.cjs",
     "pack": "electron-builder --config electron-builder.config.cjs --dir",
     "dist:win": "electron-builder --config electron-builder.config.cjs --win --publish never",
     "dist:mac": "electron-builder --config electron-builder.config.cjs --mac --publish never",
@@ -14,7 +14,9 @@
     "benchmark:float": "node float-benchmark.cjs",
     "test:workspace": "node workspace-ui-tests.cjs && node workspace-tabs-tests.cjs",
     "test:looks": "node look-preview-tests.cjs",
-    "test:scopes": "node scopes-ui-tests.cjs"
+    "test:scopes": "node scopes-ui-tests.cjs",
+    "test:raw-pipeline": "node raw-controls-tests.cjs && node raw-pipeline-ui-tests.cjs",
+    "benchmark:tiles": "node tiled-benchmark.cjs"
   },
   "private": true,
   "devDependencies": {

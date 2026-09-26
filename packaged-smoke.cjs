@@ -16,7 +16,14 @@ const {_electron}=require('playwright'),fs=require('node:fs/promises'),path=requ
   await page.evaluate(()=>flush());
   const saved=JSON.parse(await fs.readFile(path.join(data,'catalog.json'),'utf8'));
   assert.equal(saved.photos[0].settings.nodes[0].adjustments.exposure,.25);
+  const rawFile=path.join(data,'fixture.dng');
+  await fs.writeFile(rawFile,require('./raw-test-fixture.cjs')());
+  await app.evaluate(({dialog},file)=>dialog.showOpenDialog=async()=>({canceled:false,filePaths:[file]}),rawFile);
+  await page.click('#import');await page.waitForFunction(()=>current?.ext==='.dng'&&img&&document.getElementById('photo').dataset.settled==='true',null,{timeout:60000});
+  await page.locator('#rawDevelopCard summary').click();await page.selectOption('#rawRendering','modern');await page.click('#rawDevelopApply');
+  await page.waitForFunction(()=>documentSettings.rawDevelop?.version===2&&document.getElementById('photo').dataset.settled==='true',null,{timeout:60000});
+  await page.evaluate(()=>flush());
   assert.deepEqual(errors,[]);
-  console.log('Packaged native app passed: launch, version, photo import, float preview, adjustment and saved edit. Architecture: '+process.arch);
+  console.log('Packaged native app passed: launch, version, photo import, float preview, adjustment, saved edit and packaged wide-gamut RAW development. Architecture: '+process.arch);
  }finally{if(app)await app.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

@@ -1,3 +1,20 @@
+# Lith 0.15.0
+
+**[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**
+
+- Light → RAW Develop: As Shot/Auto/custom white balance, neutral-area picker, RAW exposure and highlight reconstruction. Apply explicitly; undo and preserve your creative edits.
+- Opt-in linear Rec.2020 RAW source, extended sRGB float processing and linear-light optical blur. Existing development remains available.
+- Explicit sRGB metadata for PNG16, JPEG and WebP exports.
+- Compatible large renders use tiles; compatible PNG exports stream strips with output sharpening. Other stacks safely use the existing renderer.
+- Cached visible-area refinement for compatible 100% previews; RAW source settings also reach the second monitor.
+- Updated welcome logo and message: “Lith — Art isn’t rented.”
+
+RAW decoding still uses the full source (150 MB / 60 MP limits), and not every operation can be tiled. Creative processing is not entirely scene-linear; mask/text/flare precision limits remain. New RAW controls were tested with a synthetic DNG; camera compatibility varies. See the guide and engine architecture for measured performance and limitations.
+
+Mac builds remain experimental and not Apple-notarized; Windows builds remain unsigned. See [installation help](INSTALLATION.md).
+
+---
+
 # Lith 0.14.0
 
 **[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**
