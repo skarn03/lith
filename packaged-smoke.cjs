@@ -18,6 +18,8 @@ const {_electron}=require('playwright'),fs=require('node:fs/promises'),path=requ
   assert.equal(saved.photos[0].settings.nodes[0].adjustments.exposure,.25);
   await page.evaluate(()=>mutate(()=>Object.assign(settings,{shutter:35,bokeh:60,bokehPoints:[{x:.4,y:.4,size:1,strength:1}]})));
   await page.waitForFunction(()=>document.getElementById('photo').dataset.settled==='true',null,{timeout:60000});
+  assert.equal(await page.evaluate(()=>window.LithCommunityLooks?.length),8);
+  assert.equal(await page.locator('.preset[data-category="user-made"]').count(),8);
   await page.evaluate(()=>mutate(()=>settings.textLayers=[{...TextFX.make(),font:'Cinzel',text:'PACKAGED FONT CHECK'}]));
   await page.waitForFunction(()=>document.getElementById('photo').dataset.settled==='true',null,{timeout:60000});
   assert.ok(await page.evaluate(()=>[...document.fonts].some(f=>f.family==='Cinzel'&&f.status==='loaded')));

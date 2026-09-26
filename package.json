@@ -1,6 +1,6 @@
 {
   "name": "lith-photo-studio",
-  "version": "0.17.0",
+  "version": "0.18.0",
   "description": "An offline desktop photo studio",
   "main": "main.cjs",
   "scripts": {
@@ -18,7 +18,8 @@
     "test:raw-pipeline": "node raw-controls-tests.cjs && node raw-pipeline-ui-tests.cjs",
     "benchmark:tiles": "node tiled-benchmark.cjs",
     "test:playful": "node playful-tests.cjs && node playful-ui-tests.cjs",
-    "test:fonts": "node font-ui-tests.cjs"
+    "test:fonts": "node font-ui-tests.cjs",
+    "test:community": "node community-ui-tests.cjs"
   },
   "private": true,
   "devDependencies": {

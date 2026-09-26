@@ -323,3 +323,10 @@ Sixteen included families work offline on Windows and Mac, using the same font f
 - **Handwritten:** Caveat, Sacramento.
 
 **More caption styles** adds Classic cinema, Soft poetry, Luxury editorial, Opening credits, Minimal caption, 35mm diary, Handwritten note and Road movie. Style buttons add a new text layer; font cards update the selected layer. Existing system fonts remain available in separate groups and may differ across computers. Included families load only when needed, without contacting a font service. Copyright notices and licenses are in [THIRD-PARTY-FONTS.md](THIRD-PARTY-FONTS.md).
+
+
+## User-made Dream Bloom collection
+
+Open the filter icon above Looks, then choose **User-made · Dream Bloom**. Eight recipes by skarn03 are included offline. Each thumbnail has a User-made creator tag. Click a look to preview; **Apply look** commits it, and Selected looks controls its strength. Your own saved/imported looks remain under **My looks**. Share look can export the included recipes too. Your original private presets are not renamed or replaced by this collection.
+
+Node controls use colored icons for enable/disable, add, move and remove. The selected node says **Editing**, disabled nodes say **Disabled**, and the Develop panel shows the current edit target. Focus, Reset and Shortcuts have visible button outlines.

@@ -18,6 +18,16 @@ A free, open-source, offline photo editor for Windows and Mac. Create film-inspi
 
 ![Current Lith workspace: photo, gallery, Looks, Develop, Nodes and Scopes](docs/images/ui-dark.jpg)
 
+## User-made · Dream Bloom
+
+Eight dreamy, cinebloom-style recipes by **skarn03**: **Moss & Mist, Midnight Halo, Sage Cinema, Velvet Bloom, Vivid Reverie, Luminous Drift, Dreamspill and Daylight Veil**. Find them under **Looks → filter icon → User-made · Dream Bloom**, with creator tags on their photo previews. Preview first, apply when ready, then blend their strength.
+
+[See all eight examples and download the shareable look files →](community/dream-bloom/README.md)
+
+![User-made looks, creator tags and colorful node controls](docs/images/ui-user-made.jpg)
+
+Node actions now have colored icons, clearer buttons and explicit Editing / Enabled / Disabled states. Reset, Focus, Undo/Redo and keyboard shortcut settings share the same visual treatment. Shortcut hints follow your custom key assignments.
+
 ## Creative light, motion and lens effects
 
 Open **Effects → Creative**. Each tool has its own collapsible card, strength control and reset. Changes belong to the selected node and support undo, copies, batch sync and saved/shared looks.

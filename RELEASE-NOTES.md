@@ -1,3 +1,18 @@
+# Lith 0.18.0
+
+**[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**
+
+- **User-made · Dream Bloom:** eight offline recipes by skarn03, with meaningful names, creator tags and a separate Looks category. The creator's original personal presets remain unchanged.
+- Moss & Mist, Midnight Halo, Sage Cinema, Velvet Bloom, Vivid Reverie, Luminous Drift, Dreamspill and Daylight Veil retain the original color/effect recipes and layered blends.
+- Bundled looks support photo thumbnails, preview before apply, strength blending and sharing as `.lithlook` files. Existing personal-look selections remain correctly matched after adding the collection.
+- Colorful, outlined controls for node enable/disable, add, move and remove; explicit Editing / Enabled / Disabled states and a clearer current-node panel.
+- Matching icons for Reset, Focus, Undo/Redo and keyboard shortcut settings, with compact layouts and customized shortcut hints.
+- Updated feature screenshots and eight real sample exports, plus individually downloadable look files in the repository.
+
+Mac builds remain ad-hoc signed, not Apple-notarized. Windows builds remain unsigned.
+
+---
+
 # Lith 0.17.0
 
 **[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**

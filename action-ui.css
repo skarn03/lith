@@ -1,0 +1,37 @@
+/* Color is an aid, not the only state indicator: retain labels and focus rings. */
+.action-icon{width:17px;height:17px;flex:0 0 17px;vertical-align:middle;color:var(--action-tint,var(--tool-mask))}
+.workspace-redesign .visual-action{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:30px;padding:5px 8px;border:1px solid var(--line);background:var(--surface-2);color:var(--text);font-size:11px;font-weight:550;border-radius:7px;white-space:nowrap;transition:background 140ms,border-color 140ms,box-shadow 140ms}
+.workspace-redesign .visual-action:not(:disabled):hover{border-color:var(--action-tint);background:color-mix(in srgb,var(--action-tint) 12%,var(--surface));box-shadow:0 2px 7px #0002}
+.workspace-redesign .visual-action:focus-visible,#nodeGraph .effect-node:focus-visible{outline:2px solid var(--tool-detail);outline-offset:2px}
+.workspace-redesign .visual-action:disabled{opacity:.4;cursor:default}
+.visual-action kbd{font-family:inherit;font-size:9px;font-weight:400;color:var(--muted);padding:2px 4px;border:1px solid var(--line);border-radius:4px;background:var(--surface)}
+.workspace-redesign .canvas-tools{height:auto;min-height:43px;gap:8px;flex-wrap:wrap;padding:5px 8px}
+.canvas-tools>div{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.workspace-redesign .canvas-tools #reset{font-size:11px}.canvas-tools #reset:before{content:none}
+.canvas-tools #undo .action-label,.canvas-tools #redo .action-label,.canvas-tools #undo kbd,.canvas-tools #redo kbd{display:none}
+[data-panel=nodes]>.workspace-panel-heading{flex-wrap:wrap;gap:8px;padding-block:5px}
+[data-panel=nodes]>.workspace-panel-heading .node-heading{flex-wrap:wrap;gap:5px;flex-basis:280px}
+.node-heading #nodeBypass{background:color-mix(in srgb,var(--tool-mask) 10%,var(--surface-2))}
+.node-heading #nodeRemove kbd,.node-heading #nodeLeft .action-label,.node-heading #nodeRight .action-label{display:none}
+.node-heading #nodeAdd{margin-left:auto;border-color:color-mix(in srgb,var(--tool-mask) 50%,var(--line));background:color-mix(in srgb,var(--tool-mask) 12%,var(--surface))}
+.workspace-redesign #nodeGraph{padding-block:6px 10px;min-height:78px}
+.workspace-redesign #nodeGraph .effect-node{position:relative;height:72px;min-width:158px;padding:9px 12px 21px 37px;text-align:left;border-width:1px;box-shadow:0 2px 5px #0002}
+#nodeGraph .effect-node.selected{border:2px solid var(--tool-mask);background:color-mix(in srgb,var(--tool-mask) 13%,var(--surface));box-shadow:0 0 0 2px color-mix(in srgb,var(--tool-mask) 12%,transparent)}
+#nodeGraph .effect-node.bypassed{opacity:.7;border-style:dashed}
+.node-visual-mark{position:absolute;left:10px;top:21px;color:var(--tool-mask)}
+.node-visual-state{position:absolute;bottom:7px;left:37px;font-size:9px;font-style:normal;color:var(--muted)}
+.selected .node-visual-state{color:var(--tool-mask);font-weight:650}.bypassed .node-visual-state{color:var(--tool-light)}
+#nodeGraph .effect-node .node-edits{right:7px;bottom:6px}
+.workspace-redesign .active-node-context{display:flex;align-items:center;gap:9px;padding:9px 10px}
+.current-node-icon{display:flex;background:color-mix(in srgb,var(--tool-mask) 14%,var(--surface));padding:7px;border-radius:7px}
+.current-node-copy{display:flex;flex-direction:column;min-width:0;flex:1;gap:2px}.current-node-copy small{font-size:8px;letter-spacing:.09em;color:var(--muted)}.current-node-copy strong{font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.current-node-status{font-size:9px;color:var(--tool-mask)}.node-is-disabled .current-node-status{color:var(--tool-light)}
+.workspace-redesign #nodeSetup>summary{display:flex;align-items:center;gap:7px;color:var(--text);font-size:11px;padding:7px;border:1px solid var(--line);border-radius:6px;background:var(--surface-2)}
+#workspaceToolHelp.visual-action{color:var(--text);padding:6px 8px}
+[data-panel=nodes],[data-panel=photo]{container-type:inline-size}
+@container(max-width:780px){.canvas-tools .visual-action kbd{display:none}.canvas-tools .visual-action{padding:5px 6px}.canvas-tools{column-gap:4px!important}}
+@container(max-width:620px){.node-heading .visual-action kbd{display:none}.node-heading .visual-action{padding:5px 6px;gap:4px}}
+@media(max-width:1250px){.canvas-tools .visual-action kbd{display:none}.node-heading .visual-action kbd{display:none}}
+@media(prefers-reduced-motion:reduce){.workspace-redesign .visual-action{transition:none}}
+
+.looks-browser .preset small.user-made-badge{display:block;margin-top:4px;color:var(--tool-effects);font-size:9px;font-weight:600;letter-spacing:.02em}
