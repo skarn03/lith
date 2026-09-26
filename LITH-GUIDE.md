@@ -258,3 +258,20 @@ All four tools use node settings, undo, copy/move and batch workflows. High prec
 Installed builds check shortly after launch and every four hours. When a newer version is found, Lith opens an update overlay immediately. On Windows the existing automatic background download continues; the same overlay shows progress, then offers **Save & restart**. Nothing restarts without that action, and installation stops if saving fails. **Later** or Escape dismisses the prompt for that version until the next launch; use **Updates / Update ready** in the header to reopen it.
 
 Unsigned Mac builds now check GitHub releases automatically and show the overlay too, with **Download update**. They still require manually replacing the app. Development runs do not check automatically. Offline checks remain quiet; the status and retry option are available in Updates.
+
+
+## Customize your workspace
+
+The gallery now opens on the left, with compact project and favorites controls. Looks and Histogram start collapsed to leave more room for your photo. Develop uses colorful tool icons, clear expandable section headers, and an active-node label. The node graph remains visible beneath the photo: Ctrl+2 selects node 2 or creates the next node when needed. Configured shortcuts are shown in the node hint.
+
+Choose **Soft white** in the theme selector for a light workspace. Dark and soft gray remain available.
+
+Click **Customize workspace** to reveal drag handles and highlighted docking areas. Move Gallery, Looks, Photo, Nodes, Develop or Histogram to the left, right, top, bottom or center. Individual expandable Develop sections can also be dragged into these areas, or reordered within their tool category. Location menus provide an alternative to dragging. Detached sections remain available while switching Develop tabs; use their return arrow to put them back.
+
+Click **Done** to finish. Layout and collapsed panels are remembered on this device. **Reset layout** restores the default arrangement without changing photo edits.
+
+Drag the dividers beside the gallery and Develop, or above/below the photo, to resize workspace areas. Panels stacked in the same area have a resize handle along their lower edge. Sizes are remembered. Double-click a divider to restore its default size, or use Reset layout to reset all sizes. Focus a divider and use arrow keys for precise resizing (Shift for larger steps).
+
+In **Customize workspace**, use **Stacked** or **Side by side** in a panel heading to arrange the panels in that workspace area vertically or horizontally. Drag panels into the same area to group them, then drag their dividers to adjust their proportions. The arrangement is remembered and Reset layout restores vertical stacking. Gallery, Looks and other scrollable panels support the mouse wheel over their thumbnails and controls; Shift+wheel scrolls horizontally where available.
+
+Looks now starts in a slim column between Photo and Develop. Its search, family filter and import/share controls open from icon buttons. Hover icons for labels. In Customize workspace, drag a panel handle onto another panel’s title to combine them into a tabbed workspace. Click tab names to switch, or use the detach arrow to split a tab out again. Dragging a Develop section onto a panel title also creates a shared tab. Tab groups are saved with your layout.

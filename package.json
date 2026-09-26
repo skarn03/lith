@@ -1,6 +1,6 @@
 {
   "name": "lith-photo-studio",
-  "version": "0.12.1",
+  "version": "0.13.0",
   "description": "An offline desktop photo studio",
   "main": "main.cjs",
   "scripts": {
@@ -11,7 +11,8 @@
     "dist:mac": "electron-builder --config electron-builder.config.cjs --mac --publish never",
     "benchmark:engine": "node engine-benchmark.cjs",
     "test:creative": "node creative-ui-tests.cjs",
-    "benchmark:float": "node float-benchmark.cjs"
+    "benchmark:float": "node float-benchmark.cjs",
+    "test:workspace": "node workspace-ui-tests.cjs && node workspace-tabs-tests.cjs"
   },
   "private": true,
   "devDependencies": {
