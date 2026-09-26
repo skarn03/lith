@@ -30,6 +30,30 @@ jobs:
         run: npm run ${{ matrix.command }}
         env:
           CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+      - name: Verify Mac bundles and disk images
+        if: runner.os == 'macOS'
+        shell: bash
+        run: |
+          set -euo pipefail
+          for app in dist/mac*/Lith.app; do
+            codesign --verify --deep --strict --verbose=2 "$app"
+            codesign --display --verbose=2 "$app"
+          done
+          for image in dist/*.dmg; do hdiutil verify "$image"; done
+          node packaged-smoke.cjs
+      - name: Diagnose previous Apple Silicon bundle
+        continue-on-error: true
+        if: runner.os == 'macOS'
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 2 -o "$RUNNER_TEMP/lith-previous.zip" https://github.com/skarn03/lith/releases/download/v0.11.0/Lith-0.11.0-mac-arm64-unsigned.zip
+          ditto -x -k "$RUNNER_TEMP/lith-previous.zip" "$RUNNER_TEMP/lith-previous"
+          if codesign --verify --deep --strict --verbose=2 "$RUNNER_TEMP/lith-previous/Lith.app"; then
+            echo "Previous bundle signature passed; Gatekeeper/notarization remains a separate requirement."
+          else
+            echo "Previous bundle failed signature verification."
+          fi
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.artifact }}
@@ -62,4 +86,5 @@ jobs:
           cp "release-files/Lith-${version}-win-x64.exe" release-files/Lith-Windows.exe
           cp "release-files/Lith-${version}-mac-arm64-unsigned.dmg" release-files/Lith-Mac-AppleSilicon.dmg
           cp "release-files/Lith-${version}-mac-x64-unsigned.dmg" release-files/Lith-Mac-Intel.dmg
+          (cd release-files && sha256sum *.exe *.dmg *.zip > SHA256SUMS.txt)
           gh release create "$RELEASE_TAG" --title "Lith $RELEASE_TAG" --notes-file RELEASE-NOTES.md release-files/*

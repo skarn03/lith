@@ -16,7 +16,7 @@ Windows checks shortly after launch and every four hours while open. **Updates â
 
 Windows NSIS builds are unsigned and update signature checks are disabled for this unsigned testing channel. GitHub HTTPS and updater checksums protect transport/integrity, but this does not provide a verified publisher identity. Before public production distribution, configure Windows signing and re-enable `verifyUpdateCodeSignature`.
 
-Mac builds are unsigned tests, with manual download links only. Standard Mac automatic installation requires a signed app. Future Mac signing should use GitHub secrets, not files committed to this repository. Do not turn on the Mac updater merely by setting an environment variable without signing/notarizing the actual release.
+Mac builds use ad-hoc integrity signatures (`identity: "-"`) with hardened runtime disabled for this test channel; they are not Developer-ID signed or notarized. Download links remain manual. CI verifies signatures and DMG integrity and launches the native packaged app. Standard Mac automatic installation requires a signed app. Future Mac signing should use GitHub secrets, not files committed to this repository. Do not turn on the Mac updater merely by setting an environment variable without signing/notarizing the actual release.
 
 ## Local builds
 

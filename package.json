@@ -1,6 +1,6 @@
 {
   "name": "lith-photo-studio",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "description": "An offline desktop photo studio",
   "main": "main.cjs",
   "scripts": {

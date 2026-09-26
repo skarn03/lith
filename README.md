@@ -6,7 +6,7 @@
 
 These links always download the latest release. [All downloads & release notes](https://github.com/skarn03/lith/releases/latest).
 
-Windows includes in-app updates. Mac builds are unsigned experimental test builds with manual updates; macOS may block them. Both platforms are unsigned and may show security warnings. Mac builds have not been interactively tested on a Mac.
+Windows includes in-app updates. Mac builds are experimental, ad-hoc signed and not Apple-notarized, with manual updates; macOS may block them. Windows has no publisher certificate and may show SmartScreen warnings. See [installation troubleshooting](INSTALLATION.md). Mac bundle/DMG integrity and native app launch are checked in CI; this does not guarantee Gatekeeper approval on downloaded copies.
 
 # Lith Photo Studio
 
