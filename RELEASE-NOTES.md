@@ -1,3 +1,19 @@
+# Lith 0.20.0
+
+**[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**
+
+- **On-photo mask handles:** move radial and gradient masks directly on your photo, resize ellipses, rotate them and adjust radial feathering. Gradient endpoints control length and angle. Works with sub masks and Undo.
+- **Clearer masking:** colorful tool icons, separate drawing and local adjustment controls, active-mask preview bar, adjustable overlay color/opacity, and remembered drawing state when switching tools or nodes.
+- **Controlled navigation:** Ctrl/Command or Space + scroll to zoom around the pointer; hold Ctrl/Command or Space and drag to pan safely while masking.
+- **Better previews:** adaptive high-quality previews, progressive refinement, source detail at 100%, and recovery when rendering stalls.
+- **Export queue:** add without starting an export, review edited thumbnails, click a queued photo to resume editing, remove items, and export the batch when ready. Queue survives restarts.
+- **Faster gallery search:** automatic search after typing pauses, filename/camera matching, and optional on-device picture-content search with explicit model download and gallery indexing.
+- **Simpler workspace:** wider gallery, consolidated settings beside the project picker, cleaner selection and copy badges, and removal of imported photos from a project without deleting source files.
+
+Windows installs receive the update through Lith's update prompt. Mac downloads support Apple Silicon and Intel; these builds are ad-hoc signed, not Apple-notarized, and require downloading and replacing the app when notified. Windows builds remain unsigned.
+
+---
+
 # Lith 0.19.1
 
 **[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**
