@@ -25,7 +25,9 @@
     "test:settings": "node settings-hub-ui-tests.cjs",
     "test:removal": "node photo-removal-tests.cjs && node photo-removal-ui-tests.cjs",
     "test:recovery": "node renderer-recovery-tests.cjs && node recovery-ui-tests.cjs",
-    "test:preview-quality": "node preview-policy-tests.cjs && node preview-quality-ui-tests.cjs"
+    "test:preview-quality": "node preview-policy-tests.cjs && node preview-quality-ui-tests.cjs",
+    "test:navigation": "node canvas-navigation-ui-tests.cjs",
+    "test:masks-ui": "node mask-design-ui-tests.cjs && node mask-shape-ui-tests.cjs"
   },
   "private": true,
   "devDependencies": {
