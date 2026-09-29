@@ -1,3 +1,20 @@
+# Lith 0.22.0
+
+**[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**
+
+- **Faster effect adjustments:** bounded CPU/GPU caches reuse unchanged effects and Phases. Repeated effect previews measured 309 to 57 ms in the development benchmark; results vary by device and edit stack.
+- **More responsive sliders:** outdated previews are cancelled, with adaptive resolution during interaction and higher-quality refinement after you stop.
+- **Faster repeated exports:** persistent workers reuse decoded sources when compatible, including 16-bit RAW sources. Changes to RAW development settings trigger a fresh decode.
+- **Less repeated tile processing:** larger adaptive tiles reduce overlapping work; the benchmark improved from 625 to 524 ms with identical float output.
+- **Faster wide GPU blur:** more efficient blur passes, texture/buffer reuse, and less background preview work during exports. CPU fallback remains available.
+- **Quality preserved:** full-resolution export settings remain unchanged. Interactive previews may temporarily use lower resolution before refining.
+
+Windows installs receive the update through Lith's update prompt. Mac builds support Apple Silicon and Intel; they are ad-hoc signed, not Apple-notarized, and require downloading and replacing the app when notified. Windows builds remain unsigned.
+
+Processing and workflow checks passed during development. Additional release test runs were skipped for this release at the maintainer's request; installer packaging and Mac signature/disk-image verification remain enabled.
+
+---
+
 # Lith 0.21.0
 
 **[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**

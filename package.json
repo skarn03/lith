@@ -1,6 +1,6 @@
 {
   "name": "lith-photo-studio",
-  "version": "0.21.0",
+  "version": "0.22.0",
   "description": "An offline desktop photo studio",
   "main": "main.cjs",
   "scripts": {
@@ -28,7 +28,10 @@
     "test:preview-quality": "node preview-policy-tests.cjs && node preview-quality-ui-tests.cjs",
     "test:navigation": "node canvas-navigation-ui-tests.cjs",
     "test:masks-ui": "node mask-design-ui-tests.cjs && node mask-shape-ui-tests.cjs",
-    "test:workflow": "node blur-parity-tests.cjs && node workflow-improvements-ui-tests.cjs"
+    "test:workflow": "node blur-parity-tests.cjs && node workflow-improvements-ui-tests.cjs",
+    "test:pipeline": "node effect-cache-tests.cjs && node pipeline-ui-tests.cjs && node raw-export-reuse-ui-tests.cjs",
+    "test:gpu-blur": "node gpu-blur-tests.cjs && node effect-cache-tests.cjs --gpu",
+    "benchmark:pipeline": "node pipeline-benchmark.cjs"
   },
   "private": true,
   "devDependencies": {

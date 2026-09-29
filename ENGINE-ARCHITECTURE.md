@@ -78,3 +78,25 @@ A local 1024px single-effect check measured CPU worker render times of 54 ms shu
 Float CPU blur now scans vertically using a row-wide Float64 rolling accumulator rather than striding the entire image once per channel and column. The three box passes, boundary extension, radius and Float32 outputs are unchanged. Exact comparison tests include negative/HDR channels, alpha, one-pixel axes and radii larger than the image. Regular export also sends binary bytes to Electron instead of a base64 string.
 
 On this Windows machine, three-run median CPU JPEG export at 2400×1600 with diffusion 45/radius 50/scatter 35 and glow 30/radius 40 improved from 1786.8 ms to 1101.4 ms (38% less time). Before/after JPEG SHA-256 matched. This worker benchmark includes rendering/encoding but excludes source import and disk writes. Pure blur improved from 451.4 to 207.0 ms at radius 12 and 464.0 to 203.6 ms at radius 90. Results are workload/device dependent, not a guarantee for every export.
+
+### Reuse and scheduling improvements (2026-09-29)
+
+- Float processing caches exact blur results and completed Phase outputs. Dependency keys include upstream operations and relevant parameters; changing a blend strength can reuse the expensive blur while changes to source, geometry, RAW development, threshold, radius or upstream edits invalidate the affected work. The cache is bounded to 96 MiB per renderer, with 4 MiB of dependency keys. Images requiring more than 48 MiB per checkpoint bypass caching; tiles also bypass checkpoints. GPU checkpoints stay in GPU buffers, and unsubmitted checkpoints are discarded on cancellation. CPU checkpoints preserve Float32 values.
+- Preview workers receive cancellation requests and yield between processing stages. Only the newest requested preview can paint. Interactive resolution adapts down to a 640-pixel longest-edge budget for heavy stacks, then returns to the existing Best-quality refinement after interaction stops. Final/source-detail quality policy and export resolution are unchanged. A synchronous CPU operation already in progress is cancelled at its next boundary, not mid-loop.
+- Wide GPU box blurs use bounded 64-pixel rolling-sum segments rather than a full radius loop per output pixel. This keeps wide blurs on the GPU when WebGPU is available. Existing light/curve/HSL/grading fusion remains; neutral point passes are skipped. CPU fallback remains available. Production does not force experimental WebGPU flags.
+- Export jobs are serialized in a reusable worker. Its decoded source, precision data, GPU device and compatible caches survive consecutive jobs; source or RAW setting changes replace the source. Idle workers are released after 30 seconds (5 seconds for thumbnail exports). Queued cancellation does not terminate another export. Look/queue thumbnails and idle high-quality/detail refinement yield to active exports; interactive editing remains available.
+- Tiled rendering chooses a near-square core from the halo size and a 24 MiB float tile-buffer target, capped at 1024 pixels. It preserves required halos while reducing overlap and dispatch count. Intermediate tiles no longer build throwaway 8-bit display canvases. The memory target describes one float tile, not total process RAM.
+
+Benchmarks on this Windows machine, using `npm run benchmark:pipeline`:
+
+| Workload | Before | After | Validation |
+| --- | ---: | ---: | --- |
+| 1280px CPU preview, changing glow strength after diffusion in an earlier Phase | 309.2 ms warm median | 56.7 ms | Float output SHA-256 identical |
+| 2400×1600 tiled optical render | 624.8 ms | 523.9 ms | Float output SHA-256 identical |
+| Tile calls / processed pixels for that render | 16 / 4,411,044 | 6 / 4,101,832 | Same required neighborhoods |
+
+The slider benchmark's initial cold render was 419 ms before and 385.9 ms after. Warm-cache results do not represent first renders or unrelated photos. Repeated export tests reused one worker/source across three exports and verified identical JPEG bytes; cached exports after backend warm-up reached about 45 ms versus roughly 449 ms for a fresh-worker export of the same image and settings. This is not a general batch-export speed claim.
+
+With WebGPU explicitly enabled in the test process, 1280×800 GPU blur at radii 12/40/90 improved from 8.3/8.6/10.2 ms to 6.5/6.7/6.6 ms. Maximum CPU/GPU channel deviation was 0.00068 on a 0–255 float scale. These figures depend on the device/driver; unsupported production devices retain the CPU path.
+
+Validation: `npm run test:pipeline`, `npm run test:gpu-blur`, preview-quality, RAW pipeline, queue, workflow, recovery, and general processing suites. Cache tests cover changing strengths, thresholds, radii, earlier edits, mix/enabled state, masks, RAW/rotation changes, GPU cancellation, memory bounds and tile seams. Real synthetic-DNG exports verify 16-bit output and fresh source upload after RAW development changes.

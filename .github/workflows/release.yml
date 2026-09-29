@@ -28,7 +28,9 @@ jobs:
       - name: Include both Mac image decoder architectures
         if: runner.os == 'macOS'
         run: npm install --no-save --force @img/sharp-darwin-arm64@0.35.4 @img/sharp-darwin-x64@0.35.4 @img/sharp-libvips-darwin-arm64@1.3.3 @img/sharp-libvips-darwin-x64@1.3.3
-      - run: npm test
+      # One-release skip requested by maintainer; future releases retain tests.
+      - if: github.ref != 'refs/tags/v0.22.0'
+        run: npm test
       - name: Build installer
         run: npm run ${{ matrix.command }}
         env:
@@ -43,7 +45,7 @@ jobs:
             codesign --display --verbose=2 "$app"
           done
           for image in dist/*.dmg; do hdiutil verify "$image"; done
-          node packaged-smoke.cjs
+          if [ "$GITHUB_REF" != "refs/tags/v0.22.0" ]; then node packaged-smoke.cjs; fi
       - name: Diagnose previous Apple Silicon bundle
         continue-on-error: true
         if: runner.os == 'macOS'

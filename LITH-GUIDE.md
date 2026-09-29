@@ -410,3 +410,9 @@ Queue export, regular export, batch export and Ctrl+S use the project’s format
 In Frame → Draw free crop, drag any corner to resize the selection, drag inside to move it, or draw outside to start another selection. Apply commits the crop as one undoable change; Cancel leaves the saved crop untouched.
 
 The editing steps are now called **Phases**, and local editing keeps the familiar **Masks** name. Existing saved editing data, shortcuts and custom phase names remain compatible.
+
+### More responsive editing and exports
+
+Repeated effect adjustments reuse earlier Phase results and compatible blur calculations. Heavy edits temporarily use a smaller preview while you drag; Lith refines to the existing Best preview quality when you stop. Exports keep the project’s chosen resolution and quality. Older slider requests are discarded instead of painting over the latest request.
+
+The export worker stays warm between jobs and reuses a decoded source when exporting the same photograph or virtual copies with the same RAW development. Changing RAW settings reloads the developed source. Background look thumbnails and detail refinement pause while an export is active, leaving capacity for the export and interactive editing. Cached resources are bounded and the export worker is released after it becomes idle.
