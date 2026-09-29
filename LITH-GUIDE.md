@@ -402,3 +402,11 @@ Over the photo, use **Ctrl + scroll** or hold **Space + scroll** to zoom smoothl
 ### On-photo mask handles
 
 While drawing is on, existing radial and linear masks show handles directly on the photo, including selected sub masks. Drag the green center pin to move the shape. For radial masks, drag the four white edge handles to change width and height, the purple outer handle to rotate, or the yellow handle to adjust feather. For linear gradients, drag either white endpoint to change the length and angle. Handles remain visible with Overlay off; Pause drawing hides them. Each drag is one undo step. Ctrl/Command or Space + drag still pans the photo. Rotation is stored with the mask and used by the shared preview/export mask renderer.
+
+### Shared export settings, adjustable free crop, Phases and Masks
+
+Queue export, regular export, batch export and Ctrl+S use the project’s format, quality, longest edge and output sharpening. Changes in the queue confirmation become shared project export settings. New projects still default to original resolution and 100% quality; PNG remains lossless. Adding to the queue does not start export.
+
+In Frame → Draw free crop, drag any corner to resize the selection, drag inside to move it, or draw outside to start another selection. Apply commits the crop as one undoable change; Cancel leaves the saved crop untouched.
+
+The editing steps are now called **Phases**, and local editing keeps the familiar **Masks** name. Existing saved editing data, shortcuts and custom phase names remain compatible.

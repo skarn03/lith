@@ -1,3 +1,17 @@
+# Lith 0.21.0
+
+**[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**
+
+- **Faster exports:** more efficient full-quality CPU blur processing and binary export transfer. A 3.8 MP diffusion/glow benchmark exported 38% faster with byte-identical output; results vary by photo, effects and device.
+- **One set of export settings:** queue, regular export, batch export and Ctrl+S share project format, quality, size, sharpening and destination. Queue no longer overrides the selected size or quality. New projects still default to original resolution and 100% quality.
+- **Adjustable free crop:** drag corners to resize, drag inside to move, then Apply or Cancel. Applying supports Undo.
+- **Phases:** editing nodes are now called Phases. Masks keeps its familiar name. Existing edits and custom phase names remain compatible.
+- **Clear closing feedback:** a small Saving and closing indicator appears while edits and the queue are saved. Restarting has matching feedback; existing recovery choices remain available if saving fails.
+
+Windows installs receive the update through Lith's update prompt. Mac builds support Apple Silicon and Intel; they are ad-hoc signed, not Apple-notarized, and require downloading and replacing the app when notified. Windows builds remain unsigned.
+
+---
+
 # Lith 0.20.0
 
 **[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**

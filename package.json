@@ -1,11 +1,11 @@
 {
   "name": "lith-photo-studio",
-  "version": "0.20.0",
+  "version": "0.21.0",
   "description": "An offline desktop photo studio",
   "main": "main.cjs",
   "scripts": {
     "start": "electron .",
-    "test": "node tests.cjs && node storage-tests.cjs && node release-tests.cjs && node raw-tests.cjs && node raw-controls-tests.cjs && node engine-tests.cjs && node float-tests.cjs && node second-display-tests.cjs && node batch-tests.cjs && node look-sharing-tests.cjs && node creative-tests.cjs && node update-prompt-tests.cjs && node playful-tests.cjs",
+    "test": "node tests.cjs && node storage-tests.cjs && node release-tests.cjs && node raw-tests.cjs && node raw-controls-tests.cjs && node engine-tests.cjs && node float-tests.cjs && node second-display-tests.cjs && node batch-tests.cjs && node look-sharing-tests.cjs && node creative-tests.cjs && node update-prompt-tests.cjs && node playful-tests.cjs && node blur-parity-tests.cjs",
     "pack": "electron-builder --config electron-builder.config.cjs --dir",
     "dist:win": "electron-builder --config electron-builder.config.cjs --win --publish never",
     "dist:mac": "electron-builder --config electron-builder.config.cjs --mac --publish never",
@@ -24,10 +24,11 @@
     "test:search-queue": "node search-queue-ui-tests.cjs",
     "test:settings": "node settings-hub-ui-tests.cjs",
     "test:removal": "node photo-removal-tests.cjs && node photo-removal-ui-tests.cjs",
-    "test:recovery": "node renderer-recovery-tests.cjs && node recovery-ui-tests.cjs",
+    "test:recovery": "node renderer-recovery-tests.cjs && node recovery-ui-tests.cjs && node closing-ui-tests.cjs",
     "test:preview-quality": "node preview-policy-tests.cjs && node preview-quality-ui-tests.cjs",
     "test:navigation": "node canvas-navigation-ui-tests.cjs",
-    "test:masks-ui": "node mask-design-ui-tests.cjs && node mask-shape-ui-tests.cjs"
+    "test:masks-ui": "node mask-design-ui-tests.cjs && node mask-shape-ui-tests.cjs",
+    "test:workflow": "node blur-parity-tests.cjs && node workflow-improvements-ui-tests.cjs"
   },
   "private": true,
   "devDependencies": {
