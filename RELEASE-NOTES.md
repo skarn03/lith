@@ -1,3 +1,16 @@
+# Lith 0.22.1
+
+**[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**
+
+- **Stable editing preview:** quick and refined renders now use the same visible canvas dimensions, preventing the photograph from jumping or changing size while adjustments render.
+- **Clean frame replacement:** Lith keeps the previous image visible until the next preview is ready, avoiding blank flashes and glitchy resolution changes.
+- **Quieter feedback:** normal edits no longer show a flickering refining message. Preview status remains available without shifting the interface.
+- **Smooth detail previews:** 100% detail remains visible until its replacement frame is ready, while zoom, pan and recovery behavior remain intact.
+
+Windows installs receive the update through Lith's update prompt. Mac builds support Apple Silicon and Intel; they are ad-hoc signed, not Apple-notarized, and require downloading and replacing the app when notified. Windows builds remain unsigned.
+
+---
+
 # Lith 0.22.0
 
 **[Download Windows](https://github.com/skarn03/lith/releases/latest/download/Lith-Windows.exe)** · **[Download Mac (Apple Silicon)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-AppleSilicon.dmg)** · **[Download Mac (Intel)](https://github.com/skarn03/lith/releases/latest/download/Lith-Mac-Intel.dmg)**
